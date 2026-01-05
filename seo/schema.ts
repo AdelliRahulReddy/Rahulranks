@@ -144,10 +144,10 @@ export const getExperimentSchema = (
  * This is what you inject into <script type="application/ld+json">
  */
 export const serializeSchema = (
-  ...schemas: Record<string, any>[]
+  ...schemas: Record<string, unknown>[]
 ) => {
   return JSON.stringify({
     "@context": "https://schema.org",
-    "@graph": schemas.map(({ "@context": _, ...rest }) => rest),
+    "@graph": schemas.map(({ "@context": context, ...rest }) => rest),
   });
 };

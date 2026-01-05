@@ -1,0 +1,65 @@
+
+> rahulranks@0.1.0 lint
+> eslint
+
+
+C:\Users\adell\Desktop\rahulranks\components\layout\Footer.tsx
+  6:10  warning  'cn' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\adell\Desktop\rahulranks\components\sections\BentoBoxContent.tsx
+    4:18  warning  'Layers' is defined but never used                                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+   70:16  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                          react/no-unescaped-entities
+  109:13  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  153:45  error    React Hook "React.useState" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?                                                                                         react-hooks/rules-of-hooks
+  156:5   error    React Hook "React.useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?                                                                                        react-hooks/rules-of-hooks
+  162:8   warning  React Hook React.useEffect has a missing dependency: 'images.length'. Either include it or remove the dependency array                                                                                                                                                                   react-hooks/exhaustive-deps
+  172:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  185:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\adell\Desktop\rahulranks\components\sections\CTA.tsx
+   16:5   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\adell\Desktop\rahulranks\components\sections\CTA.tsx:16:5
+  14 |
+  15 |   useEffect(() => {
+> 16 |     setMounted(true);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  17 |     const newParticles = [...Array(12)].map(() => ({
+  18 |       left: `${Math.random() * 100}%`,
+  19 |       top: `${Math.random() * 100}%`,  react-hooks/set-state-in-effect
+  109:18  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       react/no-unescaped-entities
+
+C:\Users\adell\Desktop\rahulranks\components\sections\Projects.tsx
+  6:8  warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\adell\Desktop\rahulranks\components\sections\Skills.tsx
+  259:25  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  259:53  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\Users\adell\Desktop\rahulranks\components\sections\Trust.tsx
+   13:46  error  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   16:65  error  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  141:56  error  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  153:61  error  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  249:15  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  249:68  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\Users\adell\Desktop\rahulranks\components\ui\Modal.tsx
+   12:9   error  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  159:79  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\Users\adell\Desktop\rahulranks\seo\entity.ts
+  20:6  warning  'EntityLink' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\adell\Desktop\rahulranks\seo\schema.ts
+  147:30  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  151:42  warning  '_' is defined but never used             @typescript-eslint/no-unused-vars
+
+? 25 problems (16 errors, 9 warnings)
+

@@ -3,7 +3,7 @@
 import { useLayoutEffect, useRef } from "react";
 import { Github, Linkedin, Twitter, Mail, ArrowUp, Heart } from "lucide-react";
 import gsap from "gsap";
-import { cn } from "@/lib/utils";
+
 
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
@@ -67,26 +67,26 @@ export default function Footer() {
               gsap.fromTo(
                 ".footer-column",
                 { opacity: 0, y: 30 },
-                { 
-                  opacity: 1, 
-                  y: 0, 
-                  duration: 0.6, 
-                  stagger: 0.1, 
+                {
+                  opacity: 1,
+                  y: 0,
+                  duration: 0.6,
+                  stagger: 0.1,
                   ease: "power3.out",
-                  delay: 0.2 
+                  delay: 0.2
                 }
               );
 
               gsap.fromTo(
                 ".social-icon",
                 { scale: 0, rotate: -180 },
-                { 
-                  scale: 1, 
-                  rotate: 0, 
-                  duration: 0.5, 
-                  stagger: 0.08, 
+                {
+                  scale: 1,
+                  rotate: 0,
+                  duration: 0.5,
+                  stagger: 0.08,
                   ease: "back.out(1.7)",
-                  delay: 0.4 
+                  delay: 0.4
                 }
               );
 
@@ -118,7 +118,7 @@ export default function Footer() {
     <footer ref={footerRef} className="bg-bg-inverse text-text-inverse mt-20 relative overflow-hidden">
       {/* REFACTORED: Gradients using accent-rose and brand-main */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent-rose/5 via-transparent to-brand-main/5 pointer-events-none"></div>
-      
+
       <div className="max-w-7xl mx-auto px-4 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div className="footer-logo opacity-0">
@@ -201,16 +201,16 @@ export default function Footer() {
               © {currentYear} <span className="font-bold text-text-inverse">Rahul</span>. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <a 
-                href="#privacy" 
+              <a
+                href="#privacy"
                 className="hover:text-text-inverse transition-colors relative group"
               >
                 Privacy Policy
                 {/* REFACTORED: bg-accent-rose */}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-rose group-hover:w-full transition-all duration-300"></span>
               </a>
-              <a 
-                href="#terms" 
+              <a
+                href="#terms"
                 className="hover:text-text-inverse transition-colors relative group"
               >
                 Terms of Service

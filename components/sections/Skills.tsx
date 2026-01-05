@@ -63,20 +63,20 @@ export default function SkillsSection() {
     <div
       ref={containerRef}
       // ✅ COMPACT: Reduced padding
-      className="bg-gradient-to-br from-bg-subtle via-bg-surface to-bg-subtle border border-text-muted/10 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-8 my-8 relative overflow-hidden shadow-xl"
+      className="bg-[#0f172a] border border-white/10 rounded-[2.5rem] p-6 md:p-8 my-8 relative overflow-hidden shadow-2xl"
     >
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-         <motion.div 
-           animate={{ scale: [1, 1.2, 1], rotate: [0, 45, 0] }}
-           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-           className="absolute -top-[20%] -left-[10%] w-[400px] h-[400px] bg-brand-main/5 rounded-full blur-[100px]" 
-         />
-         <motion.div 
-           animate={{ scale: [1, 1.3, 1], rotate: [0, -45, 0] }}
-           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-           className="absolute -bottom-[20%] -right-[10%] w-[400px] h-[400px] bg-accent-rose/5 rounded-full blur-[100px]" 
-         />
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], rotate: [0, 45, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute -top-[20%] -left-[10%] w-[400px] h-[400px] bg-brand-main/5 rounded-full blur-[100px]"
+        />
+        <motion.div
+          animate={{ scale: [1, 1.3, 1], rotate: [0, -45, 0] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute -bottom-[20%] -right-[10%] w-[400px] h-[400px] bg-accent-rose/5 rounded-full blur-[100px]"
+        />
       </div>
 
       {/* Grid Texture */}
@@ -104,7 +104,7 @@ export default function SkillsSection() {
               My Arsenal
             </p>
           </div>
-          <h2 className="text-3xl md:text-4xl font-black font-serif text-text-primary mb-2 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-black font-serif text-white mb-2 tracking-tight">
             How I Build Fast 🛠️
           </h2>
           <p className="text-text-secondary text-sm font-medium max-w-lg mx-auto">
@@ -114,14 +114,14 @@ export default function SkillsSection() {
 
         {/* Side-by-Side Layout - COMPACT */}
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
-          
+
           {/* LEFT: Circular Orbit - COMPACT */}
           <div className="relative h-[360px] flex items-center justify-center">
-            
+
             {/* Orbit Track */}
-            <div className="absolute w-[300px] h-[300px] rounded-full border border-dashed border-text-muted/20 animate-spin-slow pointer-events-none" 
-                 style={{ animationDuration: '60s' }} />
-            
+            <div className="absolute w-[300px] h-[300px] rounded-full border border-dashed border-text-muted/20 animate-spin-slow pointer-events-none"
+              style={{ animationDuration: '60s' }} />
+
             {/* Center Core - SMALLER */}
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
@@ -130,7 +130,7 @@ export default function SkillsSection() {
               className="absolute z-20"
             >
               <div className="relative">
-                <motion.div 
+                <motion.div
                   className="absolute inset-0 bg-brand-main rounded-full blur-xl opacity-20"
                   animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
                   transition={{ duration: 3, repeat: Infinity }}
@@ -148,7 +148,7 @@ export default function SkillsSection() {
             {SKILLS_DATA.categories.map((category, index) => {
               const position = getCircularPosition(index, SKILLS_DATA.categories.length, radius);
               const isActive = activeCategory === category.id;
-              
+
               return (
                 <motion.div
                   key={category.id}
@@ -170,11 +170,10 @@ export default function SkillsSection() {
                     onClick={() => setActiveCategory(category.id)}
                     whileHover={{ scale: 1.15, y: -5 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`relative w-16 h-16 rounded-xl flex flex-col items-center justify-center transition-all duration-300 shadow-sm border group ${
-                      isActive
-                        ? 'bg-brand-main text-white border-brand-main shadow-lg shadow-brand-main/30 scale-110 z-40'
-                        : 'bg-bg-surface text-text-secondary border-text-muted/10 hover:border-brand-main/30 hover:shadow-md'
-                    }`}
+                    className={`relative w-16 h-16 rounded-xl flex flex-col items-center justify-center transition-all duration-300 shadow-sm border group ${isActive
+                      ? 'bg-brand-main text-white border-brand-main shadow-[0_0_20px_rgba(99,102,241,0.4)] scale-110 z-40'
+                      : 'bg-white/5 text-white/70 border-white/10 hover:border-brand-main/50 hover:bg-white/10 hover:shadow-lg hover:shadow-brand-main/20'
+                      }`}
                   >
                     <span className={`text-xl mb-0.5 transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}>
                       {category.icon}
@@ -184,7 +183,7 @@ export default function SkillsSection() {
                     </span>
 
                     {isActive && (
-                      <motion.div 
+                      <motion.div
                         layoutId="activeDot"
                         className="absolute -bottom-1.5 w-1.5 h-1.5 bg-brand-main rounded-full"
                       />
@@ -195,15 +194,15 @@ export default function SkillsSection() {
             })}
 
             {/* Floating Stats - COMPACT */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }} 
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="absolute top-8 right-8 bg-bg-surface/80 backdrop-blur-sm border border-text-muted/10 px-2.5 py-1 rounded-full text-[9px] font-bold text-text-secondary shadow-sm"
             >
               🚀 5+ Categories
             </motion.div>
-            <motion.div 
-              animate={{ y: [0, 10, 0] }} 
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               className="absolute bottom-8 left-8 bg-bg-surface/80 backdrop-blur-sm border border-text-muted/10 px-2.5 py-1 rounded-full text-[9px] font-bold text-text-secondary shadow-sm"
             >
@@ -219,7 +218,7 @@ export default function SkillsSection() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="h-[360px]"
           >
-            <div className="h-full bg-bg-surface border border-text-muted/10 rounded-2xl shadow-xl overflow-hidden flex flex-col relative">
+            <div className="h-full bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col relative">
               {/* Top Bar */}
               <div className="h-1 w-full bg-gradient-to-r from-brand-main via-brand-dark to-brand-main" />
 
@@ -276,16 +275,15 @@ export default function SkillsSection() {
                               transition={{ delay: idx * 0.05 }}
                               className="flex items-center justify-between bg-bg-canvas rounded-lg px-2.5 py-1.5 border border-text-muted/10"
                             >
-                              <span className="text-xs font-bold text-text-primary">{skill.name}</span>
+                              <span className="text-xs font-bold text-white">{skill.name}</span>
                               <div className="flex gap-0.5">
                                 {[...Array(5)].map((_, i) => (
                                   <div
                                     key={i}
-                                    className={`w-1 h-1 rounded-full ${
-                                      i < (skill.level === 'expert' ? 5 : skill.level === 'advanced' ? 4 : 3)
-                                        ? 'bg-brand-main'
-                                        : 'bg-text-muted/20'
-                                    }`}
+                                    className={`w-1 h-1 rounded-full ${i < (skill.level === 'expert' ? 5 : skill.level === 'advanced' ? 4 : 3)
+                                      ? 'bg-brand-main'
+                                      : 'bg-text-muted/20'
+                                      }`}
                                   />
                                 ))}
                               </div>
@@ -318,7 +316,7 @@ export default function SkillsSection() {
                   </motion.div>
                 ) : (
                   // Empty State - COMPACT
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -332,7 +330,7 @@ export default function SkillsSection() {
                         <Sparkles size={28} className="text-brand-main/60" />
                       </motion.div>
                     </div>
-                    
+
                     <h3 className="text-base font-black font-serif text-text-primary mb-2">
                       Explore My Skill Stack
                     </h3>

@@ -17,11 +17,7 @@
 // TYPES (Semantic Structure)
 // -----------------------------------------------------------------------------
 
-type EntityLink = {
-  text: string;
-  url: string;
-  relationship: 'sameAs' | 'knowsAbout' | 'worksFor' | 'author';
-};
+
 
 type SemanticEntity = {
   name: string;
@@ -45,15 +41,15 @@ export const RAHUL_REDDY: SemanticEntity = {
   role: 'SEO-Focused Website Builder & Automation Developer',
 
   location: 'India', // Broad location context
-  
+
   // High-fidelity description for AI/Search understanding
-  disambiguatingDescription: 
+  disambiguatingDescription:
     'Rahul Reddy is a practical web developer and builder focused on creating SEO-ready applications, small tools, and automations. ' +
     'Unlike traditional agencies, he operates as an independent builder who leverages AI-assisted workflows and modern frameworks like Next.js ' +
     'to solve real-world problems. He documents his engineering process, experiments, and learnings publicly to foster transparency and trust.',
 
   // Concise description for UI/Meta
-  shortDescription: 
+  shortDescription:
     'Building SEO-ready websites and automations in public. Focused on practical shipping, iterative improvement, and helping others through code.',
 
   skills: [
@@ -74,7 +70,7 @@ export const RAHUL_REDDY: SemanticEntity = {
 
   urls: [
     // Add real social profiles here when available (e.g., GitHub, X/Twitter, LinkedIn)
-    'https://rahulranks.com' 
+    'https://rahulranks.com'
   ]
 };
 
@@ -87,22 +83,23 @@ export const RAHULRANKS = {
   type: 'Digital Laboratory & Portfolio', // Specific classification
   foundingDate: '2025', // Future-proofing
   founder: RAHUL_REDDY.name,
-  
+
   // Distinction: Not an agency
-  description: 
+  description:
     'Rahulranks is the public build-lab and portfolio of Rahul Reddy. ' +
     'It serves as a central repository for web experiments, SEO case studies, and open-source tools. ' +
     'It is not a marketing agency, but a documented journey of building software that works.',
 
-  mission: 
+  mission:
     'To demonstrate the capabilities of modern web engineering through transparency and actual shipped code.',
-  
+
   topics: [
     'Build in Public',
     'Web Performance',
     'Search Engine Optimization',
     'Software Experiments'
-  ]
+  ],
+  urls: ['https://rahulranks.com']
 };
 
 // -----------------------------------------------------------------------------

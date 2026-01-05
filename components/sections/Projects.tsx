@@ -14,8 +14,8 @@ export default function ProjectsSection() {
   const isInView = useInView(containerRef, { amount: 0.2, once: true });
 
   // Filter and sort projects
-  const filteredProjects = activeTab === "all" 
-    ? MY_PROJECTS 
+  const filteredProjects = activeTab === "all"
+    ? MY_PROJECTS
     : MY_PROJECTS.filter(p => p.category === activeTab);
 
   const sortedProjects = [...filteredProjects].sort((a, b) => {
@@ -27,7 +27,7 @@ export default function ProjectsSection() {
   const featuredCount = MY_PROJECTS.filter(p => p.featured).length;
 
   const getStatusStyle = (status: string) => {
-    switch(status) {
+    switch (status) {
       case "live": return { color: "bg-status-success", label: "Live", emoji: "🟢" };
       case "building": return { color: "bg-brand-main", label: "Building", emoji: "🔨" };
       case "beta": return { color: "bg-status-warning", label: "Beta", emoji: "🚧" };
@@ -38,7 +38,7 @@ export default function ProjectsSection() {
   return (
     <section
       ref={containerRef}
-      className="bg-gradient-to-br from-bg-subtle via-bg-surface to-bg-subtle border border-text-muted/10 rounded-[2rem] md:rounded-[2.5rem] py-8 px-6 md:px-10 my-8 relative overflow-hidden shadow-xl"
+      className="bg-[#0f172a] border border-white/10 rounded-[2.5rem] py-8 px-6 md:px-10 my-8 relative overflow-hidden shadow-2xl"
     >
       {/* Animated Background */}
       <div className="absolute inset-0 opacity-15 pointer-events-none">
@@ -79,7 +79,7 @@ export default function ProjectsSection() {
             </p>
           </motion.div>
 
-          <h2 className="text-3xl md:text-4xl font-black font-serif text-text-primary mb-2 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-black font-serif text-white mb-2 tracking-tight">
             My Work{" "}
             <motion.span
               animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
@@ -129,8 +129,8 @@ export default function ProjectsSection() {
           {/* Category Tabs - COMPACT */}
           <div className="flex flex-wrap justify-center md:justify-start gap-1.5">
             {PROJECT_TABS.map((tab) => {
-              const count = tab.id === "all" 
-                ? MY_PROJECTS.length 
+              const count = tab.id === "all"
+                ? MY_PROJECTS.length
                 : MY_PROJECTS.filter(p => p.category === tab.id).length;
 
               const isActive = activeTab === tab.id;
@@ -141,11 +141,10 @@ export default function ProjectsSection() {
                   onClick={() => setActiveTab(tab.id)}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`relative px-3 py-2 rounded-lg text-[10px] font-bold transition-all duration-300 flex items-center gap-1.5 ${
-                    isActive
-                      ? 'bg-bg-inverse text-text-inverse shadow-md'
-                      : 'bg-bg-surface text-text-secondary hover:bg-white border border-text-muted/10 hover:border-text-muted/30'
-                  }`}
+                  className={`relative px-3 py-2 rounded-lg text-[10px] font-bold transition-all duration-300 flex items-center gap-1.5 ${isActive
+                    ? 'bg-bg-inverse text-text-inverse shadow-md'
+                    : 'bg-bg-surface text-text-secondary hover:bg-white border border-text-muted/10 hover:border-text-muted/30'
+                    }`}
                 >
                   <motion.span
                     animate={isActive ? { scale: [1, 1.2, 1] } : {}}
@@ -158,9 +157,8 @@ export default function ProjectsSection() {
                   <motion.span
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className={`text-[9px] px-1.5 py-0.5 rounded-full font-black ${
-                      isActive ? 'bg-white/20 text-white' : 'bg-bg-subtle text-text-muted'
-                    }`}
+                    className={`text-[9px] px-1.5 py-0.5 rounded-full font-black ${isActive ? 'bg-white/20 text-white' : 'bg-bg-subtle text-text-muted'
+                      }`}
                   >
                     {count}
                   </motion.span>
@@ -183,11 +181,10 @@ export default function ProjectsSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setViewMode("grid")}
-              className={`p-1.5 rounded-md transition-all ${
-                viewMode === "grid"
-                  ? 'bg-bg-inverse text-text-inverse shadow-sm'
-                  : 'text-text-muted hover:text-text-primary'
-              }`}
+              className={`p-1.5 rounded-md transition-all ${viewMode === "grid"
+                ? 'bg-bg-inverse text-text-inverse shadow-sm'
+                : 'text-text-muted hover:text-text-primary'
+                }`}
               aria-label="Grid view"
             >
               <Grid3x3 size={14} />
@@ -196,11 +193,10 @@ export default function ProjectsSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setViewMode("list")}
-              className={`p-1.5 rounded-md transition-all ${
-                viewMode === "list"
-                  ? 'bg-bg-inverse text-text-inverse shadow-sm'
-                  : 'text-text-muted hover:text-text-primary'
-              }`}
+              className={`p-1.5 rounded-md transition-all ${viewMode === "list"
+                ? 'bg-bg-inverse text-text-inverse shadow-sm'
+                : 'text-text-muted hover:text-text-primary'
+                }`}
               aria-label="List view"
             >
               <List size={14} />
@@ -242,9 +238,8 @@ export default function ProjectsSection() {
                   whileHover={{ y: -6, scale: 1.02 }}
                   onHoverStart={() => setHoveredProject(project.id)}
                   onHoverEnd={() => setHoveredProject(null)}
-                  className={`group relative bg-bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-text-muted/10 hover:border-brand-main/30 ${
-                    viewMode === "list" ? "flex flex-row" : ""
-                  }`}
+                  className={`group relative bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] transition-all duration-500 border border-white/10 hover:border-brand-main/50 ${viewMode === "list" ? "flex flex-row" : ""
+                    }`}
                 >
                   {/* Hover Glow */}
                   <motion.div
@@ -291,9 +286,8 @@ export default function ProjectsSection() {
                   </motion.div>
 
                   {/* Image - COMPACT */}
-                  <div className={`relative ${
-                    viewMode === "list" ? "w-40 h-40" : "w-full h-48"
-                  } bg-gradient-to-br from-bg-subtle to-gray-100 overflow-hidden`}>
+                  <div className={`relative ${viewMode === "list" ? "w-40 h-40" : "w-full h-48"
+                    } bg-gradient-to-br from-bg-subtle to-gray-100 overflow-hidden`}>
                     <motion.div
                       className="absolute inset-0 flex items-center justify-center"
                       animate={{ opacity: isHovered ? 0.5 : 1 }}
@@ -307,12 +301,12 @@ export default function ProjectsSection() {
                           transition={{ duration: 2, repeat: Infinity }}
                           className="text-4xl mb-2"
                         >
-                          {project.category === "websites" ? "🌐" : 
-                           project.category === "clients" ? "💼" : 
-                           project.category === "tools" ? "🤖" : "🧪"}
+                          {project.category === "websites" ? "🌐" :
+                            project.category === "clients" ? "💼" :
+                              project.category === "tools" ? "🤖" : "🧪"}
                         </motion.div>
                         <p className="text-[9px] text-text-muted font-mono px-4">
-                          Add screenshot:<br/><span className="text-brand-main font-bold">{project.image}</span>
+                          Add screenshot:<br /><span className="text-brand-main font-bold">{project.image}</span>
                         </p>
                       </div>
                     </motion.div>
@@ -339,7 +333,7 @@ export default function ProjectsSection() {
                     {/* Title & Year */}
                     <div className="flex items-start justify-between mb-1.5">
                       <motion.h3
-                        className="font-black font-serif text-base text-text-primary group-hover:text-brand-main transition-colors flex-1"
+                        className="font-black font-serif text-base text-white group-hover:text-brand-main transition-colors flex-1"
                         animate={isHovered ? { x: 5 } : { x: 0 }}
                       >
                         {project.name}

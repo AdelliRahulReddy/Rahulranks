@@ -15,7 +15,7 @@ const NAV_LINKS = [
 
 export default function Header() {
   const containerRef = useRef<HTMLElement>(null);
-  const logoRef = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLAnchorElement>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
@@ -30,7 +30,7 @@ export default function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -191,13 +191,13 @@ export default function Header() {
         )}
       >
         {/* Glass Background (Bachelor Brothers Style) */}
-        <div 
+        <div
           className={cn(
             "absolute inset-0 transition-all duration-300",
-            scrolled 
-              ? "glass border-b border-brand-main/10 shadow-lg" 
+            scrolled
+              ? "glass border-b border-brand-main/10 shadow-lg"
               : "bg-bg-surface/80 backdrop-blur-lg border-b border-gray-200/60 shadow-sm"
-          )} 
+          )}
         />
 
         {/* Logo */}
@@ -251,11 +251,11 @@ export default function Header() {
                 )}
               >
                 {link.name}
-                <span 
+                <span
                   className={cn(
                     "absolute -bottom-1 left-0 h-[2px] bg-brand-main transition-all duration-300 rounded-full",
                     active ? "w-full" : "w-0 group-hover:w-full"
-                  )} 
+                  )}
                 />
               </a>
             );

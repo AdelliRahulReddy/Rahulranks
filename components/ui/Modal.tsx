@@ -9,7 +9,7 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   type: "certificate" | "testimonial";
-  data: any;
+  data: any; // Using any for flexibility with heterogeneous data types
 }
 
 export default function Modal({ isOpen, onClose, type, data }: ModalProps) {
@@ -156,7 +156,7 @@ export default function Modal({ isOpen, onClose, type, data }: ModalProps) {
                     {/* Testimonial Content - COMPACT */}
                     <div className="p-6">
                       <div className="mb-4">
-                        <span className="text-5xl text-brand-main opacity-20">"</span>
+                        <span className="text-5xl text-brand-main opacity-20">&quot;</span>
                         <p className="text-base text-text-secondary leading-relaxed italic -mt-6 ml-6">
                           {data.text}
                         </p>

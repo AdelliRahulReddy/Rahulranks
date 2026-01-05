@@ -10,17 +10,21 @@ export default function CTASection() {
   const isInView = useInView(containerRef, { amount: 0.3, once: true });
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
-  const [particles, setParticles] = useState<Array<{left: string, top: string, delay: number, duration: number}>>([]);
+  const [particles, setParticles] = useState<Array<{ left: string, top: string, delay: number, duration: number }>>([]);
 
   useEffect(() => {
-    setMounted(true);
-    const newParticles = [...Array(12)].map(() => ({
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      delay: Math.random() * 2,
-      duration: 3 + Math.random() * 2
-    }));
-    setParticles(newParticles);
+    // Adding a small delay to avoid synchronous state update warning
+    const timer = setTimeout(() => {
+      setMounted(true);
+      const newParticles = [...Array(12)].map(() => ({
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        delay: Math.random() * 2,
+        duration: 3 + Math.random() * 2
+      }));
+      setParticles(newParticles);
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const copyToClipboard = (text: string, id: string) => {
@@ -30,16 +34,16 @@ export default function CTASection() {
   };
 
   const getStatusColor = () => {
-    switch(CONTACT_DATA.availability.status) {
-      case "available": return "bg-status-success"; 
+    switch (CONTACT_DATA.availability.status) {
+      case "available": return "bg-status-success";
       case "busy": return "bg-status-warning";
-      case "booked": return "bg-bg-inverse"; 
+      case "booked": return "bg-bg-inverse";
       default: return "bg-text-muted";
     }
   };
 
   const getStatusText = () => {
-    switch(CONTACT_DATA.availability.status) {
+    switch (CONTACT_DATA.availability.status) {
       case "available": return "Available for work";
       case "busy": return "Limited availability";
       case "booked": return "Fully booked";
@@ -106,7 +110,7 @@ export default function CTASection() {
               <Sparkles size={14} className="text-brand-main" />
             </motion.div>
             <p className="text-text-primary/80 font-mono text-[10px] uppercase tracking-[0.2em] font-bold">
-              Let's Connect
+              Let&apos;s Connect
             </p>
           </motion.div>
 
@@ -161,7 +165,7 @@ export default function CTASection() {
             >
               {/* Glow Effect */}
               <div className={`absolute inset-0 bg-gradient-to-br ${contact.color} rounded-xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none`} />
-              
+
               {/* Card */}
               <div className="relative bg-bg-surface rounded-xl p-5 shadow-sm hover:shadow-xl border border-brand-main/5 h-full flex flex-col">
                 <div className="text-3xl mb-2">{contact.icon}</div>
@@ -188,9 +192,9 @@ export default function CTASection() {
                     whileTap={{ scale: 0.95 }}
                     className={`flex-1 bg-gradient-to-r ${contact.color} text-white py-2 px-3 rounded-lg font-bold text-xs flex items-center justify-center gap-1.5 shadow-md hover:shadow-lg transition-shadow`}
                   >
-                    {contact.id === "email" ? <Mail size={12} /> : 
-                     contact.id === "whatsapp" ? <MessageCircle size={12} /> : 
-                     <ExternalLink size={12} />}
+                    {contact.id === "email" ? <Mail size={12} /> :
+                      contact.id === "whatsapp" ? <MessageCircle size={12} /> :
+                        <ExternalLink size={12} />}
                     <span>Open</span>
                   </motion.a>
 
@@ -223,7 +227,7 @@ export default function CTASection() {
           <p className="text-text-secondary text-xs font-bold mb-3 text-center">
             Or find me on social media
           </p>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
             {CONTACT_DATA.socialLinks.map((social, index) => (
               <motion.a

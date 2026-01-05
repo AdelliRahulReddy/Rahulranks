@@ -10,10 +10,10 @@ export default function TrustSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { amount: 0.3, once: true });
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalData, setModalData] = useState<any>(null);
+  const [modalData, setModalData] = useState<Record<string, unknown> | null>(null);
   const [modalType, setModalType] = useState<"certificate" | "testimonial">("certificate");
 
-  const openModal = (type: "certificate" | "testimonial", data: any) => {
+  const openModal = (type: "certificate" | "testimonial", data: Record<string, unknown>) => {
     setModalType(type);
     setModalData(data);
     setModalOpen(true);
@@ -23,7 +23,7 @@ export default function TrustSection() {
     {
       icon: <Award size={28} className="text-status-success" />,
       title: "Certifications",
-      subtitle: TRUST_DATA.certifications.filter(c => c.status === "active").length > 0 
+      subtitle: TRUST_DATA.certifications.filter(c => c.status === "active").length > 0
         ? `${TRUST_DATA.certifications.filter(c => c.status === "active").length} Certificate(s) Earned`
         : "Earning credentials in 2025",
       status: TRUST_DATA.certifications.filter(c => c.status === "active").length > 0 ? "active" : "in_progress",
@@ -72,7 +72,7 @@ export default function TrustSection() {
     <>
       <div
         ref={containerRef}
-        className="bg-gradient-to-br from-bg-subtle via-bg-surface to-bg-subtle rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-8 my-8 relative overflow-hidden shadow-xl border border-text-muted/10"
+        className="bg-[#0f172a] rounded-[2.5rem] p-6 md:p-8 my-8 relative overflow-hidden shadow-2xl border border-white/10"
       >
         {/* Animated Background */}
         <div className="absolute inset-0 opacity-20 pointer-events-none">
@@ -103,7 +103,7 @@ export default function TrustSection() {
               </p>
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-black font-serif text-text-primary mb-2">
+            <h2 className="text-3xl md:text-4xl font-black font-serif text-white mb-2">
               Building Credibility{" "}
               <motion.span
                 animate={{ scale: [1, 1.2, 1] }}
@@ -138,6 +138,7 @@ export default function TrustSection() {
           {/* Grid - COMPACT */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
             {placeholders.map((item, index) => {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               const hasActiveData = item.data.some((d: any) => d.status === "active");
               const isClickable = hasActiveData;
 
@@ -151,12 +152,11 @@ export default function TrustSection() {
                   onClick={() => {
                     if (hasActiveData) {
                       const activeItem = item.data.find((d: any) => d.status === "active");
-                      openModal(item.clickType, activeItem);
+                      if (activeItem) openModal(item.clickType, activeItem);
                     }
                   }}
-                  className={`group relative bg-bg-surface rounded-xl p-4 border border-text-muted/10 hover:border-brand-main/30 hover:shadow-lg transition-all duration-300 overflow-hidden ${
-                    isClickable ? 'cursor-pointer' : 'cursor-default'
-                  }`}
+                  className={`group relative bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-brand-main/50 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(99,102,241,0.2)] transition-all duration-300 overflow-hidden ${isClickable ? 'cursor-pointer' : 'cursor-default'
+                    }`}
                 >
                   {/* Gradient Glow */}
                   <motion.div
@@ -181,7 +181,7 @@ export default function TrustSection() {
                     </motion.div>
 
                     {/* Title - COMPACT */}
-                    <h3 className="text-sm font-black font-serif text-text-primary mb-1">
+                    <h3 className="text-sm font-black font-serif text-white mb-1">
                       {item.title}
                     </h3>
 
@@ -246,7 +246,7 @@ export default function TrustSection() {
             className="mt-6 text-center"
           >
             <p className="text-text-muted text-xs italic">
-              "Building in public. Every project is a step forward." 🚀
+              &quot;Building in public. Every project is a step forward.&quot; 🚀
             </p>
           </motion.div>
         </div>
