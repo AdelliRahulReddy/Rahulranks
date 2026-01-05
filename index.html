@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul Ranks - Full Stack Developer & SEO Expert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* BACHELOR BROTHERS INSPIRED THEME */
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+
+        :root {
+            /* Brand Colors - Tech Theme */
+            --color-indigo: #6366f1;
+            --color-rose: #f43f5e;
+            --color-teal: #14b8a6;
+            --color-amber: #f59e0b;
+            --color-slate: #0f172a;
+            --color-warm-bg: #fef3e2;
+
+            /* Animations */
+            --animate-scroll-up: scrollUp 30s linear infinite;
+            --animate-float: float 3s ease-in-out infinite;
+            --animate-pulse-slow: pulse 2s infinite;
+        }
+
+        @keyframes scrollUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        /* Global Styles */
+        body {
+            background-color: var(--color-warm-bg);
+            color: var(--color-slate);
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--color-warm-bg);
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Custom Background Pattern (Bachelor Brothers Style) */
+        .bg-pattern {
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(244, 63, 94, 0.05) 0%, transparent 50%);
+        }
+
+        /* Scrollbar Styling */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-indigo) var(--color-warm-bg);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--color-warm-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-indigo);
+            border-radius: 5px;
+            border: 2px solid var(--color-warm-bg);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-rose);
+        }
+
+        ::selection {
+            background: var(--color-indigo);
+            color: white;
+        }
+
+        /* Gradient Text Effect */
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #f43f5e, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Shimmer Effect */
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background-size: 1000px 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        /* Hover Pause Utility */
+        .hover\:pause:hover {
+            animation-play-state: paused;
+        }
+
+        /* Glass Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Texture Overlay */
+        .texture-overlay {
+            background-image: url('https://www.transparenttextures.com/patterns/diagonal-stripes.png');
+            opacity: 0.03;
+        }
+    </style>
+</head>
+<body class="bg-pattern">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="fixed top-0 left-0 w-full glass z-50 transition-all duration-500">
+        <div class="max-w-[1400px] mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="relative transform group-hover:rotate-12 transition-transform duration-300">
+                    <span class="text-4xl relative z-10 block">💻</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-black tracking-widest text-slate-900 uppercase font-serif">Rahul Ranks</span>
+                    <span class="text-[0.65rem] tracking-[0.2em] text-indigo-600 uppercase font-bold">Full Stack Developer</span>
+                </div>
+            </a>
+
+            <!-- Nav -->
+            <nav class="hidden md:flex items-center gap-10">
+                <a href="#story" class="text-slate-900 font-bold text-xs uppercase tracking-[0.2em] hover:text-indigo-600 transition-all relative group">
+                    About
+                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-indigo-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#projects" class="text-slate-900 font-bold text-xs uppercase tracking-[0.2em] hover:text-indigo-600 transition-all relative group">
+                    Projects
+                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-indigo-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#skills" class="text-slate-900 font-bold text-xs uppercase tracking-[0.2em] hover:text-indigo-600 transition-all relative group">
+                    Skills
+                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-indigo-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#contact" class="text-slate-900 font-bold text-xs uppercase tracking-[0.2em] hover:text-indigo-600 transition-all relative group">
+                    Contact
+                    <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-indigo-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </nav>
+
+            <!-- CTA -->
+            <a href="#contact" class="bg-indigo-600 text-white px-8 py-3 rounded-md font-bold uppercase tracking-[0.15em] hover:bg-slate-900 hover:text-white transition-all text-xs shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                Hire Me
+            </a>
+        </div>
+    </header>
+
+    <!-- MARQUEE BANNER -->
+    <div class="mt-[74px] bg-gradient-to-r from-indigo-600 via-rose-500 to-teal-500 text-white overflow-hidden relative">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"></div>
+        <div class="flex gap-[60px] animate-[scrollUp_25s_linear_infinite] whitespace-nowrap py-4">
+            <span class="font-bold text-sm uppercase tracking-[0.2em]">✨ Available for Freelance</span>
+            <span class="font-bold text-sm uppercase tracking-[0.2em]">🚀 Next.js Expert</span>
+            <span class="font-bold text-sm uppercase tracking-[0.2em]">💼 Open to Projects</span>
+            <span class="font-bold text-sm uppercase tracking-[0.2em]">⚡ Fast Turnaround</span>
+            <span class="font-bold text-sm uppercase tracking-[0.2em]">✨ Available for Freelance</span>
+            <span class="font-bold text-sm uppercase tracking-[0.2em]">🚀 Next.js Expert</span>
+            <span class="font-bold text-sm uppercase tracking-[0.2em]">💼 Open to Projects</span>
+            <span class="font-bold text-sm uppercase tracking-[0.2em]">⚡ Fast Turnaround</span>
+        </div>
+    </div>
+
+    <!-- SECTION 1: HERO WITH BENTO GRID -->
+    <section id="home" class="pt-12 pb-8 px-4 md:px-8">
+        <div class="max-w-[1400px] mx-auto bg-slate-900 rounded-[2.5rem] overflow-hidden relative shadow-2xl min-h-[85vh] flex items-center group">
+
+            <!-- Gradient Overlays -->
+            <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-10"></div>
+            <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-600 rounded-full blur-[150px] opacity-20 -mr-20 -mt-20 pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-rose-500 rounded-full blur-[120px] opacity-15 -ml-20 -mb-20 pointer-events-none"></div>
+
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')] opacity-5"></div>
+
+            <!-- Content Grid -->
+            <div class="relative z-20 w-full px-6 md:px-20 py-16">
+                <div class="grid lg:grid-cols-[1.3fr_1fr] gap-12 lg:gap-16 items-center">
+
+                    <!-- Left: Hero Text -->
+                    <div class="max-w-3xl">
+                        <!-- Label -->
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="h-[2px] w-12 bg-indigo-600"></div>
+                            <span class="text-amber-300 text-sm font-bold uppercase tracking-[0.3em]">Est. 2020</span>
+                        </div>
+
+                        <!-- Main Heading -->
+                        <h1 class="text-5xl lg:text-[5.5rem] font-black text-white leading-[1] mb-8 font-serif tracking-tight">
+                            Build Fast.<br />
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-rose-500 to-amber-400 italic pr-4">
+                                Ship Faster.
+                            </span>
+                        </h1>
+
+                        <!-- Description -->
+                        <p class="text-xl md:text-2xl text-gray-300 mb-10 leading-relaxed font-light max-w-xl border-l-4 border-indigo-600 pl-6">
+                            Full-stack developer specializing in Next.js, React, and modern web technologies.
+                            <strong class="text-amber-300 block mt-4 font-medium">Production-ready code. Pixel-perfect designs.</strong>
+                        </p>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-wrap gap-5">
+                            <a href="#contact" class="bg-indigo-600 text-white px-10 py-5 rounded-xl font-bold uppercase tracking-widest hover:bg-rose-500 transition-all text-sm flex items-center gap-3 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+                                <span>📞</span>
+                                Let's Talk
+                            </a>
+                            <a href="#projects" class="border-2 border-white/30 text-white px-10 py-5 rounded-xl font-bold uppercase tracking-widest hover:bg-white hover:text-slate-900 transition-all text-sm backdrop-blur-sm">
+                                View Work
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Bento Grid -->
+                    <div class="grid grid-cols-2 gap-4 lg:gap-5">
+                        <!-- Bento Item 1 -->
+                        <div class="aspect-square rounded-2xl overflow-hidden shadow-2xl border border-white/10 group/item cursor-pointer transform hover:scale-105 transition-transform bg-gradient-to-br from-indigo-500 to-purple-600 p-6 flex flex-col items-center justify-center text-center relative">
+                            <div class="absolute inset-0 bg-black/20 group-hover/item:bg-transparent transition-all"></div>
+                            <div class="relative z-10">
+                                <div class="text-5xl mb-4">⚛️</div>
+                                <div class="text-white font-bold text-lg">Next.js</div>
+                                <div class="text-white/70 text-xs mt-2">Expert</div>
+                            </div>
+                        </div>
+
+                        <!-- Bento Item 2 -->
+                        <div class="aspect-square rounded-2xl overflow-hidden shadow-2xl border border-white/10 group/item cursor-pointer transform hover:scale-105 transition-transform bg-gradient-to-br from-rose-500 to-orange-500 p-6 flex flex-col items-center justify-center text-center relative">
+                            <div class="absolute inset-0 bg-black/20 group-hover/item:bg-transparent transition-all"></div>
+                            <div class="relative z-10">
+                                <div class="text-5xl mb-4">🎨</div>
+                                <div class="text-white font-bold text-lg">Tailwind</div>
+                                <div class="text-white/70 text-xs mt-2">Advanced</div>
+                            </div>
+                        </div>
+
+                        <!-- Bento Item 3 -->
+                        <div class="aspect-square rounded-2xl overflow-hidden shadow-2xl border border-white/10 group/item cursor-pointer transform hover:scale-105 transition-transform bg-gradient-to-br from-teal-500 to-cyan-500 p-6 flex flex-col items-center justify-center text-center relative">
+                            <div class="absolute inset-0 bg-black/20 group-hover/item:bg-transparent transition-all"></div>
+                            <div class="relative z-10">
+                                <div class="text-5xl mb-4">📱</div>
+                                <div class="text-white font-bold text-lg">Flutter</div>
+                                <div class="text-white/70 text-xs mt-2">Mobile</div>
+                            </div>
+                        </div>
+
+                        <!-- Bento Item 4 -->
+                        <div class="aspect-square rounded-2xl overflow-hidden shadow-2xl border border-white/10 group/item cursor-pointer transform hover:scale-105 transition-transform bg-gradient-to-br from-amber-500 to-yellow-500 p-6 flex flex-col items-center justify-center text-center relative">
+                            <div class="absolute inset-0 bg-black/20 group-hover/item:bg-transparent transition-all"></div>
+                            <div class="relative z-10">
+                                <div class="text-5xl mb-4">🔥</div>
+                                <div class="text-white font-bold text-lg">Firebase</div>
+                                <div class="text-white/70 text-xs mt-2">Backend</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 2: FOUNDER STORY -->
+    <section id="story" class="py-24 px-6 bg-slate-900 text-amber-50 relative overflow-hidden rounded-[3rem] my-12 mx-2 md:mx-6 shadow-2xl">
+        <!-- Background Effects -->
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-600 rounded-full blur-[150px] opacity-20 -mr-20 -mt-20 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-30"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <span class="text-teal-400 font-bold tracking-[0.3em] uppercase text-xs mb-6 block">The Origin Story</span>
+                <h2 class="text-4xl md:text-6xl font-black font-serif text-white mb-10 leading-tight">
+                    From Cubicles<br/>to Code.
+                </h2>
+                <div class="space-y-8 text-lg font-light text-gray-300 leading-relaxed">
+                    <p>
+                        <strong class="text-white font-serif text-xl">I didn't start as a full-stack developer.</strong>
+                    </p>
+                    <p>
+                        Started with WordPress customizations, fell in love with React, and now I ship production-ready Next.js applications. From building my first website in 2020 to managing multiple SaaS products today.
+                    </p>
+                    <p>
+                        On <strong>January 2021</strong>, I decided to go all-in. I learned React, mastered Tailwind CSS, and started building real projects that solve real problems.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Image Grid -->
+            <div class="relative">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-4 mt-12">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&fit=crop" class="rounded-2xl grayscale hover:grayscale-0 transition-all duration-500 shadow-xl transform hover:-translate-y-2" alt="Coding">
+                        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&fit=crop" class="rounded-2xl grayscale hover:grayscale-0 transition-all duration-500 shadow-xl transform hover:-translate-y-2" alt="Development">
+                    </div>
+                    <div class="space-y-4">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&fit=crop" class="rounded-2xl grayscale hover:grayscale-0 transition-all duration-500 shadow-xl transform hover:-translate-y-2" alt="Workspace">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&fit=crop" class="rounded-2xl grayscale hover:grayscale-0 transition-all duration-500 shadow-xl transform hover:-translate-y-2" alt="Laptop">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: SOLUTIONS / EXPERTISE -->
+    <section class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <span class="text-rose-600 font-bold tracking-[0.3em] uppercase text-xs mb-3 block">Our Expertise</span>
+                <h2 class="text-5xl md:text-7xl font-black font-serif text-slate-900 mb-6">Proven Excellence</h2>
+                <div class="w-24 h-1.5 bg-amber-500 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Two Column Grid -->
+            <div class="grid lg:grid-cols-2 gap-6">
+
+                <!-- LEFT: Stats Dashboard -->
+                <div class="bg-white rounded-[2rem] overflow-hidden shadow-xl p-8 md:p-12 flex flex-col justify-between relative h-full">
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center text-indigo-600 mb-6 rotate-3 shadow-sm">
+                            <span class="text-3xl">📊</span>
+                        </div>
+                        <h3 class="text-3xl md:text-4xl font-black font-serif text-slate-900 mb-4">
+                            No Shortcuts.<br/>
+                            <span class="text-indigo-600">Ever.</span>
+                        </h3>
+
+                        <!-- Stats Grid -->
+                        <div class="grid grid-cols-3 gap-4 my-8">
+                            <div class="text-center bg-amber-50 p-6 rounded-xl">
+                                <div class="text-3xl mb-2">⚡</div>
+                                <div class="text-3xl font-black text-indigo-600 mb-1">50+</div>
+                                <div class="text-xs text-gray-600 uppercase tracking-wider">Projects</div>
+                            </div>
+                            <div class="text-center bg-amber-50 p-6 rounded-xl">
+                                <div class="text-3xl mb-2">🎯</div>
+                                <div class="text-3xl font-black text-rose-600 mb-1">35+</div>
+                                <div class="text-xs text-gray-600 uppercase tracking-wider">Clients</div>
+                            </div>
+                            <div class="text-center bg-amber-50 p-6 rounded-xl">
+                                <div class="text-3xl mb-2">💼</div>
+                                <div class="text-3xl font-black text-teal-600 mb-1">100%</div>
+                                <div class="text-xs text-gray-600 uppercase tracking-wider">Quality</div>
+                            </div>
+                        </div>
+
+                        <p class="text-gray-600 text-base leading-relaxed mb-8">
+                            Clean code. Responsive design. SEO optimized. Every project is built with attention to detail and production-ready standards.
+                        </p>
+
+                        <!-- Tech Stack -->
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3 bg-amber-50 p-4 rounded-xl">
+                                <span class="text-2xl">⚛️</span>
+                                <span class="font-semibold">Next.js & React</span>
+                            </div>
+                            <div class="flex items-center gap-3 bg-amber-50 p-4 rounded-xl">
+                                <span class="text-2xl">🎨</span>
+                                <span class="font-semibold">Tailwind CSS v4</span>
+                            </div>
+                            <div class="flex items-center gap-3 bg-amber-50 p-4 rounded-xl">
+                                <span class="text-2xl">🔥</span>
+                                <span class="font-semibold">Firebase & APIs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="w-full mt-8 py-4 bg-gradient-to-r from-indigo-600 to-rose-500 text-white rounded-xl font-bold uppercase tracking-widest hover:shadow-xl transition-all">
+                        Start Your Project →
+                    </button>
+                </div>
+
+                <!-- RIGHT: Philosophy Card -->
+                <div class="bg-indigo-600 rounded-[2rem] overflow-hidden shadow-xl p-8 md:p-12 relative flex flex-col justify-between h-full text-white">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-30"></div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-black/40 to-transparent"></div>
+
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center text-amber-400 mb-6 -rotate-3 border border-white/20">
+                            <span class="text-3xl animate-pulse">🔥</span>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-black font-serif mb-4 leading-none">
+                            Authentic<br/>Craft.
+                        </h2>
+                        <p class="text-base opacity-90 leading-relaxed font-light mb-8">
+                            I don't use templates. Every line of code is written with purpose. Modern architecture, clean structure, and scalable solutions.
+                        </p>
+
+                        <div class="inline-flex items-center gap-3 border border-white/30 px-5 py-2.5 rounded-full text-xs uppercase tracking-widest bg-black/20 backdrop-blur-md mb-6">
+                            <span class="w-1.5 h-1.5 bg-amber-300 rounded-full animate-ping"></span>
+                            Warning: Highly Addictive Quality
+                        </div>
+                    </div>
+
+                    <div class="mt-auto pt-6 relative z-10">
+                        <div class="h-48 rounded-xl overflow-hidden shadow-md -rotate-1 hover:rotate-0 transition-transform duration-500 border border-white/10">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&fit=crop" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" alt="Code Quality">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: SKILLS ARSENAL -->
+    <section id="skills" class="py-20 px-6 bg-white my-12 mx-2 md:mx-6 rounded-[3rem] shadow-xl">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="w-20 h-1 bg-teal-500 mx-auto mb-8 rounded-full"></div>
+            <h2 class="text-4xl md:text-5xl font-bold font-serif text-slate-900 mb-12">The Tech Arsenal</h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Skill Card 1 -->
+                <div class="bg-amber-50 p-12 rounded-[2rem] shadow-xl border-t-4 border-indigo-600 hover:shadow-2xl hover:-translate-y-2 transition-all group">
+                    <div class="w-20 h-20 bg-indigo-100 rounded-[3xl] flex items-center justify-center text-indigo-600 mx-auto mb-8 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300 transform rotate-3 group-hover:rotate-0">
+                        <span class="text-4xl">⚛️</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 font-serif text-slate-900">Frontend Master</h3>
+                    <p class="text-gray-600 leading-relaxed">Next.js, React, Tailwind CSS. Building responsive, fast, and beautiful user interfaces.</p>
+                </div>
+
+                <!-- Skill Card 2 -->
+                <div class="bg-amber-50 p-12 rounded-[2rem] shadow-xl border-t-4 border-rose-500 hover:shadow-2xl hover:-translate-y-2 transition-all group">
+                    <div class="w-20 h-20 bg-rose-100 rounded-[3xl] flex items-center justify-center text-rose-600 mx-auto mb-8 group-hover:bg-rose-500 group-hover:text-white transition-colors duration-300 transform -rotate-3 group-hover:rotate-0">
+                        <span class="text-4xl">🔥</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 font-serif text-slate-900">Backend Solid</h3>
+                    <p class="text-gray-600 leading-relaxed">Firebase, Node.js, APIs. Scalable backend solutions and database architecture.</p>
+                </div>
+
+                <!-- Skill Card 3 -->
+                <div class="bg-amber-50 p-12 rounded-[2rem] shadow-xl border-t-4 border-teal-500 hover:shadow-2xl hover:-translate-y-2 transition-all group">
+                    <div class="w-20 h-20 bg-teal-100 rounded-[3xl] flex items-center justify-center text-teal-600 mx-auto mb-8 group-hover:bg-teal-500 group-hover:text-white transition-colors duration-300 transform rotate-3 group-hover:rotate-0">
+                        <span class="text-4xl">📱</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 font-serif text-slate-900">Mobile Ready</h3>
+                    <p class="text-gray-600 leading-relaxed">Flutter development. Cross-platform mobile apps with native performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: PROJECTS -->
+    <section id="projects" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-indigo-600 font-bold tracking-[0.3em] uppercase text-xs mb-3 block">Portfolio</span>
+                <h2 class="text-5xl md:text-7xl font-black font-serif text-slate-900 mb-6">Real Projects, Shipped</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">12 projects total, 8 featured and live in production.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="bg-white rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all">
+                    <div class="w-full h-56 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-6xl relative overflow-hidden">
+                        📱
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-slate-900">ARRZONE Platform</h3>
+                        <p class="text-gray-600 mb-4">Deals & coupons platform with WordPress and custom PHP backend.</p>
+                        <div class="flex gap-2 flex-wrap mb-4">
+                            <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold">WordPress</span>
+                            <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold">PHP</span>
+                            <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold">SEO</span>
+                        </div>
+                        <button class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-slate-900 transition-all">View Project →</button>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="bg-white rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all">
+                    <div class="w-full h-56 bg-gradient-to-br from-rose-500 to-orange-500 flex items-center justify-center text-white text-6xl relative overflow-hidden">
+                        💼
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-slate-900">PG Management</h3>
+                        <p class="text-gray-600 mb-4">SaaS platform with Flutter mobile app and Firebase backend.</p>
+                        <div class="flex gap-2 flex-wrap mb-4">
+                            <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold">Flutter</span>
+                            <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold">Firebase</span>
+                            <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold">SaaS</span>
+                        </div>
+                        <button class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-slate-900 transition-all">View Project →</button>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="bg-white rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all">
+                    <div class="w-full h-56 bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center text-white text-6xl relative overflow-hidden">
+                        🌐
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3 text-slate-900">Portfolio Sites</h3>
+                        <p class="text-gray-600 mb-4">Modern portfolio websites with Next.js and Tailwind CSS.</p>
+                        <div class="flex gap-2 flex-wrap mb-4">
+                            <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold">Next.js</span>
+                            <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold">React</span>
+                            <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold">Tailwind</span>
+                        </div>
+                        <button class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-slate-900 transition-all">View Project →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: TESTIMONIALS -->
+    <section class="py-24 px-6 bg-white my-12 mx-4 md:mx-8 rounded-[3rem] shadow-sm relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-indigo-600 via-rose-500 to-teal-500"></div>
+
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-rose-600 font-bold tracking-[0.2em] uppercase text-xs mb-3 block">Wall of Love</span>
+                <h2 class="text-4xl font-black font-serif text-slate-900">What Clients Say</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Testimonial 1 -->
+                <div class="bg-amber-50 p-8 rounded-[3xl] relative">
+                    <div class="text-indigo-600/20 absolute top-6 right-6 text-5xl">💬</div>
+                    <div class="flex gap-1 mb-4">
+                        <span class="text-amber-500">⭐</span>
+                        <span class="text-amber-500">⭐</span>
+                        <span class="text-amber-500">⭐</span>
+                        <span class="text-amber-500">⭐</span>
+                        <span class="text-amber-500">⭐</span>
+                    </div>
+                    <p class="text-slate-900 font-medium mb-6 leading-relaxed">"Exceptional quality and fast delivery. Rahul understood our requirements perfectly."</p>
+                    <div class="font-bold text-xs uppercase tracking-widest text-indigo-600">- Karthik R.</div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-amber-50 p-8 rounded-[3xl] relative">
+                    <div class="text-rose-600/20 absolute top-6 right-6 text-5xl">💬</div>
+                    <div class="flex gap-1 mb-4">
+                        <span class="text-amber-500">⭐</span>
+                        <span class="text-amber-500">⭐</span>
+                        <span class="text-amber-500">⭐</span>
+                        <span class="text-amber-500">⭐</span>
+                        <span class="text-amber-500">⭐</span>
+                    </div>
+                    <p class="text-slate-900 font-medium mb-6 leading-relaxed">"Best developer I've worked with. Clean code, great communication, on-time delivery."</p>
+                    <div class="font-bold text-xs uppercase tracking-widest text-rose-600">- Sneha P.</div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-amber-50 p-8 rounded-[3xl] relative">
+                    <div class="text-teal-600/20 absolute top-6 right-6 text-5xl">💬</div>
+                    <div class="flex gap-1 mb-4">
+                        <span class="text-amber-500">⭐</span>
+                        <span class="text-amber-500">⭐</span>
+                        <span class="text-amber-500">⭐</span>
+                        <span class="text-amber-500">⭐</span>
+                        <span class="text-amber-500">⭐</span>
+                    </div>
+                    <p class="text-slate-900 font-medium mb-6 leading-relaxed">"Highly recommend! Turned our vision into reality with pixel-perfect execution."</p>
+                    <div class="font-bold text-xs uppercase tracking-widest text-teal-600">- Arun K.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: CONTACT -->
+    <section id="contact" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8">
+            <!-- Contact Info -->
+            <div class="bg-white p-12 md:p-20 rounded-[3rem] shadow-2xl border border-amber-100 flex flex-col justify-center">
+                <span class="text-indigo-600 font-bold uppercase tracking-widest text-xs mb-8 block">Get in Touch</span>
+                <h2 class="text-5xl font-black font-serif text-slate-900 mb-12">Let's Work Together</h2>
+
+                <div class="space-y-12">
+                    <!-- Location -->
+                    <div class="flex gap-8 items-start group">
+                        <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center text-indigo-600 flex-shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                            <span class="text-3xl">📍</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-base uppercase tracking-wider mb-2 text-slate-900">Location</h4>
+                            <p class="text-gray-600 leading-relaxed text-lg mb-4">
+                                Hyderabad, Telangana<br/>
+                                India 500081
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="flex gap-8 items-start group">
+                        <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center text-indigo-600 flex-shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                            <span class="text-3xl">📞</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-base uppercase tracking-wider mb-2 text-slate-900">Contact</h4>
+                            <a href="tel:+919100100719" class="text-4xl font-black text-slate-900 hover:text-indigo-600 transition-colors block font-serif">
+                                +91 XXX XXX XXXX
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Hours -->
+                    <div class="flex gap-8 items-start group">
+                        <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center text-indigo-600 flex-shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                            <span class="text-3xl">⏰</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-base uppercase tracking-wider mb-2 text-slate-900">Availability</h4>
+                            <p class="text-gray-600 text-lg">Mon - Sat: 9:00 AM - 8:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Placeholder -->
+            <div class="h-[500px] lg:h-auto w-full bg-white p-4 rounded-[3rem] shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-700">
+                <div class="w-full h-full bg-gradient-to-br from-indigo-100 to-rose-100 rounded-[2.5rem] flex items-center justify-center text-6xl">
+                    🗺️
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-amber-50 pt-24 pb-12 px-6 mt-12 rounded-t-[3rem] mx-2">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-12 mb-20">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-3xl font-black font-serif mb-8 uppercase tracking-widest text-white">Rahul Ranks</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+                        Full-stack developer specializing in Next.js, React, and modern web technologies. Building fast, scalable, and beautiful applications.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-8">Quick Links</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="#home" class="hover:text-indigo-500 transition-colors">Home</a></li>
+                        <li><a href="#story" class="hover:text-indigo-500 transition-colors">About</a></li>
+                        <li><a href="#projects" class="hover:text-indigo-500 transition-colors">Projects</a></li>
+                        <li><a href="#contact" class="hover:text-indigo-500 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-8">Find Me</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li>Hyderabad, India</li>
+                        <li>+91 XXX XXX XXXX</li>
+                        <li>Available Daily</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-xs tracking-widest uppercase">© 2026 Rahul Ranks. Crafted with passion.</p>
+                <div class="flex gap-8">
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors text-xs uppercase tracking-widest font-bold">LinkedIn</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors text-xs uppercase tracking-widest font-bold">GitHub</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors text-xs uppercase tracking-widest font-bold">Twitter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

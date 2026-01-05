@@ -46,7 +46,7 @@ export default function Modal({ isOpen, onClose, type, data }: ModalProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-bg-inverse/80 backdrop-blur-sm z-50"
           />
 
           {/* Modal */}
@@ -56,39 +56,39 @@ export default function Modal({ isOpen, onClose, type, data }: ModalProps) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", bounce: 0.3 }}
-              className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl relative"
+              className="bg-bg-surface rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-hidden shadow-2xl relative border border-text-muted/10"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close Button */}
+              {/* Close Button - COMPACT */}
               <motion.button
                 whileHover={{ scale: 1.1, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={onClose}
-                className="absolute top-4 right-4 z-10 w-10 h-10 bg-slate-900 text-white rounded-full flex items-center justify-center hover:bg-slate-800 transition-colors shadow-lg"
+                className="absolute top-3 right-3 z-10 w-8 h-8 bg-bg-inverse text-text-inverse rounded-full flex items-center justify-center hover:bg-black transition-colors shadow-lg"
               >
-                <X size={20} />
+                <X size={16} />
               </motion.button>
 
-              <div className="overflow-y-auto max-h-[90vh]">
+              <div className="overflow-y-auto max-h-[85vh] custom-scrollbar">
                 {type === "certificate" ? (
-                  // CERTIFICATE MODAL
+                  // CERTIFICATE MODAL - COMPACT
                   <div>
-                    {/* Header */}
-                    <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8">
+                    {/* Header - COMPACT */}
+                    <div className="bg-gradient-to-br from-brand-main to-brand-dark text-white p-6">
                       <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: 0.2, type: "spring" }}
-                        className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-4"
+                        className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-3"
                       >
-                        <Award size={32} className="text-orange-400" />
+                        <Award size={24} className="text-status-warning" />
                       </motion.div>
-                      <h2 className="text-2xl font-black mb-2">{data.name}</h2>
-                      <p className="text-gray-300 text-sm">Issued by {data.issuer}</p>
+                      <h2 className="text-xl font-black font-serif mb-1">{data.name}</h2>
+                      <p className="text-white/80 text-xs">Issued by {data.issuer}</p>
                     </div>
 
-                    {/* Certificate Image */}
-                    <div className="relative w-full h-80 bg-gray-100">
+                    {/* Certificate Image - COMPACT */}
+                    <div className="relative w-full h-64 bg-bg-subtle">
                       {data.status === "active" && data.image ? (
                         <Image
                           src={data.image}
@@ -99,73 +99,73 @@ export default function Modal({ isOpen, onClose, type, data }: ModalProps) {
                       ) : (
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center">
-                            <div className="text-6xl mb-3">🎓</div>
-                            <p className="text-gray-500 font-bold">Certificate preview</p>
-                            <p className="text-xs text-gray-400">Coming soon</p>
+                            <div className="text-5xl mb-2">🎓</div>
+                            <p className="text-text-primary font-bold text-sm">Certificate preview</p>
+                            <p className="text-[10px] text-text-muted">Coming soon</p>
                           </div>
                         </div>
                       )}
                     </div>
 
-                    {/* Details */}
-                    <div className="p-8">
-                      <div className="flex items-center gap-4 mb-6">
-                        <div className="flex items-center gap-2 text-gray-600">
-                          <Calendar size={16} />
-                          <span className="text-sm font-bold">{data.date}</span>
+                    {/* Details - COMPACT */}
+                    <div className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="flex items-center gap-1.5 text-text-secondary">
+                          <Calendar size={14} />
+                          <span className="text-xs font-bold">{data.date}</span>
                         </div>
                         {data.verifyLink && data.status === "active" && (
                           <a
                             href={data.verifyLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-orange-600 hover:text-orange-700 text-sm font-bold"
+                            className="flex items-center gap-1.5 text-brand-main hover:text-brand-dark text-xs font-bold"
                           >
                             <span>Verify Certificate</span>
-                            <ExternalLink size={14} />
+                            <ExternalLink size={12} />
                           </a>
                         )}
                       </div>
-                      <p className="text-gray-600 leading-relaxed">{data.description}</p>
+                      <p className="text-text-secondary text-sm leading-relaxed">{data.description}</p>
                     </div>
                   </div>
                 ) : (
-                  // TESTIMONIAL MODAL
+                  // TESTIMONIAL MODAL - COMPACT
                   <div>
-                    {/* Header */}
-                    <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-8">
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-2xl font-black">
+                    {/* Header - COMPACT */}
+                    <div className="bg-gradient-to-br from-brand-main to-brand-dark text-white p-6">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-lg font-black">
                           {data.name.charAt(0)}
                         </div>
                         <div>
-                          <h2 className="text-xl font-black">{data.name}</h2>
-                          <p className="text-orange-100 text-sm">{data.role}</p>
-                          <p className="text-orange-200 text-xs">{data.company}</p>
+                          <h2 className="text-base font-black font-serif">{data.name}</h2>
+                          <p className="text-white/80 text-xs">{data.role}</p>
+                          <p className="text-white/60 text-[10px]">{data.company}</p>
                         </div>
                       </div>
-                      <div className="flex gap-1">
+                      <div className="flex gap-0.5">
                         {[...Array(5)].map((_, i) => (
-                          <span key={i} className={i < data.rating ? "text-yellow-300 text-xl" : "text-white/30 text-xl"}>
+                          <span key={i} className={i < data.rating ? "text-status-warning text-lg" : "text-white/30 text-lg"}>
                             ★
                           </span>
                         ))}
                       </div>
                     </div>
 
-                    {/* Testimonial Content */}
-                    <div className="p-8">
-                      <div className="mb-6">
-                        <span className="text-6xl text-orange-500 opacity-20">"</span>
-                        <p className="text-lg text-gray-700 leading-relaxed italic -mt-8 ml-8">
+                    {/* Testimonial Content - COMPACT */}
+                    <div className="p-6">
+                      <div className="mb-4">
+                        <span className="text-5xl text-brand-main opacity-20">"</span>
+                        <p className="text-base text-text-secondary leading-relaxed italic -mt-6 ml-6">
                           {data.text}
                         </p>
                       </div>
 
-                      <div className="flex items-center justify-between pt-6 border-t border-gray-200">
+                      <div className="flex items-center justify-between pt-4 border-t border-text-muted/10">
                         <div>
-                          <p className="text-sm font-bold text-gray-900">Project: {data.project}</p>
-                          <p className="text-xs text-gray-500">{data.date}</p>
+                          <p className="text-xs font-bold text-text-primary">Project: {data.project}</p>
+                          <p className="text-[10px] text-text-muted">{data.date}</p>
                         </div>
                       </div>
                     </div>

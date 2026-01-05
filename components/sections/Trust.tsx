@@ -21,21 +21,19 @@ export default function TrustSection() {
 
   const placeholders = [
     {
-      // REFACTORED: Status Success Color
-      icon: <Award size={32} className="text-status-success" />,
+      icon: <Award size={28} className="text-status-success" />,
       title: "Certifications",
       subtitle: TRUST_DATA.certifications.filter(c => c.status === "active").length > 0 
         ? `${TRUST_DATA.certifications.filter(c => c.status === "active").length} Certificate(s) Earned`
         : "Earning credentials in 2025",
       status: TRUST_DATA.certifications.filter(c => c.status === "active").length > 0 ? "active" : "in_progress",
       emoji: "🎓",
-      color: "from-status-success/20 to-status-success/10", // Subtle gradient
+      color: "from-status-success/20 to-status-success/10",
       data: TRUST_DATA.certifications,
       clickType: "certificate" as const
     },
     {
-      // REFACTORED: Brand Main Color
-      icon: <MessageCircle size={32} className="text-brand-main" />,
+      icon: <MessageCircle size={28} className="text-brand-main" />,
       title: "Client Reviews",
       subtitle: TRUST_DATA.testimonials.filter(t => t.status === "active").length > 0
         ? `${TRUST_DATA.testimonials.filter(t => t.status === "active").length} Happy Client(s)`
@@ -47,8 +45,7 @@ export default function TrustSection() {
       clickType: "testimonial" as const
     },
     {
-      // REFACTORED: Warning Color (Star)
-      icon: <Star size={32} className="text-status-warning" />,
+      icon: <Star size={28} className="text-status-warning" />,
       title: "Testimonials",
       subtitle: TRUST_DATA.testimonials.filter(t => t.status === "active").length > 0
         ? "⭐⭐⭐⭐⭐ Rated Work"
@@ -60,8 +57,7 @@ export default function TrustSection() {
       clickType: "testimonial" as const
     },
     {
-      // REFACTORED: Accent Rose
-      icon: <TrendingUp size={32} className="text-accent-rose" />,
+      icon: <TrendingUp size={28} className="text-accent-rose" />,
       title: "Recognition",
       subtitle: "Making impact, earning respect",
       status: "in_progress",
@@ -76,41 +72,38 @@ export default function TrustSection() {
     <>
       <div
         ref={containerRef}
-        // REFACTORED: Light Premium Background (Warm Glass Vibe)
-        className="bg-gradient-to-br from-bg-subtle via-bg-surface to-bg-subtle rounded-[32px] md:rounded-[48px] p-8 md:p-12 my-8 relative overflow-hidden shadow-2xl border border-text-muted/10"
+        className="bg-gradient-to-br from-bg-subtle via-bg-surface to-bg-subtle rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-8 my-8 relative overflow-hidden shadow-xl border border-text-muted/10"
       >
-        {/* Animated Background Pattern */}
-        <div className="absolute inset-0 opacity-30 pointer-events-none">
+        {/* Animated Background */}
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            // REFACTORED: Very subtle warm glow
-            className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-brand-main/10 to-accent-rose/10 rounded-full blur-3xl"
+            className="absolute -top-32 -right-32 w-80 h-80 bg-gradient-to-br from-brand-main/10 to-accent-rose/10 rounded-full blur-3xl"
           />
         </div>
 
         <div className="relative z-10">
-          {/* Header */}
+          {/* Compact Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="text-center mb-10"
+            className="text-center mb-6"
           >
-            <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="flex items-center justify-center gap-2 mb-1.5">
               <motion.div
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
               >
                 <Sparkles size={14} className="text-brand-main" />
               </motion.div>
-              <p className="text-brand-main font-mono text-[10px] uppercase tracking-widest font-bold">
+              <p className="text-brand-main font-mono text-[10px] uppercase tracking-[0.2em] font-bold">
                 Trust & Recognition
               </p>
             </div>
 
-            {/* REFACTORED: Text Primary */}
-            <h2 className="text-3xl md:text-4xl font-black text-text-primary mb-3">
+            <h2 className="text-3xl md:text-4xl font-black font-serif text-text-primary mb-2">
               Building Credibility{" "}
               <motion.span
                 animate={{ scale: [1, 1.2, 1] }}
@@ -121,32 +114,29 @@ export default function TrustSection() {
               </motion.span>
             </h2>
 
-            {/* REFACTORED: Text Secondary */}
-            <p className="text-text-secondary text-sm max-w-xl mx-auto mb-4">
+            <p className="text-text-secondary text-sm max-w-xl mx-auto mb-3">
               Click any card to view details. Real credentials and testimonials as I grow.
             </p>
 
-            {/* Progress Banner */}
+            {/* Progress Banner - COMPACT */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.3 }}
-              // REFACTORED: White pill with shadow
-              className="inline-flex items-center gap-2 bg-bg-surface border border-text-muted/20 rounded-full px-4 py-2 shadow-sm"
+              className="inline-flex items-center gap-2 bg-bg-surface border border-text-muted/20 rounded-full px-3 py-1.5 shadow-sm"
             >
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
               >
-                <Loader2 size={14} className="text-brand-main" />
+                <Loader2 size={12} className="text-brand-main" />
               </motion.div>
-              {/* REFACTORED: Text Primary */}
-              <span className="text-xs font-bold text-text-primary">2025 Journey Started</span>
+              <span className="text-[10px] font-bold text-text-primary">2025 Journey Started</span>
             </motion.div>
           </motion.div>
 
-          {/* Grid of Placeholders */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Grid - COMPACT */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
             {placeholders.map((item, index) => {
               const hasActiveData = item.data.some((d: any) => d.status === "active");
               const isClickable = hasActiveData;
@@ -164,12 +154,11 @@ export default function TrustSection() {
                       openModal(item.clickType, activeItem);
                     }
                   }}
-                  // REFACTORED: White Card with border and shadow-sm
-                  className={`group relative bg-bg-surface rounded-2xl p-6 border border-text-muted/10 hover:border-brand-main/30 hover:shadow-lg transition-all duration-300 overflow-hidden ${
+                  className={`group relative bg-bg-surface rounded-xl p-4 border border-text-muted/10 hover:border-brand-main/30 hover:shadow-lg transition-all duration-300 overflow-hidden ${
                     isClickable ? 'cursor-pointer' : 'cursor-default'
                   }`}
                 >
-                  {/* Gradient Glow on Hover */}
+                  {/* Gradient Glow */}
                   <motion.div
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: isClickable ? 0.3 : 0.05 }}
@@ -177,38 +166,36 @@ export default function TrustSection() {
                   />
 
                   <div className="relative z-10">
-                    {/* Icon with Animation */}
+                    {/* Icon - COMPACT */}
                     <motion.div
                       animate={{
-                        y: [0, -8, 0],
+                        y: [0, -6, 0],
                         rotate: index % 2 === 0 ? [0, 5, 0] : [0, -5, 0]
                       }}
                       transition={{ duration: 3, repeat: Infinity }}
-                      className="mb-4"
+                      className="mb-3"
                     >
-                      {/* REFACTORED: Light background for icon */}
-                      <div className="w-12 h-12 rounded-xl bg-bg-subtle flex items-center justify-center border border-text-muted/10">
+                      <div className="w-10 h-10 rounded-lg bg-bg-subtle flex items-center justify-center border border-text-muted/10">
                         {item.icon}
                       </div>
                     </motion.div>
 
-                    {/* Title - Text Primary */}
-                    <h3 className="text-base font-black text-text-primary mb-1">
+                    {/* Title - COMPACT */}
+                    <h3 className="text-sm font-black font-serif text-text-primary mb-1">
                       {item.title}
                     </h3>
 
-                    {/* Subtitle - Text Muted */}
-                    <p className="text-xs text-text-muted mb-3 leading-relaxed">
+                    {/* Subtitle - COMPACT */}
+                    <p className="text-[11px] text-text-muted mb-2 leading-relaxed">
                       {item.subtitle}
                     </p>
 
-                    {/* Status Badge */}
-                    <div className="flex items-center gap-2">
+                    {/* Status Badge - COMPACT */}
+                    <div className="flex items-center gap-1.5">
                       {item.status === "active" ? (
                         <>
-                          <span className="text-lg">{item.emoji}</span>
-                          {/* REFACTORED: Success Text */}
-                          <span className="text-[10px] font-bold text-status-success uppercase">
+                          <span className="text-base">{item.emoji}</span>
+                          <span className="text-[9px] font-bold text-status-success uppercase">
                             Click to View
                           </span>
                         </>
@@ -218,26 +205,25 @@ export default function TrustSection() {
                             animate={{ rotate: 360 }}
                             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                           >
-                            <Loader2 size={12} className="text-brand-main" />
+                            <Loader2 size={10} className="text-brand-main" />
                           </motion.div>
-                          <span className="text-[10px] font-bold text-brand-main uppercase">
+                          <span className="text-[9px] font-bold text-brand-main uppercase">
                             In Progress
                           </span>
                         </>
                       ) : (
                         <>
-                          <span className="text-lg">{item.emoji}</span>
-                          <span className="text-[10px] font-bold text-text-muted uppercase">
+                          <span className="text-base">{item.emoji}</span>
+                          <span className="text-[9px] font-bold text-text-muted uppercase">
                             Coming Soon
                           </span>
                         </>
                       )}
                     </div>
 
-                    {/* Animated Progress Bar (for "in progress" items) */}
+                    {/* Progress Bar - COMPACT */}
                     {item.status === "in_progress" && (
-                      // REFACTORED: Light track background
-                      <div className="mt-3 h-1 bg-bg-subtle rounded-full overflow-hidden border border-text-muted/10">
+                      <div className="mt-2 h-0.5 bg-bg-subtle rounded-full overflow-hidden border border-text-muted/10">
                         <motion.div
                           initial={{ width: "0%" }}
                           animate={{ width: "60%" }}
@@ -252,14 +238,14 @@ export default function TrustSection() {
             })}
           </div>
 
-          {/* Bottom Message */}
+          {/* Bottom Message - COMPACT */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.8 }}
-            className="mt-8 text-center"
+            className="mt-6 text-center"
           >
-            <p className="text-text-muted text-sm italic">
+            <p className="text-text-muted text-xs italic">
               "Building in public. Every project is a step forward." 🚀
             </p>
           </motion.div>

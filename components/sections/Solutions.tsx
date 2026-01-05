@@ -63,8 +63,10 @@ export default function SolutionsSection() {
 
         const mouse = Mouse.create(container);
         mouse.pixelRatio = 1; 
-        mouse.element.removeEventListener("mousewheel", mouse.mousewheel as any);
-        mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel as any);
+        // ✅ KEEP SCROLL: Don't prevent mousewheel
+        // Commented out to allow scroll inside canvas
+        // mouse.element.removeEventListener("mousewheel", mouse.mousewheel as any);
+        // mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel as any);
 
         const mouseConstraint = MouseConstraint.create(engine, {
             mouse,
@@ -95,44 +97,42 @@ export default function SolutionsSection() {
 
   const getPillSize = (size: string) => {
     switch(size) {
-      case 'large': return 'px-8 py-3 text-lg font-bold';
-      case 'medium': return 'px-5 py-2 text-sm font-semibold';
-      default: return 'px-4 py-1 text-xs';
+      case 'large': return 'px-6 py-2.5 text-base font-bold';
+      case 'medium': return 'px-4 py-1.5 text-sm font-semibold';
+      default: return 'px-3 py-1 text-xs';
     }
   };
 
   return (
-    // REFACTORED: Compact Padding + Light Theme (bg-bg-subtle)
-    <div ref={containerRef} className="bg-bg-subtle rounded-[32px] md:rounded-[48px] py-10 px-6 md:px-12 my-8 text-text-primary relative overflow-hidden border border-text-muted/10 shadow-lg">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 items-center">
+    <div ref={containerRef} className="bg-bg-subtle rounded-[2rem] md:rounded-[2.5rem] py-8 px-6 md:px-10 my-8 text-text-primary relative overflow-hidden border border-text-muted/10 shadow-lg">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-6 items-center">
         
         {/* LEFT: Stats Dashboard */}
         <div className="relative z-10">
-          {/* Header */}
+          {/* Header - Compact Spacing */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center gap-2 mb-2">
-              <Sparkles size={16} className="text-brand-main" />
+            <div className="flex items-center gap-2 mb-1.5">
+              <Sparkles size={14} className="text-brand-main" />
               <p className="text-brand-main font-mono text-xs uppercase tracking-wider font-bold">
                 Our Expertise
               </p>
             </div>
-            {/* REFACTORED: Text Primary */}
-            <h2 className="text-4xl md:text-5xl font-black leading-tight mb-3 text-text-primary">
-              Proven<br/>Excellence.
+            {/* ✅ ONE LINE: Removed <br/> */}
+            <h2 className="text-3xl md:text-4xl font-black font-serif leading-tight mb-2 text-text-primary">
+              Proven Excellence.
             </h2>
-            {/* REFACTORED: Text Secondary */}
-            <p className="text-text-secondary text-base max-w-md mb-6">
+            <p className="text-text-secondary text-sm max-w-md mb-4">
               Real results from real projects. Numbers that speak for themselves.
             </p>
           </motion.div>
 
-          {/* Stats Grid - Compact Gap */}
-          <div className="grid grid-cols-2 gap-3 mb-6">
+          {/* Stats Grid - Compact */}
+          <div className="grid grid-cols-2 gap-2.5 mb-4">
             {SOLUTIONS_STATS.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -141,38 +141,37 @@ export default function SolutionsSection() {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
-                // REFACTORED: White Card (bg-bg-surface)
-                className="bg-bg-surface backdrop-blur-sm rounded-2xl p-4 border border-text-muted/10 hover:border-brand-main/20 hover:shadow-md transition-all cursor-default group"
+                className="bg-bg-surface backdrop-blur-sm rounded-xl p-3 border border-text-muted/10 hover:border-brand-main/20 hover:shadow-md transition-all cursor-default group"
               >
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-2xl text-text-primary">{stat.icon}</span>
+                <div className="flex items-center gap-1.5 mb-1">
+                  <span className="text-xl text-text-primary">{stat.icon}</span>
                   <div 
-                    className="w-2 h-2 rounded-full group-hover:scale-150 transition-transform"
+                    className="w-1.5 h-1.5 rounded-full group-hover:scale-150 transition-transform"
                     style={{ backgroundColor: stat.color }}
                   />
                 </div>
-                <div className="text-2xl font-black text-text-primary mb-1">
+                <div className="text-xl font-black text-text-primary mb-0.5">
                   {stat.value}
                 </div>
-                <div className="text-[10px] font-bold text-text-muted uppercase tracking-wide">
+                <div className="text-[9px] font-bold text-text-muted uppercase tracking-wide">
                   {stat.label}
                 </div>
               </motion.div>
             ))}
           </div>
 
-          {/* Tech Stack */}
+          {/* Tech Stack - Compact */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
-            className="mb-6"
+            className="mb-4"
           >
-            <p className="text-[10px] font-bold text-text-muted uppercase tracking-wider mb-2">
+            <p className="text-[9px] font-bold text-text-muted uppercase tracking-wider mb-1.5">
               Tech Stack
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5">
               {TECH_STACK.map((tech, index) => (
                 <motion.div
                   key={tech.name}
@@ -181,8 +180,7 @@ export default function SolutionsSection() {
                   transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
                   viewport={{ once: true }}
                   whileHover={{ y: -2 }}
-                  // REFACTORED: White Pill (bg-bg-surface)
-                  className="px-3 py-1.5 bg-bg-surface text-text-primary rounded-full text-xs font-bold flex items-center gap-2 border border-text-muted/10 hover:border-brand-main/30 shadow-sm transition-all"
+                  className="px-2.5 py-1 bg-bg-surface text-text-primary rounded-full text-[10px] font-bold flex items-center gap-1.5 border border-text-muted/10 hover:border-brand-main/30 shadow-sm transition-all"
                 >
                   <span>{tech.icon}</span>
                   <span>{tech.name}</span>
@@ -191,7 +189,7 @@ export default function SolutionsSection() {
             </div>
           </motion.div>
 
-          {/* CTA Button */}
+          {/* CTA Button - Compact */}
           <motion.button
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -199,11 +197,10 @@ export default function SolutionsSection() {
             viewport={{ once: true }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            // REFACTORED: Inverse Button (Black on Grey)
-            className="bg-bg-inverse text-text-inverse px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 shadow-xl hover:shadow-2xl transition-all group"
+            className="bg-bg-inverse text-text-inverse px-5 py-2.5 rounded-full font-bold text-xs flex items-center gap-2 shadow-xl hover:shadow-2xl transition-all group"
           >
             Start Your Project
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
           </motion.button>
         </div>
 
@@ -213,22 +210,22 @@ export default function SolutionsSection() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          // REFACTORED: Compact Height (400px)
-          className="relative h-[400px] w-full"
+          className="relative h-[320px] w-full"
         >
-           {/* REFACTORED: White Canvas (bg-bg-surface) */}
+           {/* ✅ SCROLL ENABLED: Removed touch-pan-y, added overflow-auto */}
            <div 
              ref={canvasRef} 
-             className="absolute inset-0 bg-bg-surface rounded-[24px] border border-text-muted/10 shadow-inner overflow-hidden cursor-grab active:cursor-grabbing touch-pan-y"
+             className="absolute inset-0 bg-bg-surface rounded-[1.5rem] border border-text-muted/10 shadow-inner overflow-auto cursor-grab active:cursor-grabbing"
+             data-lenis-prevent
            >
              {/* Helper Text */}
-             <div className="absolute top-4 left-4 right-4 pointer-events-none z-10">
-               <p className="text-[10px] font-bold text-text-muted uppercase tracking-wider text-center">
-                 ✨ Drag & Interact
+             <div className="absolute top-3 left-3 right-3 pointer-events-none z-10">
+               <p className="text-[9px] font-bold text-text-muted uppercase tracking-wider text-center">
+                 ✨ Drag & Interact • Scroll Enabled
                </p>
              </div>
 
-             {/* Pills - Colors from Data */}
+             {/* Pills - Smaller Sizes */}
              {PILLS_DATA.map((pill, index) => (
                <div 
                  key={index} 

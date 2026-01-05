@@ -35,25 +35,25 @@ const getGridClasses = (col: number, row: number) => {
 
 const BENTO_ITEMS: BentoItem[] = [
   // --- TOP ROW ---
-  { id: 'b1', colSpan: 3, rowSpan: 1, bgColor: '#F97316', type: 'logo' },
-  { id: 'b2', colSpan: 3, rowSpan: 1, bgColor: '#EF4444', type: 'icons' },
-  { id: 'b3', colSpan: 6, rowSpan: 1, bgColor: '#3B82F6', type: 'cta-button' },
+  { id: 'b1', colSpan: 3, rowSpan: 1, bgColor: '#6366f1', type: 'logo' },
+  { id: 'b2', colSpan: 3, rowSpan: 1, bgColor: '#f43f5e', type: 'icons' },
+  { id: 'b3', colSpan: 6, rowSpan: 1, bgColor: '#14b8a6', type: 'cta-button' },
 
   // --- MIDDLE ROW (Tall items) ---
-  { id: 'b4', colSpan: 6, rowSpan: 2, bgColor: '#8B5CF6', type: 'hero-large' },
-  { id: 'b5', colSpan: 6, rowSpan: 2, bgColor: '#EC4899', type: 'illustration' },
+  { id: 'b4', colSpan: 6, rowSpan: 2, bgColor: '#8b5cf6', type: 'hero-large' },
+  { id: 'b5', colSpan: 6, rowSpan: 2, bgColor: '#f59e0b', type: 'illustration' },
 
   // --- BOTTOM ROW ---
-  { id: 'b6', colSpan: 4, rowSpan: 1, bgColor: '#6D4C41', type: 'price-box' },
-  { id: 'b7', colSpan: 4, rowSpan: 1, bgColor: '#84CC16', type: 'services-list' },
-  { id: 'b8', colSpan: 4, rowSpan: 1, bgColor: '#F59E0B', type: 'brand-message' }
+  { id: 'b6', colSpan: 4, rowSpan: 1, bgColor: '#0f172a', type: 'price-box' },
+  { id: 'b7', colSpan: 4, rowSpan: 1, bgColor: '#10b981', type: 'services-list' },
+  { id: 'b8', colSpan: 4, rowSpan: 1, bgColor: '#ec4899', type: 'brand-message' }
 ];
 
 const BentoBox = ({ item }: { item: BentoItem }) => {
   return (
-    <div className="h-full min-h-[100px] md:min-h-0 p-[2px]">
+    <div className="h-full min-h-[100px] md:min-h-0 p-[1px]">
       <div 
-        className="w-full h-full relative flex items-center justify-center text-white font-bold rounded-lg overflow-hidden"
+        className="w-full h-full relative flex items-center justify-center text-white font-bold rounded-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02]"
         style={{ backgroundColor: item.bgColor }}
       >
         <BentoBoxContent item={item} />
@@ -64,13 +64,14 @@ const BentoBox = ({ item }: { item: BentoItem }) => {
 
 export default function Bento() {
   return (
-    <section className="w-full flex flex-col items-center font-sans antialiased py-8 px-4">
+    <section className="w-full flex flex-col items-center font-sans antialiased py-6 px-4">
       
-      {/* ✅ Changed max-w-[1200px] to max-w-[1400px] */}
+      {/* ✅ EXACT: 1400px container */}
       <div className="w-full max-w-[1400px] mx-auto">
-        <div className="bg-white rounded-2xl overflow-hidden shadow-2xl p-[2px]">
-          <div className="bg-[#F5F1E8] rounded-xl overflow-hidden">
-            <div className="relative w-full grid grid-cols-1 md:grid-cols-12 md:auto-rows-[130px] gap-0">
+        <div className="bg-white rounded-2xl overflow-hidden shadow-2xl p-[1px]">
+          <div className="bg-bg-subtle rounded-xl overflow-hidden">
+            {/* ✅ EXACT: 520px total height (4 rows × 130px) */}
+            <div className="relative w-full h-auto md:h-[520px] grid grid-cols-1 md:grid-cols-12 md:grid-rows-4 gap-0">
               {BENTO_ITEMS.map((item) => (
                 <div 
                   key={item.id} 

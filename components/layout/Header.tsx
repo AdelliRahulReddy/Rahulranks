@@ -18,9 +18,22 @@ export default function Header() {
   const logoRef = useRef<HTMLDivElement>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
 
   const text = "Rahulranks";
   const letters = text.split("");
+
+  /* -------------------------------
+     Scroll state tracking
+  -------------------------------- */
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   /* -------------------------------
      Smooth scroll helper
@@ -32,7 +45,7 @@ export default function Header() {
       const el = document.getElementById(sectionId);
       if (!el) return;
 
-      const offset = 56; // ✅ REDUCED from 68 to 56
+      const offset = 80;
       const top = el.getBoundingClientRect().top + window.scrollY - offset;
 
       window.scrollTo({ top, behavior: "smooth" });
@@ -172,14 +185,20 @@ export default function Header() {
       {/* ================= HEADER ================= */}
       <header
         ref={containerRef}
-        className="
-          fixed top-0 left-0 z-50 w-full h-[56px]
-          flex items-center justify-between
-          px-4 md:px-8
-        "
+        className={cn(
+          "fixed top-0 left-0 z-50 w-full h-[56px] transition-all duration-300",
+          "flex items-center justify-between px-4 md:px-8"
+        )}
       >
-        {/* Background layer */}
-        <div className="absolute inset-0 bg-bg-canvas/95 backdrop-blur-xl border-b border-gray-200/60 shadow-sm" />
+        {/* Glass Background (Bachelor Brothers Style) */}
+        <div 
+          className={cn(
+            "absolute inset-0 transition-all duration-300",
+            scrolled 
+              ? "glass border-b border-brand-main/10 shadow-lg" 
+              : "bg-bg-surface/80 backdrop-blur-lg border-b border-gray-200/60 shadow-sm"
+          )} 
+        />
 
         {/* Logo */}
         <a
@@ -194,24 +213,26 @@ export default function Header() {
             <span
               key={i}
               className={cn(
-                "logo-char inline-block font-black text-2xl md:text-3xl transition-colors",
+                "logo-char inline-block font-black transition-colors",
                 `logo-char-${i}`,
+                "text-2xl md:text-3xl",
                 i === 0
-                  ? "text-accent-rose"
-                  : "text-text-primary group-hover:text-accent-rose"
+                  ? "text-brand-main"
+                  : "text-text-primary group-hover:text-brand-main"
               )}
               style={{
-                marginRight: char === "r" ? "-0.01em" : "-0.03em"
+                marginRight: char === "r" ? "-0.01em" : "-0.03em",
+                fontFamily: "var(--font-outfit)"
               }}
             >
               {char}
             </span>
           ))}
-          <span className="logo-dot inline-block w-2 h-2 ml-1 mb-1 rounded-full bg-accent-rose shadow-lg shadow-accent-rose/50" />
+          <span className="logo-dot inline-block w-2 h-2 ml-1 mb-1 rounded-full bg-brand-main shadow-lg glow-indigo" />
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8 relative z-10">
+        <nav className="hidden md:flex items-center gap-10 relative z-10">
           {NAV_LINKS.map((link) => {
             const id = link.href.replace("#", "");
             const active = activeSection === id;
@@ -222,47 +243,53 @@ export default function Header() {
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
                 className={cn(
-                  "nav-item relative text-xs uppercase font-bold tracking-widest transition-colors",
+                  "nav-item relative text-xs uppercase font-bold tracking-[0.2em] transition-colors group",
+                  "font-sans",
                   active
-                    ? "text-accent-rose"
+                    ? "text-brand-main"
                     : "text-text-secondary hover:text-text-primary"
                 )}
               >
                 {link.name}
-                {active && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-accent-rose rounded-full" />
-                )}
+                <span 
+                  className={cn(
+                    "absolute -bottom-1 left-0 h-[2px] bg-brand-main transition-all duration-300 rounded-full",
+                    active ? "w-full" : "w-0 group-hover:w-full"
+                  )} 
+                />
               </a>
             );
           })}
 
           <button
             onClick={handleCTAClick}
-            className="nav-item px-5 py-2 rounded-full bg-bg-inverse text-text-inverse text-[10px] font-extrabold uppercase tracking-widest hover:bg-accent-rose hover:scale-105 transition-all shadow-lg hover:shadow-accent-rose/50"
+            className="nav-item px-8 py-3 rounded-md bg-brand-main text-white text-xs font-bold uppercase tracking-[0.15em] hover:bg-bg-inverse transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 font-sans"
           >
-            Let's Talk
+            Hire Me
           </button>
         </nav>
 
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden relative z-10 p-2 text-text-primary hover:text-accent-rose transition-colors"
+          className="md:hidden relative z-10 p-2 text-text-primary hover:text-brand-main transition-colors"
           aria-label="Toggle menu"
         >
-          {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </header>
 
       {/* ================= MOBILE MENU ================= */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 md:hidden">
+          {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            className="absolute inset-0 bg-bg-inverse/50 backdrop-blur-sm"
             onClick={() => setMobileMenuOpen(false)}
           />
 
-          <nav className="absolute top-[56px] left-0 right-0 bg-bg-canvas border-b border-gray-200 shadow-xl p-6 space-y-4">
+          {/* Menu Panel */}
+          <nav className="absolute top-[56px] left-0 right-0 glass border-b border-brand-main/10 shadow-xl p-6 space-y-4">
             {NAV_LINKS.map((link) => {
               const id = link.href.replace("#", "");
               const active = activeSection === id;
@@ -273,10 +300,10 @@ export default function Header() {
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={cn(
-                    "block text-sm uppercase font-bold tracking-wider py-2",
+                    "block text-sm uppercase font-bold tracking-wider py-2 font-sans transition-all",
                     active
-                      ? "text-accent-rose"
-                      : "text-text-secondary hover:text-accent-rose"
+                      ? "text-brand-main"
+                      : "text-text-secondary hover:text-brand-main"
                   )}
                 >
                   {link.name}
@@ -286,9 +313,9 @@ export default function Header() {
 
             <button
               onClick={handleCTAClick}
-              className="w-full px-5 py-3 rounded-full bg-bg-inverse text-text-inverse text-xs font-bold uppercase tracking-wider hover:bg-accent-rose transition-all"
+              className="w-full px-5 py-3 rounded-full bg-brand-main text-white text-xs font-bold uppercase tracking-wider hover:bg-bg-inverse transition-all font-sans shadow-lg"
             >
-              Let's Talk
+              Hire Me
             </button>
           </nav>
         </div>

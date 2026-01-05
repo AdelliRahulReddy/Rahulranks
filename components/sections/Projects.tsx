@@ -24,10 +24,8 @@ export default function ProjectsSection() {
     return parseInt(b.year) - parseInt(a.year);
   });
 
-  // Count featured projects
   const featuredCount = MY_PROJECTS.filter(p => p.featured).length;
 
-  // REFACTORED: Theme-aligned status mapping
   const getStatusStyle = (status: string) => {
     switch(status) {
       case "live": return { color: "bg-status-success", label: "Live", emoji: "🟢" };
@@ -40,57 +38,48 @@ export default function ProjectsSection() {
   return (
     <section
       ref={containerRef}
-      // REFACTORED: Warm Glass Background + Compact Padding
-      className="bg-gradient-to-br from-bg-subtle via-bg-surface to-bg-subtle border border-text-muted/10 rounded-[32px] md:rounded-[48px] py-10 px-6 md:px-12 my-8 relative overflow-hidden shadow-2xl"
+      className="bg-gradient-to-br from-bg-subtle via-bg-surface to-bg-subtle border border-text-muted/10 rounded-[2rem] md:rounded-[2.5rem] py-8 px-6 md:px-10 my-8 relative overflow-hidden shadow-xl"
     >
-      {/* Animated Background Gradients - Brand Aligned */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
+      {/* Animated Background */}
+      <div className="absolute inset-0 opacity-15 pointer-events-none">
         <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-          }}
+          animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          // REFACTORED: Brand Main Glow
-          className="absolute -top-40 -right-40 w-96 h-96 bg-brand-main/20 rounded-full blur-3xl"
+          className="absolute -top-32 -right-32 w-80 h-80 bg-brand-main/20 rounded-full blur-3xl"
         />
         <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            rotate: [0, -90, 0],
-          }}
+          animate={{ scale: [1, 1.3, 1], rotate: [0, -90, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          // REFACTORED: Accent Rose Glow
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-accent-rose/10 rounded-full blur-3xl"
+          className="absolute -bottom-32 -left-32 w-80 h-80 bg-accent-rose/10 rounded-full blur-3xl"
         />
       </div>
 
       <div className="relative z-10">
-        {/* Header with Stats */}
+        {/* Compact Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, type: "spring" }}
-          className="text-center mb-10"
+          className="text-center mb-6"
         >
           <motion.div
             initial={{ scale: 0 }}
             animate={isInView ? { scale: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.2, type: "spring", bounce: 0.5 }}
-            className="flex items-center justify-center gap-2 mb-3"
+            className="flex items-center justify-center gap-2 mb-1.5"
           >
             <motion.div
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
             >
-              <Sparkles size={16} className="text-brand-main" />
+              <Sparkles size={14} className="text-brand-main" />
             </motion.div>
-            <p className="text-brand-main font-mono text-[10px] uppercase tracking-[0.2em] font-black">
+            <p className="text-brand-main font-mono text-[10px] uppercase tracking-[0.2em] font-bold">
               Portfolio
             </p>
           </motion.div>
 
-          <h2 className="text-4xl md:text-5xl font-black text-text-primary mb-3 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-black font-serif text-text-primary mb-2 tracking-tight">
             My Work{" "}
             <motion.span
               animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
@@ -101,44 +90,44 @@ export default function ProjectsSection() {
             </motion.span>
           </h2>
 
-          <p className="text-text-secondary text-base max-w-2xl mx-auto mb-6">
+          <p className="text-text-secondary text-sm max-w-2xl mx-auto mb-4">
             Real projects, shipped and running. {MY_PROJECTS.length} projects total, {featuredCount} featured.
           </p>
 
-          {/* Quick Stats - White Pills */}
+          {/* Quick Stats - COMPACT */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap items-center justify-center gap-4 mb-8"
+            className="flex flex-wrap items-center justify-center gap-2 mb-6"
           >
-            <div className="flex items-center gap-2 bg-bg-surface backdrop-blur-sm px-4 py-2 rounded-full border border-text-muted/10 shadow-sm">
-              <Star size={14} className="text-brand-main fill-brand-main" />
-              <span className="text-xs font-bold text-text-primary">{featuredCount} Featured</span>
+            <div className="flex items-center gap-1.5 bg-bg-surface backdrop-blur-sm px-3 py-1.5 rounded-full border border-text-muted/10 shadow-sm">
+              <Star size={12} className="text-brand-main fill-brand-main" />
+              <span className="text-[10px] font-bold text-text-primary">{featuredCount} Featured</span>
             </div>
-            <div className="flex items-center gap-2 bg-bg-surface backdrop-blur-sm px-4 py-2 rounded-full border border-text-muted/10 shadow-sm">
-              <TrendingUp size={14} className="text-status-success" />
-              <span className="text-xs font-bold text-text-primary">
+            <div className="flex items-center gap-1.5 bg-bg-surface backdrop-blur-sm px-3 py-1.5 rounded-full border border-text-muted/10 shadow-sm">
+              <TrendingUp size={12} className="text-status-success" />
+              <span className="text-[10px] font-bold text-text-primary">
                 {MY_PROJECTS.filter(p => p.status === "live").length} Live
               </span>
             </div>
-            <div className="flex items-center gap-2 bg-bg-surface backdrop-blur-sm px-4 py-2 rounded-full border border-text-muted/10 shadow-sm">
-              <span className="text-xs font-bold text-text-primary">
+            <div className="flex items-center gap-1.5 bg-bg-surface backdrop-blur-sm px-3 py-1.5 rounded-full border border-text-muted/10 shadow-sm">
+              <span className="text-[10px] font-bold text-text-primary">
                 Latest: {MY_PROJECTS[0]?.year}
               </span>
             </div>
           </motion.div>
         </motion.div>
 
-        {/* Controls: Tabs + View Toggle */}
+        {/* Controls - COMPACT */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8"
+          className="flex flex-col md:flex-row items-center justify-between gap-3 mb-6"
         >
-          {/* Category Tabs */}
-          <div className="flex flex-wrap justify-center md:justify-start gap-2">
+          {/* Category Tabs - COMPACT */}
+          <div className="flex flex-wrap justify-center md:justify-start gap-1.5">
             {PROJECT_TABS.map((tab) => {
               const count = tab.id === "all" 
                 ? MY_PROJECTS.length 
@@ -152,16 +141,16 @@ export default function ProjectsSection() {
                   onClick={() => setActiveTab(tab.id)}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  // REFACTORED: Inverse vs Surface styling
-                  className={`relative px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 flex items-center gap-2 ${
+                  className={`relative px-3 py-2 rounded-lg text-[10px] font-bold transition-all duration-300 flex items-center gap-1.5 ${
                     isActive
-                      ? 'bg-bg-inverse text-text-inverse shadow-lg'
+                      ? 'bg-bg-inverse text-text-inverse shadow-md'
                       : 'bg-bg-surface text-text-secondary hover:bg-white border border-text-muted/10 hover:border-text-muted/30'
                   }`}
                 >
                   <motion.span
                     animate={isActive ? { scale: [1, 1.2, 1] } : {}}
                     transition={{ duration: 0.3 }}
+                    className="text-sm"
                   >
                     {tab.icon}
                   </motion.span>
@@ -169,18 +158,17 @@ export default function ProjectsSection() {
                   <motion.span
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className={`text-[10px] px-1.5 py-0.5 rounded-full font-black ${
+                    className={`text-[9px] px-1.5 py-0.5 rounded-full font-black ${
                       isActive ? 'bg-white/20 text-white' : 'bg-bg-subtle text-text-muted'
                     }`}
                   >
                     {count}
                   </motion.span>
 
-                  {/* Active Indicator */}
                   {isActive && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute inset-0 bg-bg-inverse rounded-xl -z-10"
+                      className="absolute inset-0 bg-bg-inverse rounded-lg -z-10"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}
@@ -189,38 +177,38 @@ export default function ProjectsSection() {
             })}
           </div>
 
-          {/* View Mode Toggle */}
-          <div className="flex items-center gap-1 bg-bg-surface backdrop-blur-sm p-1 rounded-xl border border-text-muted/10 shadow-sm">
+          {/* View Mode Toggle - COMPACT */}
+          <div className="flex items-center gap-1 bg-bg-surface backdrop-blur-sm p-1 rounded-lg border border-text-muted/10 shadow-sm">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setViewMode("grid")}
-              className={`p-2 rounded-lg transition-all ${
+              className={`p-1.5 rounded-md transition-all ${
                 viewMode === "grid"
                   ? 'bg-bg-inverse text-text-inverse shadow-sm'
                   : 'text-text-muted hover:text-text-primary'
               }`}
               aria-label="Grid view"
             >
-              <Grid3x3 size={16} />
+              <Grid3x3 size={14} />
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setViewMode("list")}
-              className={`p-2 rounded-lg transition-all ${
+              className={`p-1.5 rounded-md transition-all ${
                 viewMode === "list"
                   ? 'bg-bg-inverse text-text-inverse shadow-sm'
                   : 'text-text-muted hover:text-text-primary'
               }`}
               aria-label="List view"
             >
-              <List size={16} />
+              <List size={14} />
             </motion.button>
           </div>
         </motion.div>
 
-        {/* Projects Grid/List */}
+        {/* Projects Grid - COMPACT */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab + viewMode}
@@ -230,8 +218,8 @@ export default function ProjectsSection() {
             transition={{ duration: 0.3 }}
             className={
               viewMode === "grid"
-                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                : "flex flex-col gap-4"
+                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                : "flex flex-col gap-3"
             }
           >
             {sortedProjects.map((project, index) => {
@@ -251,48 +239,46 @@ export default function ProjectsSection() {
                     type: "spring",
                     bounce: 0.3
                   }}
-                  whileHover={{ y: -8, scale: 1.02 }}
+                  whileHover={{ y: -6, scale: 1.02 }}
                   onHoverStart={() => setHoveredProject(project.id)}
                   onHoverEnd={() => setHoveredProject(null)}
-                  // REFACTORED: White Card with border-text-muted/10
-                  className={`group relative bg-bg-surface rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-text-muted/10 hover:border-brand-main/30 ${
+                  className={`group relative bg-bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-text-muted/10 hover:border-brand-main/30 ${
                     viewMode === "list" ? "flex flex-row" : ""
                   }`}
                 >
-                  {/* Hover Glow Effect */}
+                  {/* Hover Glow */}
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: isHovered ? 0.1 : 0 }}
                     className="absolute inset-0 bg-gradient-to-br from-brand-main to-accent-rose blur-xl -z-10"
                   />
 
-                  {/* Featured Badge */}
+                  {/* Featured Badge - COMPACT */}
                   {project.featured && (
                     <motion.div
                       initial={{ scale: 0, rotate: -180 }}
                       animate={{ scale: 1, rotate: 0 }}
                       transition={{ delay: 0.3 + index * 0.1, type: "spring", bounce: 0.6 }}
-                      className="absolute top-3 left-3 z-20"
+                      className="absolute top-2 left-2 z-20"
                     >
-                      {/* REFACTORED: Brand Gradient */}
-                      <div className="bg-gradient-to-r from-brand-main to-brand-dark text-white text-[9px] font-black uppercase px-2.5 py-1 rounded-full shadow-lg flex items-center gap-1">
-                        <Star size={10} className="fill-white" />
+                      <div className="bg-gradient-to-r from-brand-main to-brand-dark text-white text-[8px] font-black uppercase px-2 py-0.5 rounded-full shadow-lg flex items-center gap-1">
+                        <Star size={8} className="fill-white" />
                         <span>Featured</span>
                       </div>
                     </motion.div>
                   )}
 
-                  {/* Status Badge */}
+                  {/* Status Badge - COMPACT */}
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.4 + index * 0.1, type: "spring" }}
-                    className="absolute top-3 right-3 z-20"
+                    className="absolute top-2 right-2 z-20"
                   >
                     <motion.div
                       animate={project.status === "live" ? { scale: [1, 1.1, 1] } : {}}
                       transition={{ duration: 2, repeat: Infinity }}
-                      className={`${statusInfo.color} text-white text-[9px] font-bold px-2.5 py-1 rounded-full shadow-lg flex items-center gap-1 backdrop-blur-sm`}
+                      className={`${statusInfo.color} text-white text-[8px] font-bold px-2 py-0.5 rounded-full shadow-lg flex items-center gap-1 backdrop-blur-sm`}
                     >
                       <motion.span
                         animate={{ scale: [1, 1.3, 1] }}
@@ -304,9 +290,9 @@ export default function ProjectsSection() {
                     </motion.div>
                   </motion.div>
 
-                  {/* Image Container - Placeholder Style */}
+                  {/* Image - COMPACT */}
                   <div className={`relative ${
-                    viewMode === "list" ? "w-48 h-48" : "w-full h-56"
+                    viewMode === "list" ? "w-40 h-40" : "w-full h-48"
                   } bg-gradient-to-br from-bg-subtle to-gray-100 overflow-hidden`}>
                     <motion.div
                       className="absolute inset-0 flex items-center justify-center"
@@ -315,65 +301,64 @@ export default function ProjectsSection() {
                       <div className="text-center">
                         <motion.div
                           animate={{
-                            y: [0, -10, 0],
+                            y: [0, -8, 0],
                             rotate: isHovered ? 360 : 0
                           }}
                           transition={{ duration: 2, repeat: Infinity }}
-                          className="text-5xl mb-3"
+                          className="text-4xl mb-2"
                         >
                           {project.category === "websites" ? "🌐" : 
                            project.category === "clients" ? "💼" : 
                            project.category === "tools" ? "🤖" : "🧪"}
                         </motion.div>
-                        <p className="text-[10px] text-text-muted font-mono px-4">
+                        <p className="text-[9px] text-text-muted font-mono px-4">
                           Add screenshot:<br/><span className="text-brand-main font-bold">{project.image}</span>
                         </p>
                       </div>
                     </motion.div>
 
-                    {/* Gradient Overlay on Hover */}
+                    {/* Gradient Overlay */}
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: isHovered ? 1 : 0 }}
-                      className="absolute inset-0 bg-gradient-to-t from-bg-inverse/80 via-bg-inverse/30 to-transparent flex items-end justify-center pb-4"
+                      className="absolute inset-0 bg-gradient-to-t from-bg-inverse/80 via-bg-inverse/30 to-transparent flex items-end justify-center pb-3"
                     >
                       <motion.div
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 }}
-                        className="text-white text-xs font-bold flex items-center gap-1"
+                        className="text-white text-[10px] font-bold flex items-center gap-1"
                       >
                         <span>View Details</span>
-                        <ChevronRight size={14} />
+                        <ChevronRight size={12} />
                       </motion.div>
                     </motion.div>
                   </div>
 
-                  {/* Content */}
-                  <div className={`p-5 ${viewMode === "list" ? "flex-1" : ""}`}>
+                  {/* Content - COMPACT */}
+                  <div className={`p-4 ${viewMode === "list" ? "flex-1" : ""}`}>
                     {/* Title & Year */}
-                    <div className="flex items-start justify-between mb-2">
+                    <div className="flex items-start justify-between mb-1.5">
                       <motion.h3
-                        // REFACTORED: Text Primary + Hover Brand
-                        className="font-black text-lg text-text-primary group-hover:text-brand-main transition-colors flex-1"
+                        className="font-black font-serif text-base text-text-primary group-hover:text-brand-main transition-colors flex-1"
                         animate={isHovered ? { x: 5 } : { x: 0 }}
                       >
                         {project.name}
                       </motion.h3>
                       <motion.span
                         whileHover={{ scale: 1.1, rotate: 5 }}
-                        className="text-[10px] font-bold text-text-muted bg-bg-subtle px-2 py-1 rounded-full ml-2"
+                        className="text-[9px] font-bold text-text-muted bg-bg-subtle px-2 py-0.5 rounded-full ml-2"
                       >
                         {project.year}
                       </motion.span>
                     </div>
 
                     {/* Description */}
-                    <p className="text-sm text-text-secondary mb-4 leading-relaxed line-clamp-2">
+                    <p className="text-xs text-text-secondary mb-3 leading-relaxed line-clamp-2">
                       {project.description}
                     </p>
 
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-1.5 mb-4">
+                    {/* Tags - COMPACT */}
+                    <div className="flex flex-wrap gap-1 mb-3">
                       {project.tags.slice(0, viewMode === "list" ? 5 : 3).map((tag, idx) => (
                         <motion.span
                           key={tag}
@@ -381,20 +366,19 @@ export default function ProjectsSection() {
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: 0.5 + index * 0.1 + idx * 0.05 }}
                           whileHover={{ scale: 1.1, y: -2 }}
-                          // REFACTORED: Subtle background tags
-                          className="text-[10px] font-bold text-text-secondary bg-bg-subtle hover:bg-bg-canvas px-2.5 py-1 rounded-full transition-colors cursor-default border border-text-muted/5"
+                          className="text-[9px] font-bold text-text-secondary bg-bg-subtle hover:bg-bg-canvas px-2 py-0.5 rounded-full transition-colors cursor-default border border-text-muted/5"
                         >
                           {tag}
                         </motion.span>
                       ))}
                       {project.tags.length > (viewMode === "list" ? 5 : 3) && (
-                        <span className="text-[10px] font-bold text-text-muted bg-bg-subtle px-2 py-1 rounded-full">
+                        <span className="text-[9px] font-bold text-text-muted bg-bg-subtle px-2 py-0.5 rounded-full">
                           +{project.tags.length - (viewMode === "list" ? 5 : 3)}
                         </span>
                       )}
                     </div>
 
-                    {/* Action Buttons */}
+                    {/* Buttons - COMPACT */}
                     <div className="flex gap-2">
                       {project.liveLink && (
                         <motion.a
@@ -403,15 +387,14 @@ export default function ProjectsSection() {
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          // REFACTORED: Inverse Button
-                          className="flex-1 bg-bg-inverse hover:bg-black text-text-inverse text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all group/btn shadow-md hover:shadow-lg"
+                          className="flex-1 bg-bg-inverse hover:bg-black text-text-inverse text-[10px] font-bold py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-all shadow-md hover:shadow-lg"
                         >
                           <span>View Live</span>
                           <motion.div
                             animate={{ x: [0, 3, 0] }}
                             transition={{ duration: 1.5, repeat: Infinity }}
                           >
-                            <ExternalLink size={12} />
+                            <ExternalLink size={10} />
                           </motion.div>
                         </motion.a>
                       )}
@@ -422,11 +405,10 @@ export default function ProjectsSection() {
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.05, rotate: 5 }}
                           whileTap={{ scale: 0.95 }}
-                          // REFACTORED: Surface Button
-                          className="bg-bg-subtle hover:bg-bg-canvas text-text-primary text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center transition-all shadow-sm hover:shadow-md border border-text-muted/10"
+                          className="bg-bg-subtle hover:bg-bg-canvas text-text-primary text-[10px] font-bold py-2 px-3 rounded-lg flex items-center justify-center transition-all shadow-sm hover:shadow-md border border-text-muted/10"
                           aria-label="View on GitHub"
                         >
-                          <Github size={14} />
+                          <Github size={12} />
                         </motion.a>
                       )}
                     </div>
@@ -443,17 +425,17 @@ export default function ProjectsSection() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="text-center py-20"
+            className="text-center py-16"
           >
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="text-7xl mb-4"
+              className="text-6xl mb-3"
             >
               🔍
             </motion.div>
-            <h3 className="text-xl font-black text-text-primary mb-2">No projects here yet</h3>
-            <p className="text-text-muted text-sm">Check back soon or explore other categories!</p>
+            <h3 className="text-lg font-black font-serif text-text-primary mb-1.5">No projects here yet</h3>
+            <p className="text-text-muted text-xs">Check back soon or explore other categories!</p>
           </motion.div>
         )}
       </div>
