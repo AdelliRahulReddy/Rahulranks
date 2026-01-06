@@ -4,9 +4,9 @@
 // ==========================================
 
 export const CONTACT_DATA = {
-  headline: "Let's Build Something",
-  subheadline: "Got an idea? Need help? Just want to chat? Pick your favorite way to reach out.",
-  
+  headline: "Let's Learn & Build Together",
+  subheadline: "I'm offering FREE basic web services to build my portfolio. Your project helps me learn, and I'll give it my 100%!",
+
   // Primary contact methods
   primaryContacts: [
     {
@@ -17,7 +17,7 @@ export const CONTACT_DATA = {
       icon: "✉️",
       link: "mailto:hello@rahulranks.com",
       color: "from-blue-500 to-blue-600",
-      description: "For detailed inquiries"
+      description: "Best for project details"
     },
     {
       id: "whatsapp",
@@ -27,7 +27,7 @@ export const CONTACT_DATA = {
       icon: "💬",
       link: "https://wa.me/919876543210", // Remove spaces/+ from number
       color: "from-green-500 to-green-600",
-      description: "Quick responses here"
+      description: "Quick chat & questions"
     },
     {
       id: "twitter",
@@ -37,7 +37,7 @@ export const CONTACT_DATA = {
       icon: "𝕏",
       link: "https://x.com/rahulranks",
       color: "from-slate-700 to-slate-900",
-      description: "DMs always open"
+      description: "Follow my journey"
     }
   ],
 
@@ -67,7 +67,7 @@ export const CONTACT_DATA = {
     {
       id: "calendly",
       label: "Schedule Call",
-      username: "Book a meeting",
+      username: "Let's talk!",
       link: "https://calendly.com/rahulranks", // Optional: Add Calendly link
       icon: "📅"
     }
@@ -76,10 +76,10 @@ export const CONTACT_DATA = {
   // Quick stats
   availability: {
     status: "available", // available, busy, booked
-    responseTime: "< 2 hours",
+    responseTime: "< 24 hours",
     timezone: "IST (GMT+5:30)"
   },
 
   // CTA button text
-  ctaText: "Start a Conversation"
+  ctaText: "Work With Me (Free!)"
 };

@@ -13,89 +13,53 @@ import CTASection from "@/components/sections/CTA";
 export default function Portfolio() {
   return (
     <ReactLenis root>
-      {/* Bachelor Brothers Background */}
-      <div 
-        className="min-h-screen text-slate-900 selection:bg-indigo-600 selection:text-white overflow-x-hidden relative"
-        style={{ 
-          backgroundColor: '#fef3e2',
-          fontFamily: 'var(--font-outfit)'
-        }}
-      >
-        
-        {/* Background Pattern */}
-        <div className="fixed inset-0 z-0 pointer-events-none">
-          <div 
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `
-                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(244, 63, 94, 0.08) 0%, transparent 50%)
-              `
-            }}
-          />
-          <div 
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: "url('https://www.transparenttextures.com/patterns/diagonal-stripes.png')"
-            }}
-          />
+      <div className="min-h-screen bg-bg-canvas text-text-primary relative overflow-x-hidden selection:bg-brand-main selection:text-white transition-colors duration-500">
+
+        {/* Background Pattern - handled by globals.css mostly, but adding localized flair */}
+        <div className="fixed inset-0 z-0 pointer-events-none opacity-40 mix-blend-soft-light">
+          <div className="absolute inset-0 bg-pattern-dense" />
         </div>
-        
-        {/* Blur Glows */}
-        <div 
-          className="fixed top-0 right-0 w-[600px] h-[600px] rounded-full -mr-20 -mt-20 z-0 pointer-events-none"
-          style={{
-            background: 'rgb(99, 102, 241)',
-            filter: 'blur(150px)',
-            opacity: 0.2
-          }}
-        />
-        <div 
-          className="fixed bottom-0 left-0 w-[400px] h-[400px] rounded-full -ml-20 -mb-20 z-0 pointer-events-none"
-          style={{
-            background: 'rgb(244, 63, 94)',
-            filter: 'blur(120px)',
-            opacity: 0.15
-          }}
-        />
-        
+
+        {/* Semantic Blur Glows */}
+        <div className="fixed top-0 right-0 w-[50vw] h-[50vh] rounded-full bg-brand-main/20 blur-[120px] -mr-[10%] -mt-[10%] pointer-events-none mix-blend-screen dark:mix-blend-screen" />
+        <div className="fixed bottom-0 left-0 w-[40vw] h-[40vh] rounded-full bg-accent-rose/10 blur-[100px] -ml-[10%] -mb-[10%] pointer-events-none mix-blend-screen dark:mix-blend-screen" />
+
         {/* Content */}
         <div className="relative z-10">
           <Header />
-          
-          <main className="pt-14 px-4 pb-12 max-w-[1400px] mx-auto relative">
-            
-            <div className="opacity-90 hover:opacity-100 transition-opacity">
+
+          <main className="w-full pt-[72px]">
+
+            <div className="w-full">
               <InfiniteMarquee />
             </div>
 
-            <section id="home" className="-mt-1 w-full scroll-mt-24">
+            <section id="home" className="w-full px-4 md:px-8 lg:px-12 py-8 md:py-12 scroll-mt-24">
               <Bento />
             </section>
 
-            <div id="solutions" className="scroll-mt-24 mt-12">
+            <div id="solutions" className="w-full px-4 md:px-8 lg:px-12 py-16 md:py-24 scroll-mt-24">
               <SolutionsSection />
             </div>
 
-            <div id="skills" className="scroll-mt-24 mt-12">
+            <div id="skills" className="w-full px-4 md:px-8 lg:px-12 py-16 md:py-24 bg-bg-subtle/30 scroll-mt-24 border-y border-border-subtle">
               <SkillsSection />
             </div>
 
-            <div id="trust" className="scroll-mt-24 mt-12">
+            <div id="trust" className="w-full px-4 md:px-8 lg:px-12 py-16 md:py-24 scroll-mt-24">
               <TrustSection />
             </div>
 
-            <div id="projects" className="scroll-mt-24 mt-12">
+            <div id="projects" className="w-full px-4 md:px-8 lg:px-12 py-16 md:py-24 bg-bg-subtle/30 scroll-mt-24 border-y border-border-subtle">
               <ProjectsSection />
             </div>
 
-            <div id="contact" className="scroll-mt-24 mt-12">
+            <div id="contact" className="w-full px-4 md:px-8 lg:px-12 py-16 md:py-24 scroll-mt-24">
               <CTASection />
             </div>
 
           </main>
         </div>
-        
       </div>
     </ReactLenis>
   );

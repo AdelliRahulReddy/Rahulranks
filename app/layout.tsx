@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 import { baseMetadata } from "@/seo/metadata";
 import { openGraphConfig, twitterConfig } from "@/seo/openGraph";
@@ -12,7 +13,7 @@ import Footer from "@/components/layout/Footer";
 ------------------------------------------- */
 
 // Sans-serif Font (Body Text - Outfit)
-const outfit = Outfit({ 
+const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
   display: "swap",
@@ -20,7 +21,7 @@ const outfit = Outfit({
 });
 
 // Serif Font (Headings - Playfair Display)
-const playfair = Playfair_Display({ 
+const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap",
@@ -51,7 +52,7 @@ export default function RootLayout({
 
   return (
     // Inject both font variables
-    <html lang="en" className={`${outfit.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${outfit.variable} ${playfair.variable}`} suppressHydrationWarning>
       <head>
         {/* JSON-LD: Person */}
         <script
@@ -71,9 +72,16 @@ export default function RootLayout({
       </head>
 
       {/* Applied font-sans for body, antialiased for smooth rendering */}
-      <body className="bg-bg-canvas font-sans min-h-screen antialiased">
-        {children}
-        <Footer />
+      <body className="bg-bg-canvas text-text-primary font-sans min-h-screen antialiased transition-colors duration-300">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

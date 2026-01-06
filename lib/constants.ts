@@ -1,47 +1,47 @@
 export const BIO = {
   NAME: "Rahul Reddy",
-  TAGLINE: "Full-Stack Builder",
-  DESC: "Building SEO-ready tools & MVPs.",
-  STACK_ICONS: ["⚛️", "🚀", "🤖", "🎨"], 
-  BUTTONS: ["View Work", "My Stack", "Let's Talk", "Demos"],
+  TAGLINE: "Learning & Building",
+  DESC: "Student developer building real-world projects while learning modern web development.",
+  STACK_ICONS: ["⚛️", "🚀", "🎓", "💻"],
+  BUTTONS: ["My Journey", "Learning Path", "Let's Connect", "Practice Projects"],
   FOCUS_AREAS: [
-    { name: "SEO Ready", role: "Performance", color: "#86B049" },
-    { name: "MVP Build", role: "Speed", color: "#f59e0b" },
-    { name: "Automation", role: "Workflow", color: "#3b82f6" }
+    { name: "Learning", role: "Student", color: "#3b82f6" },
+    { name: "Building", role: "Practice", color: "#f59e0b" },
+    { name: "Growing", role: "Journey", color: "#8b5cf6" }
   ],
   STATS: [
-    { value: "100%", label: "Lighthouse" },
-    { value: "5+", label: "Live Apps" },
-    { value: "24/7", label: "Uptime" },
-    { value: "Fast", label: "Ship Speed" }
+    { value: "Learning", label: "Daily" },
+    { value: "Building", label: "Projects" },
+    { value: "Open", label: "To Learn" },
+    { value: "Free", label: "Start Price" }
   ]
 };
 
 // Stats for Solutions Section
 export const SOLUTIONS_STATS = [
-  { 
-    value: "50+", 
-    label: "Projects Delivered", 
-    color: "#fbbf24",
-    icon: "🚀" 
-  },
-  { 
-    value: "100%", 
-    label: "Client Satisfaction", 
-    color: "#84cc16",
-    icon: "⭐" 
-  },
-  { 
-    value: "99.9%", 
-    label: "Uptime Guaranteed", 
+  {
+    value: "Just Started",
+    label: "Fresh Beginning",
     color: "#3b82f6",
-    icon: "⚡" 
+    icon: "🌱"
   },
-  { 
-    value: "<2 Wk", 
-    label: "Average Delivery", 
-    color: "#f97316",
-    icon: "⏱️" 
+  {
+    value: "100%",
+    label: "Commitment",
+    color: "#84cc16",
+    icon: "💪"
+  },
+  {
+    value: "Free",
+    label: "Initial Projects",
+    color: "#f59e0b",
+    icon: "🎁"
+  },
+  {
+    value: "Solo",
+    label: "Developer",
+    color: "#8b5cf6",
+    icon: "👨‍💻"
   }
 ];
 
@@ -59,68 +59,68 @@ export const TECH_STACK = [
 export const SKILLS_DATA = {
   centerText: {
     name: "Rahul Reddy",
-    tagline: "Vibe Coder",
-    emoji: "⚡"
+    tagline: "Learning Dev",
+    emoji: "🎓"
   },
   categories: [
     {
-      id: "strategy",
-      name: "Strategy & Design",
-      icon: "🎯",
-      color: "#fbbf24",
+      id: "web",
+      name: "Web Development",
+      icon: "🌐",
+      color: "#3b82f6",
       skills: [
-        { name: "Creative Thinking", level: "expert" },
-        { name: "UX Design", level: "advanced" },
-        { name: "Brand Strategy", level: "advanced" },
-        { name: "Visual Design", level: "advanced" }
+        { name: "HTML/CSS", level: "comfortable" },
+        { name: "JavaScript", level: "comfortable" },
+        { name: "React Basics", level: "comfortable" },
+        { name: "Responsive Design", level: "comfortable" }
       ]
     },
     {
-      id: "marketing",
-      name: "Marketing & SEO",
-      icon: "📈",
-      color: "#84cc16",
+      id: "tools",
+      name: "Tools & Platforms",
+      icon: "🛠️",
+      color: "#f97316",
       skills: [
-        { name: "SEO Strategy", level: "expert" },
-        { name: "Content Strategy", level: "expert" },
-        { name: "Digital Marketing", level: "advanced" },
-        { name: "Analytics", level: "advanced" }
+        { name: "Git/GitHub", level: "comfortable" },
+        { name: "VS Code", level: "comfortable" },
+        { name: "Figma", level: "comfortable" },
+        { name: "Chrome DevTools", level: "comfortable" }
+      ]
+    },
+    {
+      id: "learning",
+      name: "Currently Learning",
+      icon: "📚",
+      color: "#8b5cf6",
+      skills: [
+        { name: "Next.js", level: "comfortable" },
+        { name: "TypeScript", level: "comfortable" },
+        { name: "Tailwind CSS", level: "comfortable" },
+        { name: "Backend Basics", level: "comfortable" }
+      ]
+    },
+    {
+      id: "soft",
+      name: "Soft Skills",
+      icon: "💡",
+      color: "#fbbf24",
+      skills: [
+        { name: "Problem Solving", level: "comfortable" },
+        { name: "Quick Learning", level: "comfortable" },
+        { name: "Communication", level: "comfortable" },
+        { name: "Dedication", level: "comfortable" }
       ]
     },
     {
       id: "ai",
-      name: "AI-Powered Building",
+      name: "AI Tools",
       icon: "🤖",
-      color: "#3b82f6",
+      color: "#84cc16",
       skills: [
-        { name: "ChatGPT/Claude", level: "expert" },
-        { name: "Cursor AI", level: "expert" },
-        { name: "AI Image Gen", level: "advanced" },
-        { name: "Prompt Engineering", level: "expert" }
-      ]
-    },
-    {
-      id: "platforms",
-      name: "Platforms & Tools",
-      icon: "🛠️",
-      color: "#f97316",
-      skills: [
-        { name: "WordPress", level: "expert" },
-        { name: "Webflow", level: "advanced" },
-        { name: "Figma", level: "advanced" },
-        { name: "Firebase", level: "comfortable" }
-      ]
-    },
-    {
-      id: "automation",
-      name: "Automation",
-      icon: "⚡",
-      color: "#8b5cf6",
-      skills: [
-        { name: "Zapier/Make", level: "advanced" },
-        { name: "n8n Workflows", level: "advanced" },
-        { name: "API Integration", level: "comfortable" },
-        { name: "Airtable/Notion", level: "advanced" }
+        { name: "ChatGPT", level: "comfortable" },
+        { name: "GitHub Copilot", level: "comfortable" },
+        { name: "AI Prompting", level: "comfortable" },
+        { name: "Learning Assist", level: "comfortable" }
       ]
     }
   ]
@@ -129,5 +129,5 @@ export const SKILLS_DATA = {
 export const SKILL_LEVELS = {
   expert: { label: "Expert", stars: 5, color: "#84cc16" },
   advanced: { label: "Advanced", stars: 4, color: "#3b82f6" },
-  comfortable: { label: "Comfortable", stars: 3, color: "#f59e0b" }
+  comfortable: { label: "Learning", stars: 3, color: "#f59e0b" }
 };

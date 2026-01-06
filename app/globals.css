@@ -2,621 +2,185 @@
 
 @theme {
   /* =========================================
-     1. BRAND IDENTITY (Bachelor Brothers Inspired)
+     1. BRAND IDENTITY & SEMANTICS
      ========================================= */
-  
-  /* Primary: Indigo (Tech, Digital, Premium) */
-  --color-brand-main: #6366f1;
-  --color-brand-dark: #4f46e5;
-  --color-brand-light: #eef2ff;
 
-  /* Accent: Rose (Passion, Energy) */
-  --color-accent-rose: #f43f5e;
-  --color-accent-glow: #ffe4e6;
-  
-  /* Accent: Teal (Trust, Innovation) */
-  --color-accent-teal: #14b8a6;
-  --color-accent-teal-light: #ccfbf1;
-  
-  /* Accent: Amber (Warmth, Creativity) */
-  --color-accent-amber: #f59e0b;
-  --color-accent-amber-light: #fef3c7;
+  /* Primary Brand Color (Indigo/Violet - Premium Tech) */
+  --color-brand-main: var(--brand-main);
+  --color-brand-alpha: var(--brand-alpha);
+  --color-brand-contrast: var(--brand-contrast);
 
-  /* =========================================
-     2. CANVAS & SURFACES (Warm Peach Base)
-     ========================================= */
-  
-  /* The Base: Signature Warm Peach (Bachelor Brothers) */
-  --color-bg-canvas: #fef3e2;
-  
-  /* Surface 1: Clean White */
-  --color-bg-surface: #FFFFFF;
-  
-  /* Surface 2: Warm Subtle */
-  --color-bg-subtle: #fef7ed;
-  
-  /* Surface 3: The "Inverse" (Warm Black) */
-  --color-bg-inverse: #0f172a;
-  
-  /* Dark Surface (for hero sections) */
-  --color-bg-dark: #1e293b;
+  /* Functional Status Colors */
+  --color-status-success: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-error: var(--error);
+
+  /* Background Surfaces */
+  --color-bg-canvas: var(--bg-canvas);
+  /* Main page background */
+  --color-bg-surface: var(--bg-surface);
+  /* Cards, panels (60-80% opacity) */
+  --color-bg-subtle: var(--bg-subtle);
+  /* Secondary backgrounds */
+  --color-bg-inverse: var(--bg-inverse);
+  /* High contrast background */
+
+  /* Typography Colors */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-inverse: var(--text-inverse);
+
+  /* Borders & Dividers */
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
 
   /* =========================================
-     3. TYPOGRAPHY (High Contrast & Readability)
+     2. SHADOWS & ELEVATION (Premium Depth)
      ========================================= */
-  
-  /* BIND FONT VARIABLES */
-  --font-sans: var(--font-outfit), 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-playfair), 'Playfair Display', ui-serif, Georgia, serif;
 
-  /* Primary: Deep Slate */
-  --color-text-primary: #0f172a; 
-  
-  /* Secondary: Slate for readability */
-  --color-text-secondary: #475569; 
-  
-  /* Muted: Light slate for labels */
-  --color-text-muted: #94a3b8;
-  
-  /* Inverse Text */
-  --color-text-inverse: #f8fafc;
-
-  /* =========================================
-     4. SEMANTIC STATUS
-     ========================================= */
-  
-  --color-status-success: #10b981;
-  --color-status-warning: #f59e0b;
-  --color-status-error: #ef4444;
-  
-  /* =========================================
-     5. GRADIENTS (Bachelor Brothers Magic)
-     ========================================= */
-  
-  /* Hero Gradient */
-  --gradient-hero: linear-gradient(135deg, #6366f1, #f43f5e, #f59e0b);
-  
-  /* Text Gradient */
-  --gradient-text: linear-gradient(135deg, #6366f1, #f43f5e, #14b8a6);
-  
-  /* Subtle Background Gradient */
-  --gradient-bg: linear-gradient(180deg, #fef3e2 0%, #fef7ed 100%);
-  
-  /* =========================================
-     6. SHADOWS & GLOWS (Depth System)
-     ========================================= */
-  
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  
-  /* Glow Effects */
-  --glow-indigo: 0 0 20px rgba(99, 102, 241, 0.3);
-  --glow-rose: 0 0 20px rgba(244, 63, 94, 0.3);
-  --glow-teal: 0 0 20px rgba(20, 184, 166, 0.3);
-  --glow-amber: 0 0 20px rgba(245, 158, 11, 0.3);
-  
+  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+
+  /* Colored Glow Shadows */
+  --shadow-glow-brand: 0 0 20px -5px var(--brand-main), 0 0 10px -5px var(--brand-main);
+
   /* =========================================
-     7. ANIMATIONS (Bachelor Brothers Style)
+     3. ANIMATIONS & TRANSITIONS
      ========================================= */
-  
-  --animate-scroll-up: scrollUp 30s linear infinite;
-  --animate-scroll-up-slow: scrollUp 35s linear infinite;
-  --animate-float: float 3s ease-in-out infinite;
-  --animate-pulse-slow: pulse 2s infinite;
-  --animate-shimmer: shimmer 2s infinite;
-  --animate-fade-in: fadeIn 0.6s ease-out;
-  --animate-slide-up: slideUp 0.6s ease-out;
-  
-  /* =========================================
-     8. SPACING & SIZING (Consistent Scale)
-     ========================================= */
-  
-  --radius-sm: 0.5rem;
-  --radius-md: 1rem;
-  --radius-lg: 1.5rem;
-  --radius-xl: 2rem;
-  --radius-2xl: 2.5rem;
-  --radius-3xl: 3rem;
-  --radius-full: 9999px;
-  
-  /* Container Widths */
-  --container-sm: 640px;
-  --container-md: 768px;
-  --container-lg: 1024px;
-  --container-xl: 1280px;
-  --container-2xl: 1400px;
-  
-  /* =========================================
-     9. TRANSITIONS (Smooth Interactions)
-     ========================================= */
-  
-  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-bounce: 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-spin-slow: spin 3s linear infinite;
+
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* =========================================
-   KEYFRAME ANIMATIONS
+   CSS VARIABLES DEFINITION
    ========================================= */
 
-@keyframes scrollUp {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-50%); }
-}
+@layer base {
+  :root {
+    /* LIGHT MODE: Enhanced Contrast & Depth */
+    /* Subtle warm tones with better definition */
+    --bg-canvas: #f5f5f7;
+    /* Slightly darker for better contrast */
+    --bg-surface: rgba(255, 255, 255, 0.95);
+    /* More opaque for better visibility */
+    --bg-subtle: #e8e8eb;
+    /* Stronger distinction */
+    --bg-inverse: #18181b;
+    /* Neutral-900 */
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
+    --text-primary: #1a1a1a;
+    /* Darker for better readability */
+    --text-secondary: #4a4a4f;
+    /* Stronger contrast */
+    --text-muted: #8e8e93;
+    /* More visible */
+    --text-inverse: #fafafa;
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
-}
+    --border-subtle: rgba(0, 0, 0, 0.08);
+    /* More visible borders */
+    --border-strong: rgba(0, 0, 0, 0.15);
+    /* Stronger borders */
 
-@keyframes shimmer {
-  0% { background-position: -1000px 0; }
-  100% { background-position: 1000px 0; }
-}
+    /* Brand: Vibrant Indigo/Violet for light mode */
+    --brand-main: #5b5fc7;
+    /* Deeper, more saturated indigo */
+    --brand-alpha: rgba(91, 95, 199, 0.12);
+    --brand-contrast: #ffffff;
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { 
-    opacity: 0;
-    transform: translateY(30px);
+    /* Status */
+    --success: #0f9d58;
+    /* Slightly deeper green */
+    --warning: #f59e0b;
+    --error: #ef4444;
   }
-  to { 
-    opacity: 1;
+
+  .dark {
+    /* DARK MODE: Deep Slate / Navy */
+    /* Not pure black (#000000) but a rich deep blue-gray */
+    --bg-canvas: #0b1121;
+    /* Rich Dark Slate */
+    --bg-surface: rgba(30, 41, 59, 0.4);
+    /* Slate-800 with opacity */
+    --bg-subtle: #1e293b;
+    /* Slate-800 */
+    --bg-inverse: #f8fafc;
+    /* Slate-50 */
+
+    --text-primary: #f8fafc;
+    /* Slate-50 */
+    --text-secondary: #94a3b8;
+    /* Slate-400 */
+    --text-muted: #64748b;
+    /* Slate-500 */
+    --text-inverse: #0f172a;
+    /* Slate-900 */
+
+    --border-subtle: rgba(255, 255, 255, 0.05);
+    --border-strong: rgba(255, 255, 255, 0.1);
+
+    /* Brand: Slightly lighter for dark mode visibility */
+    --brand-main: #818cf8;
+    /* Indigo-400 */
+    --brand-alpha: rgba(129, 140, 248, 0.15);
+    --brand-contrast: #0f172a;
+  }
+}
+
+/* =========================================
+   GLOBAL RESET & UTILITIES
+   ========================================= */
+
+@layer base {
+  * {
+    @apply border-border-subtle;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-bg-canvas text-text-primary;
+    background-image:
+      radial-gradient(at 0% 0%, var(--brand-alpha) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, var(--brand-alpha) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+/* Glassmorphism Utilities */
+@utility glass {
+  @apply backdrop-blur-md border border-border-subtle bg-bg-surface shadow-sm;
+}
+
+@utility glass-hover {
+  @apply transition-all duration-300 hover:bg-bg-subtle hover:border-brand-main/30 hover:shadow-lg hover:-translate-y-1;
+}
+
+/* Text Gradients */
+@utility text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-main to-purple-500;
+}
+
+/* Animation Keyframes */
+@keyframes float {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
-}
 
-/* =========================================
-   GLOBAL RESET & BASE STYLES
-   ========================================= */
-
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-brand-main) var(--color-bg-canvas);
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-bg-canvas);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-brand-main);
-  border-radius: 5px;
-  border: 2px solid var(--color-bg-canvas);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-brand-dark);
-}
-
-html {
-  scroll-behavior: smooth;
-  background-color: var(--color-bg-canvas);
-}
-
-body {
-  font-feature-settings: "rlig" 1, "calt" 1;
-  background-color: var(--color-bg-canvas);
-  color: var(--color-text-primary);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  line-height: 1.6;
-}
-
-/* =========================================
-   TYPOGRAPHY SYSTEM
-   ========================================= */
-
-/* Display Text (Hero Headlines) */
-.display {
-  font-size: clamp(3rem, 8vw, 7rem); /* 48px → 112px */
-  font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: -0.03em;
-  font-family: var(--font-serif);
-}
-
-/* Headings - Mobile First with Fluid Scaling */
-h1, .h1 {
-  font-size: clamp(2.5rem, 5vw, 5.5rem); /* 40px → 88px */
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  font-family: var(--font-serif);
-}
-
-h2, .h2 {
-  font-size: clamp(2rem, 4vw, 4.5rem); /* 32px → 72px */
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-  font-family: var(--font-serif);
-}
-
-h3, .h3 {
-  font-size: clamp(1.5rem, 3vw, 3rem); /* 24px → 48px */
-  font-weight: 700;
-  line-height: 1.2;
-  font-family: var(--font-sans);
-}
-
-h4, .h4 {
-  font-size: clamp(1.25rem, 2.5vw, 2rem); /* 20px → 32px */
-  font-weight: 700;
-  line-height: 1.3;
-  font-family: var(--font-sans);
-}
-
-h5, .h5 {
-  font-size: clamp(1.125rem, 2vw, 1.5rem); /* 18px → 24px */
-  font-weight: 600;
-  line-height: 1.4;
-}
-
-h6, .h6 {
-  font-size: 1rem; /* 16px */
-  font-weight: 600;
-  line-height: 1.5;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* Body Text */
-p {
-  font-size: 1rem; /* 16px */
-  line-height: 1.7;
-  color: var(--color-text-secondary);
-}
-
-.lead {
-  font-size: clamp(1.125rem, 2vw, 1.5rem); /* 18px → 24px */
-  line-height: 1.6;
-  font-weight: 300;
-  color: var(--color-text-secondary);
-}
-
-/* Labels & Small Text */
-.label {
-  font-size: 0.875rem; /* 14px */
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-}
-
-.caption {
-  font-size: 0.75rem; /* 12px */
-  line-height: 1.5;
-  color: var(--color-text-muted);
-}
-
-/* Bachelor Brothers Style Tags */
-.tag {
-  font-size: 0.625rem; /* 10px */
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  padding: 0.375rem 0.875rem;
-  border-radius: var(--radius-full);
-  display: inline-block;
-}
-
-.tag-lg {
-  font-size: 0.75rem; /* 12px */
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  padding: 0.5rem 1.25rem;
-  border-radius: var(--radius-full);
-  display: inline-block;
-}
-
-/* Link Styles */
-a {
-  color: var(--color-brand-main);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-a:hover {
-  color: var(--color-brand-dark);
-}
-
-/* Font Weight Utilities */
-.font-light { font-weight: 300; }
-.font-normal { font-weight: 400; }
-.font-medium { font-weight: 500; }
-.font-semibold { font-weight: 600; }
-.font-bold { font-weight: 700; }
-.font-extrabold { font-weight: 800; }
-.font-black { font-weight: 900; }
-
-/* =========================================
-   BACHELOR BROTHERS BACKGROUND EFFECTS
-   ========================================= */
-
-.bg-pattern {
-  background-image: 
-    radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(244, 63, 94, 0.05) 0%, transparent 50%);
-}
-
-.bg-pattern-dense {
-  background-image: 
-    radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(244, 63, 94, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(20, 184, 166, 0.05) 0%, transparent 50%);
-}
-
-/* Texture Overlays */
-.texture-overlay {
-  background-image: url('https://www.transparenttextures.com/patterns/diagonal-stripes.png');
-  opacity: 0.03;
-  pointer-events: none;
-}
-
-.texture-paper {
-  background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
-  opacity: 0.05;
-}
-
-.texture-cubes {
-  background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
-  opacity: 0.1;
-}
-
-/* Blur Glows (Bachelor Brothers Signature) */
-.blur-glow-indigo {
-  position: absolute;
-  background: var(--color-brand-main);
-  border-radius: 50%;
-  filter: blur(150px);
-  opacity: 0.2;
-  pointer-events: none;
-}
-
-.blur-glow-rose {
-  position: absolute;
-  background: var(--color-accent-rose);
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.15;
-  pointer-events: none;
-}
-
-.blur-glow-teal {
-  position: absolute;
-  background: var(--color-accent-teal);
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.1;
-  pointer-events: none;
-}
-
-/* =========================================
-   SELECTION STATE
-   ========================================= */
-
-::selection {
-  background-color: var(--color-brand-main);
-  color: white;
-}
-
-::-moz-selection {
-  background-color: var(--color-brand-main);
-  color: white;
-}
-
-/* =========================================
-   GRADIENT TEXT UTILITY
-   ========================================= */
-
-.gradient-text {
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.gradient-hero {
-  background: var(--gradient-hero);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* =========================================
-   GLASS MORPHISM EFFECTS
-   ========================================= */
-
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.glass-dark {
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.glass-strong {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-/* =========================================
-   GLOW EFFECTS
-   ========================================= */
-
-.glow-indigo {
-  box-shadow: var(--glow-indigo);
-}
-
-.glow-rose {
-  box-shadow: var(--glow-rose);
-}
-
-.glow-teal {
-  box-shadow: var(--glow-teal);
-}
-
-.glow-amber {
-  box-shadow: var(--glow-amber);
-}
-
-/* =========================================
-   HOVER & INTERACTION UTILITIES
-   ========================================= */
-
-.hover\:pause:hover {
-  animation-play-state: paused;
-}
-
-.hover-lift {
-  transition: transform var(--transition-base);
-}
-
-.hover-lift:hover {
-  transform: translateY(-8px);
-}
-
-.hover-scale {
-  transition: transform var(--transition-base);
-}
-
-.hover-scale:hover {
-  transform: scale(1.05);
-}
-
-/* =========================================
-   CONTAINER UTILITIES
-   ========================================= */
-
-.container-custom {
-  width: 100%;
-  max-width: var(--container-2xl);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-@media (min-width: 640px) {
-  .container-custom {
-    padding-left: 2rem;
-    padding-right: 2rem;
+  50% {
+    transform: translateY(-20px);
   }
-}
-
-/* =========================================
-   LENIS SMOOTH SCROLL
-   ========================================= */
-
-html.lenis { 
-  height: auto; 
-}
-
-.lenis.lenis-smooth { 
-  scroll-behavior: auto !important; 
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] { 
-  overscroll-behavior: contain; 
-}
-
-.lenis.lenis-stopped { 
-  overflow: hidden; 
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
-
-/* =========================================
-   SAFE AREA (Mobile Notch Support)
-   ========================================= */
-
-@supports (padding: max(0px)) {
-  .safe-area-bottom {
-    padding-bottom: max(1rem, env(safe-area-inset-bottom));
-  }
-  
-  .safe-area-top {
-    padding-top: max(1rem, env(safe-area-inset-top));
-  }
-}
-
-/* =========================================
-   ACCESSIBILITY
-   ========================================= */
-
-/* Focus visible for keyboard navigation */
-*:focus-visible {
-  outline: 2px solid var(--color-brand-main);
-  outline-offset: 2px;
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* =========================================
-   PRINT STYLES
-   ========================================= */
-
-@media print {
-  body {
-    background: white;
-    color: black;
-  }
-  
-  .no-print {
-    display: none !important;
-  }
-}
-
-/* Force font application */
-h1, h2, h3, .h1, .h2, .h3, .display {
-  font-family: var(--font-playfair) !important;
-}
-
-body, p, span, div {
-  font-family: var(--font-outfit) !important;
-}
-
-/* Ensure background pattern is visible */
-body {
-  background: var(--color-bg-canvas) !important;
 }

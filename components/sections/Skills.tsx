@@ -62,28 +62,21 @@ export default function SkillsSection() {
   return (
     <div
       ref={containerRef}
-      // ✅ COMPACT: Reduced padding
-      className="bg-[#0f172a] border border-white/10 rounded-[2.5rem] p-6 md:p-8 my-8 relative overflow-hidden shadow-2xl"
+      className="w-full relative z-10"
     >
       {/* Background Effects */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none mix-blend-screen dark:mix-blend-screen opacity-40">
         <motion.div
           animate={{ scale: [1, 1.2, 1], rotate: [0, 45, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-[20%] -left-[10%] w-[400px] h-[400px] bg-brand-main/5 rounded-full blur-[100px]"
+          className="absolute -top-[20%] -left-[10%] w-[400px] h-[400px] bg-brand-main/20 rounded-full blur-[100px]"
         />
         <motion.div
           animate={{ scale: [1, 1.3, 1], rotate: [0, -45, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute -bottom-[20%] -right-[10%] w-[400px] h-[400px] bg-accent-rose/5 rounded-full blur-[100px]"
+          className="absolute -bottom-[20%] -right-[10%] w-[400px] h-[400px] bg-accent-rose/20 rounded-full blur-[100px]"
         />
       </div>
-
-      {/* Grid Texture */}
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{
-        backgroundImage: `radial-gradient(circle at 1px 1px, black 1px, transparent 0)`,
-        backgroundSize: '20px 20px'
-      }} />
 
       <div className="relative z-10">
         {/* Compact Header */}
@@ -91,38 +84,48 @@ export default function SkillsSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8"
+          className="text-center mb-16"
         >
-          <div className="flex items-center justify-center gap-2 mb-1.5">
+          {/* Tag */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="inline-flex items-center gap-2 bg-brand-main/10 border border-brand-main/20 rounded-full px-4 py-2 mb-6"
+          >
             <motion.div
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
             >
               <Sparkles size={14} className="text-brand-main" />
             </motion.div>
-            <p className="text-brand-main font-mono text-[10px] uppercase tracking-[0.2em] font-bold">
+            <p className="text-brand-main font-mono text-xs uppercase tracking-[0.2em] font-bold">
               My Arsenal
             </p>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-black font-serif text-white mb-2 tracking-tight">
-            How I Build Fast 🛠️
+          </motion.div>
+          {/* Title */}
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-black font-serif text-text-primary mb-6 tracking-tight leading-none">
+            How I Build{" "}
+            <span className="text-gradient">Fast</span> 🛠️
           </h2>
-          <p className="text-text-secondary text-sm font-medium max-w-lg mx-auto">
-            Curated tools and strategies for speed and scalability.
+
+          {/* Description */}
+          <p className="text-text-secondary text-lg font-medium max-w-2xl mx-auto">
+            Curated tools and strategies for <span className="text-brand-main font-bold">speed</span> and <span className="text-brand-main font-bold">scalability</span>.
           </p>
         </motion.div>
 
-        {/* Side-by-Side Layout - COMPACT */}
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
+        {/* Side-by-Side Layout */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
-          {/* LEFT: Circular Orbit - COMPACT */}
-          <div className="relative h-[360px] flex items-center justify-center">
+          {/* LEFT: Circular Orbit */}
+          <div className="relative h-[400px] flex items-center justify-center">
 
             {/* Orbit Track */}
-            <div className="absolute w-[300px] h-[300px] rounded-full border border-dashed border-text-muted/20 animate-spin-slow pointer-events-none"
+            <div className="absolute w-[300px] h-[300px] rounded-full border border-dashed border-border-strong animate-spin-slow pointer-events-none"
               style={{ animationDuration: '60s' }} />
 
-            {/* Center Core - SMALLER */}
+            {/* Center Core */}
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
               animate={isInView ? { scale: 1, opacity: 1 } : {}}
@@ -135,16 +138,16 @@ export default function SkillsSection() {
                   animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
                   transition={{ duration: 3, repeat: Infinity }}
                 />
-                <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-brand-main via-brand-dark to-brand-main border-4 border-bg-surface shadow-2xl flex flex-col items-center justify-center z-20">
-                  <User size={24} className="text-white mb-1" />
-                  <p className="text-white font-black text-[9px] uppercase tracking-wide">
+                <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-brand-main via-brand-dark to-brand-main border-4 border-bg-surface shadow-2xl flex flex-col items-center justify-center z-20">
+                  <User size={32} className="text-white mb-1" />
+                  <p className="text-white font-black text-[10px] uppercase tracking-wide">
                     Rahul
                   </p>
                 </div>
               </div>
             </motion.div>
 
-            {/* Orbiting Elements - SMALLER */}
+            {/* Orbiting Elements */}
             {SKILLS_DATA.categories.map((category, index) => {
               const position = getCircularPosition(index, SKILLS_DATA.categories.length, radius);
               const isActive = activeCategory === category.id;
@@ -170,15 +173,15 @@ export default function SkillsSection() {
                     onClick={() => setActiveCategory(category.id)}
                     whileHover={{ scale: 1.15, y: -5 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`relative w-16 h-16 rounded-xl flex flex-col items-center justify-center transition-all duration-300 shadow-sm border group ${isActive
-                      ? 'bg-brand-main text-white border-brand-main shadow-[0_0_20px_rgba(99,102,241,0.4)] scale-110 z-40'
-                      : 'bg-white/5 text-white/70 border-white/10 hover:border-brand-main/50 hover:bg-white/10 hover:shadow-lg hover:shadow-brand-main/20'
+                    className={`relative w-20 h-20 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 shadow-sm border group ${isActive
+                      ? 'bg-brand-main text-white border-brand-main shadow-[0_0_20px_var(--color-brand-main)] scale-110 z-40'
+                      : 'bg-bg-surface text-text-secondary border-border-subtle hover:border-brand-main/50 hover:bg-bg-subtle hover:shadow-lg hover:shadow-brand-main/20'
                       }`}
                   >
-                    <span className={`text-xl mb-0.5 transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}>
+                    <span className={`text-2xl mb-1 transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}>
                       {category.icon}
                     </span>
-                    <span className={`text-[8px] font-bold uppercase tracking-wide ${isActive ? 'text-white' : 'text-text-muted group-hover:text-text-primary'}`}>
+                    <span className={`text-[9px] font-bold uppercase tracking-wide ${isActive ? 'text-white' : 'text-text-muted group-hover:text-text-primary'}`}>
                       {category.name}
                     </span>
 
@@ -192,35 +195,18 @@ export default function SkillsSection() {
                 </motion.div>
               );
             })}
-
-            {/* Floating Stats - COMPACT */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-8 right-8 bg-bg-surface/80 backdrop-blur-sm border border-text-muted/10 px-2.5 py-1 rounded-full text-[9px] font-bold text-text-secondary shadow-sm"
-            >
-              🚀 5+ Categories
-            </motion.div>
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-8 left-8 bg-bg-surface/80 backdrop-blur-sm border border-text-muted/10 px-2.5 py-1 rounded-full text-[9px] font-bold text-text-secondary shadow-sm"
-            >
-              ⚡ Fast Workflow
-            </motion.div>
-
           </div>
 
-          {/* RIGHT: Dashboard Panel - COMPACT */}
+          {/* RIGHT: Dashboard Panel */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="h-[360px]"
+            className="h-[400px]"
           >
-            <div className="h-full bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col relative">
+            <div className="h-full bg-bg-surface backdrop-blur-md border border-border-subtle rounded-3xl shadow-xl overflow-hidden flex flex-col relative">
               {/* Top Bar */}
-              <div className="h-1 w-full bg-gradient-to-r from-brand-main via-brand-dark to-brand-main" />
+              <div className="h-1.5 w-full bg-gradient-to-r from-brand-main via-brand-dark to-brand-main" />
 
               <AnimatePresence mode="wait">
                 {activeCategory && activeDetails && activeData ? (
@@ -230,21 +216,21 @@ export default function SkillsSection() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.3 }}
-                    className="flex-1 p-5 flex flex-col overflow-hidden"
+                    className="flex-1 p-6 flex flex-col overflow-hidden"
                   >
-                    {/* Panel Header - COMPACT */}
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-xl bg-bg-subtle flex items-center justify-center text-2xl shadow-inner border border-text-muted/5">
+                    {/* Panel Header */}
+                    <div className="flex items-start justify-between mb-6">
+                      <div className="flex items-center gap-4">
+                        <div className="w-14 h-14 rounded-2xl bg-bg-subtle flex items-center justify-center text-3xl shadow-inner border border-text-muted/10 text-brand-main">
                           {activeData.icon}
                         </div>
                         <div>
-                          <h3 className="text-lg font-black font-serif text-text-primary leading-tight">{activeData.name}</h3>
-                          <div className="flex items-center gap-2 mt-0.5">
-                            <span className="text-[9px] font-bold text-white bg-brand-main px-2 py-0.5 rounded-full">
+                          <h3 className="text-2xl font-black font-serif text-text-primary leading-tight">{activeData.name}</h3>
+                          <div className="flex items-center gap-2 mt-1">
+                            <span className="text-[10px] font-bold text-white bg-brand-main px-2.5 py-0.5 rounded-full">
                               {activeDetails.level}
                             </span>
-                            <span className="text-[9px] font-medium text-text-muted">
+                            <span className="text-[10px] font-medium text-text-muted uppercase tracking-wide">
                               {activeDetails.focus}
                             </span>
                           </div>
@@ -252,35 +238,35 @@ export default function SkillsSection() {
                       </div>
                     </div>
 
-                    {/* Description - COMPACT */}
-                    <div className="bg-bg-subtle/50 rounded-lg p-3 mb-4 border border-text-muted/5">
-                      <p className="text-xs text-text-secondary leading-relaxed font-medium">
+                    {/* Description */}
+                    <div className="bg-bg-subtle/50 rounded-xl p-4 mb-6 border border-border-subtle">
+                      <p className="text-sm text-text-secondary leading-relaxed font-medium">
                         "{activeDetails.description}"
                       </p>
                     </div>
 
-                    <div className="flex-1 overflow-y-auto pr-2 space-y-4 custom-scrollbar">
-                      {/* Skills Section - COMPACT */}
+                    <div className="flex-1 overflow-y-auto pr-2 space-y-6 custom-scrollbar">
+                      {/* Skills Section */}
                       <div>
-                        <div className="flex items-center gap-1.5 mb-2">
-                          <Code2 size={12} className="text-brand-main" />
-                          <h4 className="text-[10px] font-bold text-text-muted uppercase tracking-wider">Core Skills</h4>
+                        <div className="flex items-center gap-2 mb-3">
+                          <Code2 size={14} className="text-brand-main" />
+                          <h4 className="text-xs font-bold text-text-muted uppercase tracking-wider">Core Skills</h4>
                         </div>
-                        <div className="grid grid-cols-1 gap-1.5">
+                        <div className="grid grid-cols-1 gap-2">
                           {activeData.skills.map((skill, idx) => (
                             <motion.div
                               key={skill.name}
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: idx * 0.05 }}
-                              className="flex items-center justify-between bg-bg-canvas rounded-lg px-2.5 py-1.5 border border-text-muted/10"
+                              className="flex items-center justify-between bg-bg-canvas rounded-lg px-3 py-2 border border-border-subtle"
                             >
-                              <span className="text-xs font-bold text-white">{skill.name}</span>
-                              <div className="flex gap-0.5">
+                              <span className="text-sm font-bold text-text-primary">{skill.name}</span>
+                              <div className="flex gap-1">
                                 {[...Array(5)].map((_, i) => (
                                   <div
                                     key={i}
-                                    className={`w-1 h-1 rounded-full ${i < (skill.level === 'expert' ? 5 : skill.level === 'advanced' ? 4 : 3)
+                                    className={`w-1.5 h-1.5 rounded-full ${i < (skill.level === 'expert' ? 5 : skill.level === 'advanced' ? 4 : 3)
                                       ? 'bg-brand-main'
                                       : 'bg-text-muted/20'
                                       }`}
@@ -292,20 +278,20 @@ export default function SkillsSection() {
                         </div>
                       </div>
 
-                      {/* Tools Section - COMPACT */}
+                      {/* Tools Section */}
                       <div>
-                        <div className="flex items-center gap-1.5 mb-2">
-                          <Zap size={12} className="text-brand-main" />
-                          <h4 className="text-[10px] font-bold text-text-muted uppercase tracking-wider">Power Tools</h4>
+                        <div className="flex items-center gap-2 mb-3">
+                          <Zap size={14} className="text-brand-main" />
+                          <h4 className="text-xs font-bold text-text-muted uppercase tracking-wider">Power Tools</h4>
                         </div>
-                        <div className="flex flex-wrap gap-1.5">
+                        <div className="flex flex-wrap gap-2">
                           {activeDetails.tools.map((tool, idx) => (
                             <motion.span
                               key={tool}
                               initial={{ opacity: 0, scale: 0.8 }}
                               animate={{ opacity: 1, scale: 1 }}
                               transition={{ delay: 0.2 + idx * 0.05 }}
-                              className="px-2.5 py-1 bg-bg-inverse text-text-inverse text-[10px] font-bold rounded-lg shadow-sm"
+                              className="px-3 py-1.5 bg-bg-inverse text-text-inverse text-xs font-bold rounded-lg shadow-sm"
                             >
                               {tool}
                             </motion.span>
@@ -315,31 +301,31 @@ export default function SkillsSection() {
                     </div>
                   </motion.div>
                 ) : (
-                  // Empty State - COMPACT
+                  // Empty State
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="flex-1 flex flex-col items-center justify-center text-center p-6 bg-bg-subtle/30"
+                    className="flex-1 flex flex-col items-center justify-center text-center p-8 bg-bg-subtle/20"
                   >
-                    <div className="w-16 h-16 bg-bg-surface rounded-full flex items-center justify-center mb-4 shadow-sm border border-text-muted/10">
+                    <div className="w-20 h-20 bg-bg-surface rounded-full flex items-center justify-center mb-6 shadow-sm border border-border-subtle">
                       <motion.div
                         animate={{ rotate: [0, 10, -10, 0] }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                       >
-                        <Sparkles size={28} className="text-brand-main/60" />
+                        <Sparkles size={32} className="text-brand-main" />
                       </motion.div>
                     </div>
 
-                    <h3 className="text-base font-black font-serif text-text-primary mb-2">
+                    <h3 className="text-xl font-black font-serif text-text-primary mb-3">
                       Explore My Skill Stack
                     </h3>
-                    <p className="text-xs text-text-secondary max-w-xs mb-6">
+                    <p className="text-sm text-text-secondary max-w-xs mb-8">
                       Click any category to see proficiency, tools, and strategy.
                     </p>
 
-                    <div className="flex items-center gap-2 text-[10px] font-bold text-brand-main bg-brand-main/5 px-3 py-1.5 rounded-full">
-                      <ArrowRight size={12} className="animate-pulse" />
+                    <div className="flex items-center gap-2 text-xs font-bold text-brand-main bg-brand-main/10 px-4 py-2 rounded-full">
+                      <ArrowRight size={14} className="animate-pulse" />
                       Select a category
                     </div>
                   </motion.div>

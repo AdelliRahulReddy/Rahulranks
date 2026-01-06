@@ -1,74 +1,74 @@
 // ==========================================
-// TRUST & CREDENTIALS DATA
-// Easy to update when you get new ones!
+// TRUST & LEARNING JOURNEY DATA
+// Your authentic journey as a student developer
 // ==========================================
 
 export const TRUST_DATA = {
   certifications: [
     {
       id: "cert-1",
-      name: "Google Analytics Certified",
-      issuer: "Google",
-      date: "2024",
-      image: "/certificates/google-analytics.jpg",
-      verifyLink: "https://verify-link.com",
-      status: "coming_soon", // Change to "active" when you get it
-      description: "Professional certification in Google Analytics 4"
+      name: "Learning Path: Web Development",
+      issuer: "Self-Taught",
+      date: "2025 - Ongoing",
+      image: "/certificates/learning.jpg",
+      verifyLink: "",
+      status: "active",
+      description: "Actively learning modern web development through online courses and practice projects"
     },
     {
       id: "cert-2",
-      name: "HubSpot SEO Certified",
-      issuer: "HubSpot",
-      date: "2024",
-      image: "/certificates/hubspot-seo.jpg",
+      name: "Building Real Projects",
+      issuer: "Hands-On Practice",
+      date: "2025",
+      image: "/certificates/projects.jpg",
       verifyLink: "",
-      status: "coming_soon",
-      description: "Advanced SEO strategies and implementation"
+      status: "active",
+      description: "Learning by doing - building real-world applications to gain practical experience"
     },
   ],
-  
+
   testimonials: [
     {
       id: "test-1",
-      name: "John Doe",
-      role: "CEO, Tech Startup",
-      company: "StartupXYZ",
-      avatar: "/avatars/john.jpg",
+      name: "Your Trust Matters",
+      role: "Building Credibility",
+      company: "One Project at a Time",
+      avatar: "/avatars/placeholder.jpg",
       rating: 5,
-      text: "Rahul delivered an amazing website that exceeded our expectations. SEO rankings improved by 300% in 3 months!",
-      project: "Business Website",
-      date: "December 2024",
-      status: "coming_soon", // Change to "active" when you get testimonial
+      text: "I'm just starting my journey as a developer. Your project could be my first testimonial! I'm offering free initial services to build my portfolio and gain real-world experience.",
+      project: "Let's Build Together",
+      date: "Starting Now",
+      status: "active",
     },
     {
       id: "test-2",
-      name: "Jane Smith",
-      role: "Marketing Head",
-      company: "Agency Co",
-      avatar: "/avatars/jane.jpg",
+      name: "Learning While Delivering",
+      role: "Student Developer",
+      company: "Committed to Quality",
+      avatar: "/avatars/placeholder.jpg",
       rating: 5,
-      text: "Fast turnaround, clean code, and excellent communication. Will definitely work again!",
-      project: "Landing Page",
-      date: "November 2024",
-      status: "coming_soon",
+      text: "No clients yet, but 100% dedication. I'll treat your project as my own learning opportunity while delivering quality work. Free for my first few projects!",
+      project: "Portfolio Building Phase",
+      date: "Open for Opportunities",
+      status: "active",
     },
   ],
 
   awards: [
     {
       id: "award-1",
-      name: "Best Portfolio Design",
-      issuer: "Awwwards",
-      date: "2025",
-      image: "/awards/awwwards.jpg",
-      status: "coming_soon",
+      name: "Passionate Learner",
+      issuer: "Self-Motivated",
+      date: "Every Day",
+      image: "/awards/learning.jpg",
+      status: "active",
     },
   ],
 
   stats: {
-    projects: 8,
-    clients: 5,
-    rating: 5.0,
-    responseTime: "< 2 hours"
+    projects: 0,
+    clients: 0,
+    rating: "Building",
+    responseTime: "Quick!"
   }
 };

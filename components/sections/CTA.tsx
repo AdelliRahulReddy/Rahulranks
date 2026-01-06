@@ -54,28 +54,29 @@ export default function CTASection() {
   return (
     <section
       ref={containerRef}
-      className="bg-gradient-to-br from-brand-light via-bg-surface to-brand-light border border-brand-main/10 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 my-8 relative overflow-hidden shadow-xl shadow-brand-main/5"
+      className="bg-gradient-to-br from-bg-subtle via-bg-surface to-bg-subtle border border-border-subtle rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 my-8 relative overflow-hidden shadow-2xl"
     >
       {/* Pattern Overlay */}
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply dark:mix-blend-screen">
         <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, black 1px, transparent 0)`,
-          backgroundSize: '32px 32px'
+          backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
+          backgroundSize: '32px 32px',
+          color: 'var(--color-text-muted)'
         }} />
       </div>
 
-      {/* Particles - REDUCED */}
+      {/* Particles */}
       {mounted && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {particles.map((particle, i) => (
             <motion.div
               key={i}
-              className="absolute w-1.5 h-1.5 bg-brand-main/20 rounded-full"
-              style={{ left: particle.left, top: particle.top }}
+              className="absolute w-1 h-1 bg-brand-main rounded-full"
+              style={{ left: particle.left, top: particle.top, opacity: 0.2 }}
               initial={{ opacity: 0 }}
               animate={{
-                y: [0, -30, 0],
-                opacity: [0, 0.6, 0],
+                y: [0, -40, 0],
+                opacity: [0, 0.4, 0],
                 scale: [1, 1.5, 1],
               }}
               transition={{
@@ -95,26 +96,26 @@ export default function CTASection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8"
+          className="text-center mb-12"
         >
           <motion.div
             initial={{ scale: 0 }}
             animate={isInView ? { scale: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.2, type: "spring", bounce: 0.5 }}
-            className="flex items-center justify-center gap-2 mb-1.5"
+            className="flex items-center justify-center gap-2 mb-3"
           >
             <motion.div
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
             >
-              <Sparkles size={14} className="text-brand-main" />
+              <Sparkles size={16} className="text-brand-main" />
             </motion.div>
-            <p className="text-text-primary/80 font-mono text-[10px] uppercase tracking-[0.2em] font-bold">
+            <p className="text-brand-main font-mono text-xs uppercase tracking-[0.2em] font-bold">
               Let&apos;s Connect
             </p>
           </motion.div>
 
-          <h2 className="text-3xl md:text-5xl font-black font-serif text-text-primary mb-3 tracking-tight">
+          <h2 className="text-4xl md:text-6xl font-black font-serif text-text-primary mb-4 tracking-tight leading-tight">
             {CONTACT_DATA.headline}{" "}
             <motion.span
               animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
@@ -125,35 +126,35 @@ export default function CTASection() {
             </motion.span>
           </h2>
 
-          <p className="text-text-secondary text-sm md:text-base max-w-2xl mx-auto mb-4">
+          <p className="text-text-secondary text-base md:text-lg max-w-2xl mx-auto mb-8 font-medium">
             {CONTACT_DATA.subheadline}
           </p>
 
-          {/* Availability Badge - COMPACT */}
+          {/* Availability Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="inline-flex items-center gap-2.5 bg-bg-surface border border-brand-main/10 rounded-full px-4 py-2 shadow-sm"
+            className="inline-flex items-center gap-3 bg-bg-surface border border-border-subtle rounded-full px-5 py-2.5 shadow-sm hover:shadow-md transition-shadow"
           >
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-2">
               <motion.div
                 animate={{ scale: [1, 1.3, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className={`w-2 h-2 rounded-full ${getStatusColor()}`}
+                className={`w-2.5 h-2.5 rounded-full ${getStatusColor()}`}
               />
-              <span className="text-text-primary text-xs font-bold">{getStatusText()}</span>
+              <span className="text-text-primary text-sm font-bold">{getStatusText()}</span>
             </div>
-            <div className="w-px h-3 bg-text-muted/20" />
-            <div className="flex items-center gap-1.5 text-text-secondary text-[10px]">
-              <Zap size={10} />
-              <span className="font-semibold">{CONTACT_DATA.availability.responseTime} response</span>
+            <div className="w-px h-4 bg-border-strong" />
+            <div className="flex items-center gap-2 text-text-muted text-xs font-medium">
+              <Zap size={12} />
+              <span>{CONTACT_DATA.availability.responseTime} response</span>
             </div>
           </motion.div>
         </motion.div>
 
-        {/* Contact Cards - COMPACT */}
-        <div className="grid md:grid-cols-3 gap-3 mb-6">
+        {/* Contact Cards */}
+        <div className="grid md:grid-cols-3 gap-4 mb-8">
           {CONTACT_DATA.primaryContacts.map((contact, index) => (
             <motion.div
               key={contact.id}
@@ -161,24 +162,24 @@ export default function CTASection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
               whileHover={{ y: -6, scale: 1.02 }}
-              className="group relative"
+              className="group relative h-full"
             >
               {/* Glow Effect */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${contact.color} rounded-xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none`} />
+              <div className={`absolute inset-0 bg-gradient-to-br ${contact.color} rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none`} />
 
               {/* Card */}
-              <div className="relative bg-bg-surface rounded-xl p-5 shadow-sm hover:shadow-xl border border-brand-main/5 h-full flex flex-col">
-                <div className="text-3xl mb-2">{contact.icon}</div>
+              <div className="relative bg-bg-surface rounded-2xl p-6 shadow-sm hover:shadow-xl border border-border-subtle h-full flex flex-col transition-all">
+                <div className="text-3xl mb-3 text-text-primary group-hover:scale-110 transition-transform origin-left">{contact.icon}</div>
 
-                <h3 className="text-xs font-black text-text-primary mb-1 uppercase tracking-wide">
+                <h3 className="text-xs font-black text-text-muted mb-1 uppercase tracking-wider">
                   {contact.label}
                 </h3>
 
-                <div className="flex-1 mb-3">
-                  <p className="text-text-secondary font-bold text-sm mb-0.5">
+                <div className="flex-1 mb-4">
+                  <p className="text-text-primary font-bold text-base mb-1">
                     {contact.displayValue}
                   </p>
-                  <p className="text-text-muted text-[10px]">
+                  <p className="text-text-secondary text-xs">
                     {contact.description}
                   </p>
                 </div>
@@ -190,11 +191,11 @@ export default function CTASection() {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`flex-1 bg-gradient-to-r ${contact.color} text-white py-2 px-3 rounded-lg font-bold text-xs flex items-center justify-center gap-1.5 shadow-md hover:shadow-lg transition-shadow`}
+                    className={`flex-1 bg-gradient-to-r ${contact.color} text-white py-2.5 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-shadow`}
                   >
-                    {contact.id === "email" ? <Mail size={12} /> :
-                      contact.id === "whatsapp" ? <MessageCircle size={12} /> :
-                        <ExternalLink size={12} />}
+                    {contact.id === "email" ? <Mail size={14} /> :
+                      contact.id === "whatsapp" ? <MessageCircle size={14} /> :
+                        <ExternalLink size={14} />}
                     <span>Open</span>
                   </motion.a>
 
@@ -202,13 +203,13 @@ export default function CTASection() {
                     onClick={() => copyToClipboard(contact.value, contact.id)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-bg-inverse text-text-inverse hover:bg-black py-2 px-3 rounded-lg font-bold transition-colors"
+                    className="bg-bg-inverse text-text-inverse hover:bg-black dark:hover:bg-white dark:hover:text-black py-2.5 px-4 rounded-xl font-bold transition-colors shadow-md"
                     aria-label="Copy to clipboard"
                   >
                     {copiedId === contact.id ? (
-                      <Check size={14} className="text-status-success" />
+                      <Check size={16} className="text-status-success" />
                     ) : (
-                      <Copy size={14} />
+                      <Copy size={16} />
                     )}
                   </motion.button>
                 </div>
@@ -217,18 +218,18 @@ export default function CTASection() {
           ))}
         </div>
 
-        {/* Social Links - COMPACT */}
+        {/* Social Links */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.9 }}
-          className="bg-bg-subtle/50 backdrop-blur-md border border-brand-main/5 rounded-xl p-5"
+          className="bg-bg-subtle/30 backdrop-blur-md border border-border-subtle rounded-2xl p-6 md:p-8"
         >
-          <p className="text-text-secondary text-xs font-bold mb-3 text-center">
+          <p className="text-text-secondary text-xs font-bold mb-4 text-center uppercase tracking-wider">
             Or find me on social media
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {CONTACT_DATA.socialLinks.map((social, index) => (
               <motion.a
                 key={social.id}
@@ -240,11 +241,11 @@ export default function CTASection() {
                 transition={{ duration: 0.3, delay: 1 + index * 0.05 }}
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-bg-surface hover:bg-white border border-brand-main/5 rounded-lg p-3 flex flex-col items-center gap-1.5 transition-all group shadow-sm hover:shadow-md"
+                className="bg-bg-surface hover:bg-bg-subtle border border-border-subtle rounded-xl p-4 flex flex-col items-center gap-2 transition-all group shadow-sm hover:shadow-lg hover:border-brand-main/30"
               >
-                <span className="text-xl">{social.icon}</span>
-                <span className="text-text-primary text-[10px] font-bold">{social.label}</span>
-                <span className="text-text-muted text-[9px] group-hover:text-text-primary transition-colors">
+                <span className="text-2xl group-hover:scale-110 transition-transform">{social.icon}</span>
+                <span className="text-text-primary text-xs font-bold">{social.label}</span>
+                <span className="text-text-muted text-[10px] group-hover:text-brand-main transition-colors">
                   {social.username}
                 </span>
               </motion.a>
@@ -256,9 +257,9 @@ export default function CTASection() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 1.2 }}
-          className="mt-6 text-center"
+          className="mt-8 text-center"
         >
-          <p className="text-text-muted text-[10px]">
+          <p className="text-text-muted text-[10px] font-medium">
             📍 Based in {CONTACT_DATA.availability.timezone} • Usually reply within {CONTACT_DATA.availability.responseTime}
           </p>
         </motion.div>
