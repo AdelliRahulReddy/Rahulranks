@@ -5,9 +5,9 @@ export const BIO = {
   STACK_ICONS: ["⚛️", "🚀", "🎓", "💻"],
   BUTTONS: ["My Journey", "Learning Path", "Let's Connect", "Practice Projects"],
   FOCUS_AREAS: [
-    { name: "Learning", role: "Student", color: "#3b82f6" },
-    { name: "Building", role: "Practice", color: "#f59e0b" },
-    { name: "Growing", role: "Journey", color: "#8b5cf6" }
+    { name: "Learning", role: "Student", color: "var(--accent)" },
+    { name: "Building", role: "Practice", color: "var(--text-primary)" },
+    { name: "Growing", role: "Journey", color: "var(--accent)" }
   ],
   STATS: [
     { value: "Learning", label: "Daily" },
@@ -22,37 +22,37 @@ export const SOLUTIONS_STATS = [
   {
     value: "Just Started",
     label: "Fresh Beginning",
-    color: "#3b82f6",
+    color: "var(--accent)",
     icon: "🌱"
   },
   {
     value: "100%",
     label: "Commitment",
-    color: "#84cc16",
+    color: "var(--text-primary)",
     icon: "💪"
   },
   {
     value: "Free",
     label: "Initial Projects",
-    color: "#f59e0b",
+    color: "var(--accent)",
     icon: "🎁"
   },
   {
     value: "Solo",
     label: "Developer",
-    color: "#8b5cf6",
+    color: "var(--text-primary)",
     icon: "👨‍💻"
   }
 ];
 
 // Tech Stack for Solutions Section
 export const TECH_STACK = [
-  { name: "React", icon: "⚛️", color: "#61dafb" },
-  { name: "Next.js", icon: "▲", color: "#000000" },
-  { name: "TypeScript", icon: "TS", color: "#3178c6" },
-  { name: "Tailwind", icon: "🎨", color: "#06b6d4" },
-  { name: "Node.js", icon: "🟢", color: "#339933" },
-  { name: "Firebase", icon: "🔥", color: "#ffca28" },
+  { name: "React", icon: "⚛️", color: "var(--accent)" },
+  { name: "Next.js", icon: "▲", color: "var(--text-primary)" },
+  { name: "TypeScript", icon: "TS", color: "var(--accent)" },
+  { name: "Tailwind", icon: "🎨", color: "var(--text-primary)" },
+  { name: "Node.js", icon: "🟢", color: "var(--accent)" },
+  { name: "Firebase", icon: "🔥", color: "var(--text-primary)" },
 ];
 
 // Skills Section Data
@@ -67,7 +67,7 @@ export const SKILLS_DATA = {
       id: "web",
       name: "Web Development",
       icon: "🌐",
-      color: "#3b82f6",
+      color: "var(--accent)",
       skills: [
         { name: "HTML/CSS", level: "comfortable" },
         { name: "JavaScript", level: "comfortable" },
@@ -79,7 +79,7 @@ export const SKILLS_DATA = {
       id: "tools",
       name: "Tools & Platforms",
       icon: "🛠️",
-      color: "#f97316",
+      color: "var(--text-primary)",
       skills: [
         { name: "Git/GitHub", level: "comfortable" },
         { name: "VS Code", level: "comfortable" },
@@ -91,7 +91,7 @@ export const SKILLS_DATA = {
       id: "learning",
       name: "Currently Learning",
       icon: "📚",
-      color: "#8b5cf6",
+      color: "var(--accent)",
       skills: [
         { name: "Next.js", level: "comfortable" },
         { name: "TypeScript", level: "comfortable" },
@@ -103,7 +103,7 @@ export const SKILLS_DATA = {
       id: "soft",
       name: "Soft Skills",
       icon: "💡",
-      color: "#fbbf24",
+      color: "var(--text-primary)",
       skills: [
         { name: "Problem Solving", level: "comfortable" },
         { name: "Quick Learning", level: "comfortable" },
@@ -115,7 +115,7 @@ export const SKILLS_DATA = {
       id: "ai",
       name: "AI Tools",
       icon: "🤖",
-      color: "#84cc16",
+      color: "var(--accent)",
       skills: [
         { name: "ChatGPT", level: "comfortable" },
         { name: "GitHub Copilot", level: "comfortable" },
@@ -127,7 +127,7 @@ export const SKILLS_DATA = {
 };
 
 export const SKILL_LEVELS = {
-  expert: { label: "Expert", stars: 5, color: "#84cc16" },
-  advanced: { label: "Advanced", stars: 4, color: "#3b82f6" },
-  comfortable: { label: "Learning", stars: 3, color: "#f59e0b" }
+  expert: { label: "Expert", stars: 5, color: "var(--accent)" },
+  advanced: { label: "Advanced", stars: 4, color: "var(--accent)" },
+  comfortable: { label: "Learning", stars: 3, color: "var(--text-muted)" }
 };

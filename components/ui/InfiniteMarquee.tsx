@@ -20,8 +20,8 @@ export default function InfiniteMarquee() {
       className="
         w-full
         h-[60px]
-        bg-bg-canvas
-        border-y border-brand-main/10
+        bg-bg-main
+        border-y border-border-subtle
         overflow-hidden
         relative
         z-10
@@ -30,11 +30,11 @@ export default function InfiniteMarquee() {
         select-none
       "
     >
-      {/* Left fade */}
-      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-bg-canvas to-transparent z-20 pointer-events-none" />
+      {/* Left fade - Matches BG Main */}
+      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-bg-main to-transparent z-20 pointer-events-none" />
 
       {/* Right fade */}
-      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-bg-canvas to-transparent z-20 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-bg-main to-transparent z-20 pointer-events-none" />
 
       <motion.div
         className="flex gap-16 items-center whitespace-nowrap"
@@ -55,7 +55,7 @@ export default function InfiniteMarquee() {
             </span>
             <Sparkles
               size={12}
-              className="text-brand-main/60 ml-12"
+              className="text-accent ml-12"
             />
           </div>
         ))}

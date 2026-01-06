@@ -172,11 +172,6 @@ export default function SolutionsSection() {
 
   return (
     <div ref={containerRef} className="w-full relative z-10 py-8">
-      {/* Background - Subtle */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-screen dark:mix-blend-screen">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brand-main/10 rounded-full blur-[120px]" />
-      </div>
-
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         {/* LEFT: Stats Dashboard */}
         <div className="relative z-10">
@@ -187,16 +182,16 @@ export default function SolutionsSection() {
             viewport={{ once: true }}
           >
             <div className="flex items-center gap-2 mb-2">
-              <Sparkles size={16} className="text-brand-main" />
-              <p className="text-brand-main font-mono text-xs uppercase tracking-wider font-bold">
+              <Sparkles size={16} className="text-accent" />
+              <p className="text-accent font-mono text-xs uppercase tracking-wider font-bold">
                 My Journey
               </p>
             </div>
             <h2 className="text-4xl md:text-5xl font-black font-serif leading-tight mb-4 text-text-primary">
               Learning While Building.
             </h2>
-            <p className="text-text-secondary text-base max-w-md mb-8">
-              Solo developer offering <span className="text-brand-main font-bold">free services</span> to build experience. Your project helps me learn!
+            <p className="text-text-muted text-base max-w-md mb-8">
+              Solo developer offering <span className="text-accent font-bold">free services</span> to build experience. Your project helps me learn!
             </p>
           </motion.div>
 
@@ -210,10 +205,10 @@ export default function SolutionsSection() {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
-                className="bg-bg-surface backdrop-blur-md rounded-2xl p-4 border border-border-subtle hover:border-brand-main/50 hover:shadow-lg transition-all cursor-default group"
+                className="bg-bg-surface rounded-2xl p-4 border border-border-subtle hover:border-accent transition-all cursor-default group shadow-sm"
               >
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl text-text-primary group-hover:text-brand-main transition-colors">{stat.icon}</span>
+                  <span className="text-2xl text-text-primary group-hover:text-accent transition-colors">{stat.icon}</span>
                   <div
                     className="w-2 h-2 rounded-full group-hover:scale-150 transition-transform"
                     style={{ backgroundColor: stat.color }}
@@ -249,9 +244,9 @@ export default function SolutionsSection() {
                   transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
                   viewport={{ once: true }}
                   whileHover={{ y: -2 }}
-                  className="px-3 py-1.5 bg-bg-surface text-text-primary rounded-full text-[10px] font-bold flex items-center gap-1.5 border border-border-subtle hover:border-brand-main/30 shadow-sm transition-all"
+                  className="px-3 py-1.5 bg-bg-surface text-text-primary rounded-full text-[10px] font-bold flex items-center gap-1.5 border border-border-subtle hover:border-accent shadow-sm transition-all"
                 >
-                  <span>{tech.icon}</span>
+                  <span className="text-accent">{tech.icon}</span>
                   <span>{tech.name}</span>
                 </motion.div>
               ))}
@@ -266,7 +261,7 @@ export default function SolutionsSection() {
             viewport={{ once: true }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-brand-main text-white px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg hover:shadow-brand-main/40 transition-all group"
+            className="bg-accent text-bg-surface px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg hover:opacity-90 transition-all group"
           >
             Start Your Project
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -284,7 +279,7 @@ export default function SolutionsSection() {
           <div
             ref={canvasRef}
             className={cn(
-              "absolute inset-0 bg-bg-surface/50 backdrop-blur-xl rounded-[2rem] border border-border-subtle shadow-inner overflow-hidden",
+              "absolute inset-0 bg-bg-surface rounded-3xl border border-border-subtle shadow-inner overflow-hidden",
               isDragging ? 'cursor-grabbing' : 'cursor-grab'
             )}
             style={{ touchAction: 'none' }}
@@ -303,7 +298,7 @@ export default function SolutionsSection() {
                   key={index}
                   ref={(el) => { pillsRef.current[index] = el; }}
                   className={cn(
-                    "absolute top-0 left-0 rounded-full text-white shadow-lg whitespace-nowrap select-none will-change-transform border border-white/20 backdrop-blur-sm",
+                    "absolute top-0 left-0 rounded-full shadow-md whitespace-nowrap select-none will-change-transform",
                     pill.color,
                     getPillSize(pill.size),
                     isDragging ? 'cursor-grabbing' : 'cursor-grab'

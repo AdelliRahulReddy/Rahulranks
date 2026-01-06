@@ -2,7 +2,7 @@
 
 // ==========================================
 // YOUR PROJECTS DATA
-// Start small, build up!
+// LOCKED 7-COLOR SYSTEM
 // ==========================================
 
 export const MY_PROJECTS = [
@@ -19,22 +19,7 @@ export const MY_PROJECTS = [
     githubLink: "",
     featured: true,
     year: "2025"
-  },
-  // Ready for your first client project!
-  // {
-  //   id: "project-2",
-  //   name: "Your First Project",
-  //   category: "clients",
-  //   description: "This could be YOUR project!",
-  //   longDescription: "I'm looking for my first client projects to build my portfolio. If you have a website idea, landing page, or basic web project, I'd love to work with you for FREE to gain experience. Let's build something together!",
-  //   image: "/projects/coming-soon.jpg",
-  //   tags: ["Opportunity", "Free Service", "Portfolio"],
-  //   status: "development",
-  //   liveLink: "",
-  //   githubLink: "",
-  //   featured: true,
-  //   year: "2025"
-  // },
+  }
 ];
 
 // ==========================================
@@ -51,7 +36,7 @@ export const PROJECT_TABS = [
 // STATUS COLORS
 // ==========================================
 export const STATUS_COLORS = {
-  live: { label: "Live", color: "bg-green-500", emoji: "🟢" },
-  development: { label: "Building", color: "bg-yellow-500", emoji: "🟡" },
-  archived: { label: "Archived", color: "bg-gray-500", emoji: "⚪" }
+  live: { label: "Live", color: "bg-accent text-bg-surface", emoji: "🟢" },
+  development: { label: "Building", color: "bg-bg-surface-alt text-text-primary", emoji: "🟡" },
+  archived: { label: "Archived", color: "bg-text-muted text-bg-surface", emoji: "⚪" }
 };

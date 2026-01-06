@@ -3,13 +3,13 @@
 import { motion } from "framer-motion";
 import {
     Code2, Database, Globe, Layout, Smartphone,
-    Terminal, Cpu, Cloud, Zap
+    Terminal, Cpu, Cloud
 } from "lucide-react";
 
 const TECH_ICONS = [
     { icon: Code2, label: "React" },
     { icon: Globe, label: "Next.js" },
-    { icon: Smartphone, label: "Flutter" }, // Replaced Zap with Smartphone for generic mobile
+    { icon: Smartphone, label: "Flutter" },
     { icon: Database, label: "Firebase" },
     { icon: Layout, label: "Tailwind" },
     { icon: Terminal, label: "TypeScript" },
@@ -20,15 +20,13 @@ const TECH_ICONS = [
 export default function StackBox() {
     return (
         <div className="w-full h-full bg-bg-surface flex flex-col justify-center relative overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-main/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
             <div className="absolute top-4 left-4 z-10">
                 <h3 className="text-sm font-black text-text-primary uppercase tracking-wider">Stack</h3>
             </div>
 
             <div className="flex flex-col gap-4 mt-6">
                 {/* Row 1: Left */}
-                <div className="relative flex overflow-hidden mask-linear-fade">
+                <div className="relative flex overflow-hidden">
                     <motion.div
                         animate={{ x: [0, -500] }}
                         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -37,17 +35,17 @@ export default function StackBox() {
                         {[...TECH_ICONS, ...TECH_ICONS, ...TECH_ICONS].map((tech, i) => (
                             <div
                                 key={i}
-                                className="flex items-center gap-2 px-3 py-1.5 bg-bg-subtle rounded-full border border-text-muted/10 whitespace-nowrap"
+                                className="flex items-center gap-2 px-3 py-1.5 bg-bg-surface-alt rounded-full border border-border-subtle whitespace-nowrap"
                             >
-                                <tech.icon size={12} className="text-brand-main" />
-                                <span className="text-[10px] font-bold text-text-secondary">{tech.label}</span>
+                                <tech.icon size={12} className="text-accent" />
+                                <span className="text-[10px] font-bold text-text-primary">{tech.label}</span>
                             </div>
                         ))}
                     </motion.div>
                 </div>
 
                 {/* Row 2: Right */}
-                <div className="relative flex overflow-hidden mask-linear-fade">
+                <div className="relative flex overflow-hidden">
                     <motion.div
                         animate={{ x: [-500, 0] }}
                         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
@@ -56,10 +54,10 @@ export default function StackBox() {
                         {[...TECH_ICONS, ...TECH_ICONS, ...TECH_ICONS].reverse().map((tech, i) => (
                             <div
                                 key={i}
-                                className="flex items-center gap-2 px-3 py-1.5 bg-bg-subtle rounded-full border border-text-muted/10 whitespace-nowrap"
+                                className="flex items-center gap-2 px-3 py-1.5 bg-bg-surface-alt rounded-full border border-border-subtle whitespace-nowrap"
                             >
-                                <tech.icon size={12} className="text-accent-rose" />
-                                <span className="text-[10px] font-bold text-text-secondary">{tech.label}</span>
+                                <tech.icon size={12} className="text-accent" />
+                                <span className="text-[10px] font-bold text-text-primary">{tech.label}</span>
                             </div>
                         ))}
                     </motion.div>

@@ -1,147 +1,79 @@
 @import "tailwindcss";
 
+/* =========================================
+   LOCKED 7-COLOR DESIGN SYSTEM
+   NON-NEGOTIABLE - DO NOT ADD NEW COLORS
+   ========================================= */
+
 @theme {
-  /* =========================================
-     1. BRAND IDENTITY & SEMANTICS
-     ========================================= */
-
-  /* Primary Brand Color (Indigo/Violet - Premium Tech) */
-  --color-brand-main: var(--brand-main);
-  --color-brand-alpha: var(--brand-alpha);
-  --color-brand-contrast: var(--brand-contrast);
-
-  /* Functional Status Colors */
-  --color-status-success: var(--success);
-  --color-status-warning: var(--warning);
-  --color-status-error: var(--error);
-
   /* Background Surfaces */
-  --color-bg-canvas: var(--bg-canvas);
-  /* Main page background */
+  --color-bg-main: var(--bg-main);
   --color-bg-surface: var(--bg-surface);
-  /* Cards, panels (60-80% opacity) */
-  --color-bg-subtle: var(--bg-subtle);
-  /* Secondary backgrounds */
-  --color-bg-inverse: var(--bg-inverse);
-  /* High contrast background */
+  --color-bg-surface-alt: var(--bg-surface-alt);
 
-  /* Typography Colors */
+  /* Typography */
   --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
-  --color-text-inverse: var(--text-inverse);
 
-  /* Borders & Dividers */
+  /* Accent */
+  --color-accent: var(--accent);
+
+  /* Borders */
   --color-border-subtle: var(--border-subtle);
-  --color-border-strong: var(--border-strong);
 
   /* =========================================
-     2. SHADOWS & ELEVATION (Premium Depth)
+     SHADOWS (Neutral only - no colored glows)
      ========================================= */
-
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
-
-  /* Colored Glow Shadows */
-  --shadow-glow-brand: 0 0 20px -5px var(--brand-main), 0 0 10px -5px var(--brand-main);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.08);
 
   /* =========================================
-     3. ANIMATIONS & TRANSITIONS
+     ANIMATIONS
      ========================================= */
-
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-spin-slow: spin 3s linear infinite;
-
   --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* =========================================
    CSS VARIABLES DEFINITION
+   LOCKED 7 COLORS ONLY
    ========================================= */
 
 @layer base {
   :root {
-    /* LIGHT MODE: Enhanced Contrast & Depth */
-    /* Subtle warm tones with better definition */
-    --bg-canvas: #f5f5f7;
-    /* Slightly darker for better contrast */
-    --bg-surface: rgba(255, 255, 255, 0.95);
-    /* More opaque for better visibility */
-    --bg-subtle: #e8e8eb;
-    /* Stronger distinction */
-    --bg-inverse: #18181b;
-    /* Neutral-900 */
-
-    --text-primary: #1a1a1a;
-    /* Darker for better readability */
-    --text-secondary: #4a4a4f;
-    /* Stronger contrast */
-    --text-muted: #8e8e93;
-    /* More visible */
-    --text-inverse: #fafafa;
-
-    --border-subtle: rgba(0, 0, 0, 0.08);
-    /* More visible borders */
-    --border-strong: rgba(0, 0, 0, 0.15);
-    /* Stronger borders */
-
-    /* Brand: Vibrant Indigo/Violet for light mode */
-    --brand-main: #5b5fc7;
-    /* Deeper, more saturated indigo */
-    --brand-alpha: rgba(91, 95, 199, 0.12);
-    --brand-contrast: #ffffff;
-
-    /* Status */
-    --success: #0f9d58;
-    /* Slightly deeper green */
-    --warning: #f59e0b;
-    --error: #ef4444;
+    /* === LOCKED 7-COLOR PALETTE === */
+    --bg-main: #F9D9AC;
+    --bg-surface: #FFF9F0;
+    --bg-surface-alt: #F3E6D4;
+    --text-primary: #1C1A17;
+    --text-muted: #6F6252;
+    --accent: #2563EB;
+    --border-subtle: #E2D3BD;
   }
 
+  /* Dark mode uses same palette for consistency */
   .dark {
-    /* DARK MODE: Deep Slate / Navy */
-    /* Not pure black (#000000) but a rich deep blue-gray */
-    --bg-canvas: #0b1121;
-    /* Rich Dark Slate */
-    --bg-surface: rgba(30, 41, 59, 0.4);
-    /* Slate-800 with opacity */
-    --bg-subtle: #1e293b;
-    /* Slate-800 */
-    --bg-inverse: #f8fafc;
-    /* Slate-50 */
-
-    --text-primary: #f8fafc;
-    /* Slate-50 */
-    --text-secondary: #94a3b8;
-    /* Slate-400 */
-    --text-muted: #64748b;
-    /* Slate-500 */
-    --text-inverse: #0f172a;
-    /* Slate-900 */
-
-    --border-subtle: rgba(255, 255, 255, 0.05);
-    --border-strong: rgba(255, 255, 255, 0.1);
-
-    /* Brand: Slightly lighter for dark mode visibility */
-    --brand-main: #818cf8;
-    /* Indigo-400 */
-    --brand-alpha: rgba(129, 140, 248, 0.15);
-    --brand-contrast: #0f172a;
+    --bg-main: #F9D9AC;
+    --bg-surface: #FFF9F0;
+    --bg-surface-alt: #F3E6D4;
+    --text-primary: #1C1A17;
+    --text-muted: #6F6252;
+    --accent: #2563EB;
+    --border-subtle: #E2D3BD;
   }
 }
 
 /* =========================================
-   GLOBAL RESET & UTILITIES
+   GLOBAL RESET & BASE STYLES
    ========================================= */
 
 @layer base {
   * {
-    @apply border-border-subtle;
+    border-color: var(--border-subtle);
   }
 
   html {
@@ -150,26 +82,31 @@
   }
 
   body {
-    @apply bg-bg-canvas text-text-primary;
-    background-image:
-      radial-gradient(at 0% 0%, var(--brand-alpha) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, var(--brand-alpha) 0px, transparent 50%);
-    background-attachment: fixed;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
   }
 }
 
-/* Glassmorphism Utilities */
-@utility glass {
-  @apply backdrop-blur-md border border-border-subtle bg-bg-surface shadow-sm;
+/* =========================================
+   UTILITIES
+   ========================================= */
+
+/* Card utility */
+@utility card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.5rem;
 }
 
-@utility glass-hover {
-  @apply transition-all duration-300 hover:bg-bg-subtle hover:border-brand-main/30 hover:shadow-lg hover:-translate-y-1;
-}
+/* Card hover effect */
+@utility card-hover {
+  transition: all 0.3s ease;
 
-/* Text Gradients */
-@utility text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-main to-purple-500;
+  &:hover {
+    background-color: var(--bg-surface-alt);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.08);
+  }
 }
 
 /* Animation Keyframes */
@@ -183,4 +120,22 @@
   50% {
     transform: translateY(-20px);
   }
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--bg-surface-alt);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
 }

@@ -1,9 +1,8 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState, useEffect } from "react";
-import { useTheme } from "next-themes";
 import gsap from "gsap";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
@@ -15,7 +14,6 @@ const NAV_LINKS = [
 ];
 
 export default function Header() {
-  const { theme, setTheme } = useTheme();
   const containerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLAnchorElement>(null);
 
@@ -104,7 +102,6 @@ export default function Header() {
       gsap.set(firstChar, {
         opacity: 0,
         scale: 0.85,
-        filter: "blur(6px)",
         y: 0
       });
       gsap.set(".logo-dot", { opacity: 0, scale: 0 });
@@ -114,7 +111,6 @@ export default function Header() {
       tl.to(firstChar, {
         opacity: 1,
         scale: 1,
-        filter: "blur(0px)",
         duration: 0.6,
         ease: "elastic.out(1, 0.5)"
       });
@@ -192,12 +188,12 @@ export default function Header() {
           "flex items-center justify-between px-6 md:px-12"
         )}
       >
-        {/* Glass Background */}
+        {/* Background */}
         <div
           className={cn(
             "absolute inset-0 transition-all duration-300",
             scrolled
-              ? "glass border-b border-border-subtle shadow-lg"
+              ? "bg-bg-surface border-b border-border-subtle shadow-md"
               : "bg-transparent"
           )}
         />
@@ -219,8 +215,8 @@ export default function Header() {
                 `logo-char-${i}`,
                 "text-2xl md:text-3xl",
                 i === 0
-                  ? "text-brand-main"
-                  : "text-text-primary group-hover:text-brand-main"
+                  ? "text-accent"
+                  : "text-text-primary group-hover:text-accent"
               )}
               style={{
                 marginRight: char === "r" ? "-0.01em" : "-0.03em",
@@ -230,7 +226,7 @@ export default function Header() {
               {char}
             </span>
           ))}
-          <span className="logo-dot inline-block w-2 h-2 ml-1 mb-1 rounded-full bg-brand-main shadow-[0_0_10px_var(--color-brand-main)]" />
+          <span className="logo-dot inline-block w-2 h-2 ml-1 mb-1 rounded-full bg-accent" />
         </a>
 
         {/* Desktop Nav */}
@@ -248,38 +244,26 @@ export default function Header() {
                   "nav-item relative text-xs uppercase font-bold tracking-[0.2em] transition-colors group",
                   "font-sans",
                   active
-                    ? "text-brand-main"
-                    : "text-text-secondary hover:text-text-primary"
+                    ? "text-accent"
+                    : "text-text-muted hover:text-text-primary"
                 )}
               >
                 {link.name}
                 <span
                   className={cn(
-                    "absolute -bottom-1 left-0 h-[2px] bg-brand-main transition-all duration-300 rounded-full",
-                    active ? "w-full shadow-[0_0_8px_var(--color-brand-main)]" : "w-0 group-hover:w-full"
+                    "absolute -bottom-1 left-0 h-[2px] bg-accent transition-all duration-300 rounded-full",
+                    active ? "w-full" : "w-0 group-hover:w-full"
                   )}
                 />
               </a>
             );
           })}
 
-          <div className="h-6 w-px bg-border-strong mx-2" />
-
-          {/* Theme Toggle */}
-          <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2 rounded-full hover:bg-bg-subtle transition-colors text-text-secondary hover:text-brand-main group"
-            aria-label="Toggle Theme"
-          >
-            <div className="relative w-5 h-5">
-              <Sun className="absolute inset-0 h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-amber-500" />
-              <Moon className="absolute inset-0 h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-indigo-400" />
-            </div>
-          </button>
+          <div className="h-6 w-px bg-border-subtle mx-2" />
 
           <button
             onClick={handleCTAClick}
-            className="nav-item px-8 py-2.5 rounded-full bg-brand-main text-white text-xs font-bold uppercase tracking-[0.15em] hover:bg-brand-dark transition-all shadow-lg hover:shadow-brand-main/50 transform hover:-translate-y-0.5 font-sans hover-scale"
+            className="nav-item px-8 py-2.5 rounded-full bg-accent text-bg-surface text-xs font-bold uppercase tracking-[0.15em] hover:opacity-90 transition-all shadow-md transform hover:-translate-y-0.5 font-sans"
           >
             Hire Me
           </button>
@@ -288,15 +272,8 @@ export default function Header() {
         {/* Mobile Actions */}
         <div className="flex md:hidden items-center gap-4 relative z-10">
           <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2 text-text-primary hover:text-brand-main transition-colors"
-          >
-            {theme === 'dark' ? <Moon size={20} className="text-indigo-400" /> : <Sun size={20} className="text-amber-500" />}
-          </button>
-
-          <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-text-primary hover:text-brand-main transition-colors"
+            className="p-2 text-text-primary hover:text-accent transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -309,12 +286,12 @@ export default function Header() {
         <div className="fixed inset-0 z-40 md:hidden">
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-bg-inverse/50 backdrop-blur-sm"
+            className="absolute inset-0 bg-text-primary/50"
             onClick={() => setMobileMenuOpen(false)}
           />
 
           {/* Menu Panel */}
-          <nav className="absolute top-[64px] left-0 right-0 glass border-b border-border-subtle shadow-xl p-6 space-y-4">
+          <nav className="absolute top-[64px] left-0 right-0 bg-bg-surface border-b border-border-subtle shadow-xl p-6 space-y-4">
             {NAV_LINKS.map((link) => {
               const id = link.href.replace("#", "");
               const active = activeSection === id;
@@ -327,8 +304,8 @@ export default function Header() {
                   className={cn(
                     "block text-sm uppercase font-bold tracking-wider py-2 font-sans transition-all",
                     active
-                      ? "text-brand-main"
-                      : "text-text-secondary hover:text-brand-main"
+                      ? "text-accent"
+                      : "text-text-muted hover:text-accent"
                   )}
                 >
                   {link.name}
@@ -338,7 +315,7 @@ export default function Header() {
 
             <button
               onClick={handleCTAClick}
-              className="w-full px-5 py-3 rounded-full bg-brand-main text-white text-xs font-bold uppercase tracking-wider hover:bg-brand-dark transition-all font-sans shadow-lg hover:shadow-brand-main/40"
+              className="w-full px-5 py-3 rounded-full bg-accent text-bg-surface text-xs font-bold uppercase tracking-wider hover:opacity-90 transition-all font-sans shadow-md"
             >
               Hire Me
             </button>

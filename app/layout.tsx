@@ -72,7 +72,7 @@ export default function RootLayout({
       </head>
 
       {/* Applied font-sans for body, antialiased for smooth rendering */}
-      <body className="bg-bg-canvas text-text-primary font-sans min-h-screen antialiased transition-colors duration-300">
+      <body className="bg-bg-main text-text-primary font-sans min-h-screen antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -2,8 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Sparkles, Grid3x3, List, ChevronRight, Star, TrendingUp } from "lucide-react";
-import Image from "next/image";
+import { ExternalLink, Github, Sparkles, Grid3x3, List, Star, TrendingUp } from "lucide-react";
 import { MY_PROJECTS, PROJECT_TABS } from "@/lib/projects";
 
 export default function ProjectsSection() {
@@ -28,10 +27,10 @@ export default function ProjectsSection() {
 
   const getStatusStyle = (status: string) => {
     switch (status) {
-      case "live": return { color: "bg-status-success", label: "Live", emoji: "🟢" };
-      case "building": return { color: "bg-brand-main", label: "Building", emoji: "🔨" };
-      case "beta": return { color: "bg-status-warning", label: "Beta", emoji: "🚧" };
-      default: return { color: "bg-text-muted", label: "Idea", emoji: "💡" };
+      case "live": return { color: "bg-accent text-bg-surface", label: "Live", emoji: "🟢" };
+      case "building": return { color: "bg-text-primary text-bg-surface", label: "Building", emoji: "🔨" };
+      case "beta": return { color: "bg-bg-surface-alt text-text-primary", label: "Beta", emoji: "🚧" };
+      default: return { color: "bg-text-muted text-bg-surface", label: "Idea", emoji: "💡" };
     }
   };
 
@@ -40,20 +39,6 @@ export default function ProjectsSection() {
       ref={containerRef}
       className="w-full relative z-10"
     >
-      {/* Animated Background - Subtle global blend */}
-      <div className="absolute inset-0 opacity-30 pointer-events-none mix-blend-screen dark:mix-blend-screen">
-        <motion.div
-          animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-[10%] -right-[10%] w-[50vw] h-[50vw] bg-brand-main/10 rounded-full blur-[100px]"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.3, 1], rotate: [0, -90, 0] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute -bottom-[10%] -left-[10%] w-[50vw] h-[50vw] bg-accent-rose/10 rounded-full blur-[100px]"
-        />
-      </div>
-
       <div className="relative z-10">
         {/* Header */}
         <motion.div
@@ -72,9 +57,9 @@ export default function ProjectsSection() {
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
             >
-              <Sparkles size={16} className="text-brand-main" />
+              <Sparkles size={16} className="text-accent" />
             </motion.div>
-            <p className="text-brand-main font-mono text-xs uppercase tracking-[0.2em] font-bold">
+            <p className="text-accent font-mono text-xs uppercase tracking-[0.2em] font-bold">
               Portfolio
             </p>
           </motion.div>
@@ -90,7 +75,7 @@ export default function ProjectsSection() {
             </motion.span>
           </h2>
 
-          <p className="text-text-secondary text-base max-w-2xl mx-auto mb-8">
+          <p className="text-text-muted text-base max-w-2xl mx-auto mb-8">
             Real projects, shipped and running. {MY_PROJECTS.length} projects total, {featuredCount} featured.
           </p>
 
@@ -101,17 +86,17 @@ export default function ProjectsSection() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-wrap items-center justify-center gap-3 mb-8"
           >
-            <div className="flex items-center gap-1.5 bg-bg-surface backdrop-blur-md px-4 py-2 rounded-full border border-border-subtle shadow-sm">
-              <Star size={14} className="text-brand-main fill-brand-main" />
+            <div className="flex items-center gap-1.5 bg-bg-surface px-4 py-2 rounded-full border border-border-subtle shadow-sm">
+              <Star size={14} className="text-accent fill-accent" />
               <span className="text-xs font-bold text-text-primary">{featuredCount} Featured</span>
             </div>
-            <div className="flex items-center gap-1.5 bg-bg-surface backdrop-blur-md px-4 py-2 rounded-full border border-border-subtle shadow-sm">
-              <TrendingUp size={14} className="text-status-success" />
+            <div className="flex items-center gap-1.5 bg-bg-surface px-4 py-2 rounded-full border border-border-subtle shadow-sm">
+              <TrendingUp size={14} className="text-accent" />
               <span className="text-xs font-bold text-text-primary">
                 {MY_PROJECTS.filter(p => p.status === "live").length} Live
               </span>
             </div>
-            <div className="flex items-center gap-1.5 bg-bg-surface backdrop-blur-md px-4 py-2 rounded-full border border-border-subtle shadow-sm">
+            <div className="flex items-center gap-1.5 bg-bg-surface px-4 py-2 rounded-full border border-border-subtle shadow-sm">
               <span className="text-xs font-bold text-text-primary">
                 Latest: {MY_PROJECTS[0]?.year}
               </span>
@@ -129,10 +114,6 @@ export default function ProjectsSection() {
           {/* Category Tabs */}
           <div className="flex flex-wrap justify-center md:justify-start gap-2">
             {PROJECT_TABS.map((tab) => {
-              const count = tab.id === "all"
-                ? MY_PROJECTS.length
-                : MY_PROJECTS.filter(p => p.category === activeTab).length;
-
               const isActive = activeTab === tab.id;
 
               return (
@@ -142,8 +123,8 @@ export default function ProjectsSection() {
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                   className={`relative px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 flex items-center gap-2 ${isActive
-                    ? 'bg-brand-main text-white shadow-lg shadow-brand-main/30'
-                    : 'bg-bg-surface text-text-secondary hover:bg-bg-subtle border border-border-subtle'
+                    ? 'bg-accent text-bg-surface shadow-lg'
+                    : 'bg-bg-surface text-text-muted hover:bg-bg-surface-alt border border-border-subtle'
                     }`}
                 >
                   <motion.span
@@ -160,13 +141,13 @@ export default function ProjectsSection() {
           </div>
 
           {/* View Mode Toggle */}
-          <div className="flex items-center gap-1 bg-bg-surface backdrop-blur-sm p-1.5 rounded-xl border border-border-subtle shadow-sm">
+          <div className="flex items-center gap-1 bg-bg-surface p-1.5 rounded-xl border border-border-subtle shadow-sm">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setViewMode("grid")}
               className={`p-2 rounded-lg transition-all ${viewMode === "grid"
-                ? 'bg-bg-inverse text-text-inverse shadow-sm'
+                ? 'bg-bg-surface-alt text-text-primary shadow-sm'
                 : 'text-text-muted hover:text-text-primary'
                 }`}
               aria-label="Grid view"
@@ -178,7 +159,7 @@ export default function ProjectsSection() {
               whileTap={{ scale: 0.95 }}
               onClick={() => setViewMode("list")}
               className={`p-2 rounded-lg transition-all ${viewMode === "list"
-                ? 'bg-bg-inverse text-text-inverse shadow-sm'
+                ? 'bg-bg-surface-alt text-text-primary shadow-sm'
                 : 'text-text-muted hover:text-text-primary'
                 }`}
               aria-label="List view"
@@ -204,7 +185,6 @@ export default function ProjectsSection() {
           >
             {sortedProjects.map((project, index) => {
               const statusInfo = getStatusStyle(project.status);
-              const isHovered = hoveredProject === project.id;
 
               return (
                 <motion.article
@@ -222,12 +202,9 @@ export default function ProjectsSection() {
                   whileHover={{ y: -6, scale: 1.02 }}
                   onHoverStart={() => setHoveredProject(project.id)}
                   onHoverEnd={() => setHoveredProject(null)}
-                  className={`group relative bg-bg-surface backdrop-blur-md rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-border-subtle hover:border-brand-main/30 ${viewMode === "list" ? "flex flex-row" : ""
+                  className={`group relative bg-bg-surface rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-border-subtle hover:border-accent ${viewMode === "list" ? "flex flex-row" : ""
                     }`}
                 >
-                  {/* Hover Glow */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand-main/5 to-accent-rose/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
                   {/* Featured Badge */}
                   {project.featured && (
                     <motion.div
@@ -236,8 +213,8 @@ export default function ProjectsSection() {
                       transition={{ delay: 0.3 + index * 0.1, type: "spring", bounce: 0.6 }}
                       className="absolute top-3 left-3 z-20"
                     >
-                      <div className="bg-brand-main text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full shadow-lg flex items-center gap-1">
-                        <Star size={10} className="fill-white" />
+                      <div className="bg-accent text-bg-surface text-[10px] font-black uppercase px-2.5 py-1 rounded-full shadow-lg flex items-center gap-1">
+                        <Star size={10} className="fill-bg-surface" />
                         <span>Featured</span>
                       </div>
                     </motion.div>
@@ -250,7 +227,7 @@ export default function ProjectsSection() {
                     transition={{ delay: 0.4 + index * 0.1, type: "spring" }}
                     className="absolute top-3 right-3 z-20"
                   >
-                    <div className={`${statusInfo.color} text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-lg flex items-center gap-1.5 backdrop-blur-sm`}>
+                    <div className={`${statusInfo.color} text-[10px] font-bold px-2.5 py-1 rounded-full shadow-lg flex items-center gap-1.5 backdrop-blur-sm`}>
                       <span className="text-xs">{statusInfo.emoji}</span>
                       <span>{statusInfo.label}</span>
                     </div>
@@ -258,7 +235,7 @@ export default function ProjectsSection() {
 
                   {/* Image */}
                   <div className={`relative ${viewMode === "list" ? "w-48 h-48" : "w-full h-56"
-                    } bg-bg-subtle overflow-hidden`}>
+                    } bg-bg-surface-alt overflow-hidden`}>
                     <motion.div
                       className="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-10 pointer-events-none transition-opacity duration-500"
                     >
@@ -271,24 +248,24 @@ export default function ProjectsSection() {
                       </div>
                     </motion.div>
 
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-bg-surface via-transparent to-transparent opacity-60" />
+                    {/* Gradient Overlay Removed for Flat Look */}
+                    <div className="absolute inset-0 bg-text-primary/5 opacity-0 group-hover:opacity-10 transition-opacity" />
                   </div>
 
                   {/* Content */}
                   <div className={`p-6 ${viewMode === "list" ? "flex-1 flex flex-col justify-center" : ""}`}>
                     {/* Title & Year */}
                     <div className="flex items-start justify-between mb-2">
-                      <h3 className="font-black font-serif text-xl text-text-primary group-hover:text-brand-main transition-colors leading-tight">
+                      <h3 className="font-black font-serif text-xl text-text-primary group-hover:text-accent transition-colors leading-tight">
                         {project.name}
                       </h3>
-                      <span className="text-[10px] font-bold text-text-muted bg-bg-subtle px-2 py-1 rounded-full border border-border-subtle">
+                      <span className="text-[10px] font-bold text-text-muted bg-bg-surface-alt px-2 py-1 rounded-full border border-border-subtle">
                         {project.year}
                       </span>
                     </div>
 
                     {/* Description */}
-                    <p className="text-sm text-text-secondary mb-4 leading-relaxed line-clamp-2">
+                    <p className="text-sm text-text-muted mb-4 leading-relaxed line-clamp-2">
                       {project.description}
                     </p>
 
@@ -297,7 +274,7 @@ export default function ProjectsSection() {
                       {project.tags.slice(0, 3).map((tag, idx) => (
                         <span
                           key={tag}
-                          className="text-[10px] font-bold text-text-secondary bg-bg-subtle px-2.5 py-1 rounded-full border border-border-subtle"
+                          className="text-[10px] font-bold text-text-secondary bg-bg-surface-alt px-2.5 py-1 rounded-full border border-border-subtle"
                         >
                           {tag}
                         </span>
@@ -313,7 +290,7 @@ export default function ProjectsSection() {
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
-                          className="flex-1 bg-brand-main hover:bg-brand-dark text-white text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-brand-main/30"
+                          className="flex-1 bg-accent hover:opacity-90 text-bg-surface text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md"
                         >
                           <span>View Live</span>
                           <ExternalLink size={12} />
@@ -326,7 +303,7 @@ export default function ProjectsSection() {
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
-                          className="bg-bg-subtle hover:bg-bg-canvas text-text-primary text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center transition-all border border-border-subtle hover:border-text-primary/20"
+                          className="bg-bg-surface-alt hover:bg-bg-main text-text-primary text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center transition-all border border-border-subtle"
                           aria-label="View on GitHub"
                         >
                           <Github size={14} />

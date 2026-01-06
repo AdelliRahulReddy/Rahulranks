@@ -114,23 +114,20 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer ref={footerRef} className="bg-bg-subtle border-t border-border-subtle mt-16 relative overflow-hidden">
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-main/5 via-transparent to-brand-main/5 pointer-events-none"></div>
-
+    <footer ref={footerRef} className="bg-bg-surface-alt border-t border-border-subtle mt-16 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div className="footer-logo opacity-0">
             <h3 className="text-2xl font-black mb-2 group cursor-default text-text-primary">
               Rahulranks
-              <span className="text-brand-main inline-block group-hover:scale-125 group-hover:rotate-12 transition-transform duration-300">.</span>
+              <span className="text-accent inline-block group-hover:scale-125 group-hover:rotate-12 transition-transform duration-300">.</span>
             </h3>
-            <p className="text-text-secondary text-sm leading-relaxed max-w-xs">
+            <p className="text-text-muted text-sm leading-relaxed max-w-xs">
               Building SEO-ready tools & MVPs with modern frameworks. Turning ideas into production-ready products.
             </p>
             <div className="mt-4 flex items-center gap-2 text-xs text-text-muted">
               <span>Crafted with</span>
-              <Heart size={12} className="text-brand-main animate-pulse" fill="currentColor" />
+              <Heart size={12} className="text-accent" fill="currentColor" />
               <span>in India</span>
             </div>
           </div>
@@ -145,9 +142,9 @@ export default function Footer() {
                   <a
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="text-text-secondary hover:text-brand-main text-sm transition-all inline-flex items-center gap-1 group hover:translate-x-1 cursor-pointer"
+                    className="text-text-muted hover:text-accent text-sm transition-all inline-flex items-center gap-1 group hover:translate-x-1 cursor-pointer"
                   >
-                    <span className="w-0 h-0.5 bg-brand-main group-hover:w-4 transition-all duration-300"></span>
+                    <span className="w-0 h-0.5 bg-accent group-hover:w-4 transition-all duration-300"></span>
                     {link.name}
                   </a>
                 </li>
@@ -169,10 +166,10 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="social-icon w-10 h-10 rounded-full bg-bg-surface hover:bg-brand-main border border-border-subtle flex items-center justify-center transition-all hover:scale-110 group relative opacity-0 text-text-primary hover:text-white"
+                    className="social-icon w-10 h-10 rounded-full bg-bg-surface hover:bg-accent border border-border-subtle flex items-center justify-center transition-all hover:scale-110 group relative opacity-0 text-text-primary hover:text-bg-surface"
                   >
                     <Icon size={18} className="group-hover:scale-110 transition-transform" />
-                    <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-bg-inverse text-text-inverse text-xs px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-bold shadow-lg">
+                    <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-text-primary text-bg-surface text-xs px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-bold shadow-lg">
                       {social.label}
                     </span>
                   </a>
@@ -193,17 +190,17 @@ export default function Footer() {
             <div className="flex gap-6">
               <a
                 href="#privacy"
-                className="hover:text-brand-main transition-colors relative group"
+                className="hover:text-accent transition-colors relative group"
               >
                 Privacy Policy
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-main group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
               </a>
               <a
                 href="#terms"
-                className="hover:text-brand-main transition-colors relative group"
+                className="hover:text-accent transition-colors relative group"
               >
                 Terms of Service
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-main group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
               </a>
             </div>
           </div>
@@ -211,7 +208,7 @@ export default function Footer() {
 
         <button
           onClick={handleBackToTop}
-          className="absolute bottom-8 right-8 w-12 h-12 bg-brand-main hover:brightness-110 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-brand-main/50 transition-all hover:scale-110 group footer-bottom opacity-0 cursor-pointer"
+          className="absolute bottom-8 right-8 w-12 h-12 bg-accent hover:opacity-90 rounded-full flex items-center justify-center text-bg-surface shadow-lg transition-all hover:scale-110 group footer-bottom opacity-0 cursor-pointer"
           aria-label="Back to top"
         >
           <ArrowUp size={20} className="group-hover:-translate-y-1 transition-transform" />
