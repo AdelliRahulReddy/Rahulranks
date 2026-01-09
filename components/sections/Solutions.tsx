@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Matter from "matter-js";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Activity } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SOLUTIONS_STATS, TECH_STACK } from "@/lib/constants";
 import { PILLS_DATA } from "@/lib/pills";
@@ -171,122 +171,169 @@ export default function SolutionsSection() {
   };
 
   return (
-    <div ref={containerRef} className="w-full relative z-10 py-8">
-      <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-        {/* LEFT: Stats Dashboard */}
-        <div className="relative z-10">
+    <div ref={containerRef} className="w-full relative z-10 flex flex-col gap-12">
+      {/* 1. Header Row: Text Content */}
+      <div className="w-full">
+        <div className="flex flex-col gap-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
+            className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-1.5 w-fit"
           >
-            <div className="flex items-center gap-2 mb-2">
-              <Sparkles size={16} className="text-accent" />
-              <p className="text-accent font-mono text-xs uppercase tracking-wider font-bold">
-                My Journey
-              </p>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-black font-serif leading-tight mb-4 text-text-primary">
-              Learning While Building.
-            </h2>
-            <p className="text-text-muted text-base max-w-md mb-8">
-              Solo developer offering <span className="text-accent font-bold">free services</span> to build experience. Your project helps me learn!
-            </p>
+            <Sparkles size={14} className="text-accent" />
+            <span className="text-[10px] font-bold text-accent uppercase tracking-widest">My growth strategy</span>
           </motion.div>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 gap-4 mb-8">
-            {SOLUTIONS_STATS.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.9 }}
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-5xl font-black text-text-primary leading-[1.1]"
+          >
+            Turning curiosity into <br />
+            <span className="text-accent italic whitespace-nowrap">ready-to-ship</span> products.
+          </motion.h3>
+        </div>
+      </div>
+
+      {/* 2. Main content Grid: Perfectly Aligned Wheel and Pills */}
+      <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        {/* LEFT: Commitment Wheel */}
+        <div className="flex justify-center items-center h-full">
+          <div className="relative w-80 h-80 md:w-[420px] md:h-[420px] group/wheel">
+            <div className="absolute inset-0 bg-accent/5 rounded-full blur-[100px] pointer-events-none group-hover/wheel:bg-accent/10 transition-colors duration-700" />
+
+            <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_15px_40px_rgba(0,0,0,0.06)] overflow-visible">
+              {/* Segment 1: Fresh Start */}
+              <motion.path
+                initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
-                className="bg-bg-surface rounded-2xl p-4 border border-border-subtle hover:border-accent transition-all cursor-default group shadow-sm"
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl text-text-primary group-hover:text-accent transition-colors">{stat.icon}</span>
-                  <div
-                    className="w-2 h-2 rounded-full group-hover:scale-150 transition-transform"
-                    style={{ backgroundColor: stat.color }}
-                  />
-                </div>
-                <div className="text-2xl font-black text-text-primary mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-[10px] font-bold text-text-muted uppercase tracking-wide">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+                viewport={{ once: true }}
+                d="M 50,50 L 50,5 A 45,45 0 0 1 89,27.5 Z"
+                fill="white"
+                className="stroke-border-subtle/30 stroke-[0.4] cursor-pointer transition-all duration-300"
+              />
 
-          {/* Tech Stack */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="mb-8"
-          >
-            <p className="text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3">
-              Tech Stack
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {TECH_STACK.map((tech, index) => (
+              {/* Segment 2: 100% Commitment */}
+              <motion.path
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.8, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
+                viewport={{ once: true }}
+                d="M 50,50 L 89,27.5 A 45,45 0 0 1 89,72.5 Z"
+                fill="#FDF8F0"
+                className="stroke-border-subtle/30 stroke-[0.4] cursor-pointer transition-all duration-300"
+              />
+
+              {/* Segment 3: Free Projects */}
+              <motion.path
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
+                viewport={{ once: true }}
+                d="M 50,50 L 89,72.5 A 45,45 0 0 1 11,72.5 Z"
+                fill="white"
+                className="stroke-border-subtle/30 stroke-[0.4] cursor-pointer transition-all duration-300"
+              />
+
+              {/* Segment 4: Solo Dev */}
+              <motion.path
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                viewport={{ once: true }}
+                d="M 50,50 L 11,72.5 A 45,45 0 0 1 50,5 Z"
+                fill="#FAF7F2"
+                className="stroke-border-subtle/30 stroke-[0.4] cursor-pointer transition-all duration-300"
+              />
+
+              <circle cx="50" cy="50" r="14" fill="white" className="shadow-lg" />
+              <foreignObject x="42" y="42" width="16" height="16">
+                <div className="w-full h-full flex items-center justify-center text-accent">
+                  <Activity size={14} />
+                </div>
+              </foreignObject>
+            </svg>
+
+            {/* Data-Rich Label Overlay */}
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute top-[8%] left-1/2 -translate-x-1/2 flex flex-col items-center">
                 <motion.div
-                  key={tech.name}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -2 }}
-                  className="px-3 py-1.5 bg-bg-surface text-text-primary rounded-full text-[10px] font-bold flex items-center gap-1.5 border border-border-subtle hover:border-accent shadow-sm transition-all"
+                  initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ delay: 0.5 }}
+                  className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-xl shadow-lg border border-border-subtle flex flex-col items-center"
                 >
-                  <span className="text-accent">{tech.icon}</span>
-                  <span>{tech.name}</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-sm">🌱</span>
+                    <span className="text-[9px] font-black uppercase tracking-widest text-text-primary">Fresh Start</span>
+                  </div>
+                  <span className="text-[7px] font-bold text-text-muted mt-0.5 whitespace-nowrap uppercase">New Beginnings</span>
                 </motion.div>
-              ))}
-            </div>
-          </motion.div>
+              </div>
 
-          {/* CTA Button */}
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-accent text-bg-surface px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg hover:opacity-90 transition-all group"
-          >
-            Start Your Project
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </motion.button>
+              <div className="absolute top-1/2 right-[-2%] -translate-y-1/2 flex flex-col items-center">
+                <motion.div
+                  initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ delay: 0.6 }}
+                  className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-xl shadow-lg border border-border-subtle flex flex-col items-center"
+                >
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-sm">💪</span>
+                    <span className="text-[9px] font-black uppercase tracking-widest text-text-primary">100% Focused</span>
+                  </div>
+                  <span className="text-[7px] font-bold text-text-muted mt-0.5 whitespace-nowrap uppercase">Core Commitment</span>
+                </motion.div>
+              </div>
+
+              <div className="absolute bottom-[8%] left-1/2 -translate-x-1/2 flex flex-col items-center">
+                <motion.div
+                  initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ delay: 0.7 }}
+                  className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-xl shadow-lg border border-border-subtle flex flex-col items-center"
+                >
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-sm">🎁</span>
+                    <span className="text-[9px] font-black uppercase tracking-widest text-text-primary">Zero Cost</span>
+                  </div>
+                  <span className="text-[7px] font-bold text-text-muted mt-0.5 whitespace-nowrap uppercase">Initial Projects</span>
+                </motion.div>
+              </div>
+
+              <div className="absolute top-1/2 left-[-2%] -translate-y-1/2 flex flex-col items-center">
+                <motion.div
+                  initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ delay: 0.8 }}
+                  className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-xl shadow-lg border border-border-subtle flex flex-col items-center"
+                >
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-sm">👨‍💻</span>
+                    <span className="text-[9px] font-black uppercase tracking-widest text-text-primary">Solo Dev</span>
+                  </div>
+                  <span className="text-[7px] font-bold text-text-muted mt-0.5 whitespace-nowrap uppercase">Pure Craftsmanship</span>
+                </motion.div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* RIGHT: Physics Pills Canvas */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="relative h-[400px] w-full"
-        >
+        <div className="flex flex-col gap-6 w-full h-full justify-center">
           <div
             ref={canvasRef}
             className={cn(
-              "absolute inset-0 bg-bg-surface rounded-3xl border border-border-subtle shadow-inner overflow-hidden",
+              "relative w-full h-[360px] md:h-[420px] bg-bg-surface rounded-3xl border border-border-subtle shadow-inner overflow-hidden",
               isDragging ? 'cursor-grabbing' : 'cursor-grab'
             )}
             style={{ touchAction: 'none' }}
           >
+
             {/* Helper Text */}
-            <div className="absolute top-4 left-4 right-4 pointer-events-none z-10">
-              <p className="text-[10px] font-bold text-text-muted uppercase tracking-wider text-center">
+            <div className="absolute top-3 left-3 right-3 pointer-events-none z-10">
+              <p className="text-[9px] font-black text-text-muted uppercase tracking-wider text-center opacity-30">
                 ✨ Drag & Interact
               </p>
             </div>
@@ -313,6 +360,41 @@ export default function SolutionsSection() {
               ))}
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* 3. Footer Row: Tech Bar and CTA */}
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-8 pt-8 border-t border-border-subtle">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center gap-4 w-full lg:w-auto"
+        >
+          <span className="text-[10px] font-black text-text-muted uppercase tracking-widest whitespace-nowrap">Core Stack</span>
+          <div className="flex gap-4 overflow-x-auto pb-2 no-scrollbar">
+            {TECH_STACK.map((tech) => (
+              <div key={tech.name} className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                <span className="text-accent text-sm">{tech.icon}</span>
+                <span className="text-[11px] font-black text-text-primary uppercase tracking-tight">{tech.name}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="w-full lg:w-auto"
+        >
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-3 px-10 py-4 bg-accent text-bg-surface rounded-full font-black text-[11px] uppercase tracking-[0.2em] shadow-xl shadow-accent/20 hover:scale-[1.02] transition-all group w-full justify-center"
+          >
+            Collaborate With Me
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </a>
         </motion.div>
       </div>
     </div>

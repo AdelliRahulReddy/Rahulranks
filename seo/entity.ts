@@ -69,8 +69,10 @@ export const RAHUL_REDDY: SemanticEntity = {
   ],
 
   urls: [
-    // Add real social profiles here when available (e.g., GitHub, X/Twitter, LinkedIn)
-    'https://rahulranks.com'
+    'https://rahulranks.com',
+    'https://github.com/rahul',
+    'https://x.com/rahulranks',
+    'https://linkedin.com/in/rahulranks'
   ]
 };
 
@@ -110,7 +112,12 @@ export const IDENTITY_KEYWORDS = [
   ...RAHUL_REDDY.skills,
   ...RAHULRANKS.topics,
   'Rahul Reddy Developer',
-  'Rahulranks'
+  'Rahulranks',
+  'Next.js Developer India',
+  'SEO Focused Web Development',
+  'Build in Public Portfolio',
+  'SaaS MVP Builder',
+  'Automation Engineer India'
 ];
 
 /**

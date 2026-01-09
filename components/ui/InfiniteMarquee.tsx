@@ -18,10 +18,14 @@ export default function InfiniteMarquee() {
   return (
     <div
       className="
-        w-full
-        h-[60px]
-        bg-bg-main
-        border-y border-border-subtle
+        max-w-3xl
+        mx-auto
+        h-[48px]
+        bg-white/40
+        backdrop-blur-xl
+        border border-white/40
+        rounded-full
+        shadow-[0_4px_24px_-1px_rgba(0,0,0,0.03)]
         overflow-hidden
         relative
         z-10
@@ -30,11 +34,11 @@ export default function InfiniteMarquee() {
         select-none
       "
     >
-      {/* Left fade - Matches BG Main */}
-      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-bg-main to-transparent z-20 pointer-events-none" />
+      {/* Left fade - Matches BG Surface */}
+      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-bg-surface to-transparent z-20 pointer-events-none" />
 
       {/* Right fade */}
-      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-bg-main to-transparent z-20 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-bg-surface to-transparent z-20 pointer-events-none" />
 
       <motion.div
         className="flex gap-16 items-center whitespace-nowrap"

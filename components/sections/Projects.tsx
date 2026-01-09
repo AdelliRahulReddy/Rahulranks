@@ -40,69 +40,6 @@ export default function ProjectsSection() {
       className="w-full relative z-10"
     >
       <div className="relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, type: "spring" }}
-          className="text-center mb-12"
-        >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={isInView ? { scale: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.2, type: "spring", bounce: 0.5 }}
-            className="flex items-center justify-center gap-2 mb-2"
-          >
-            <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            >
-              <Sparkles size={16} className="text-accent" />
-            </motion.div>
-            <p className="text-accent font-mono text-xs uppercase tracking-[0.2em] font-bold">
-              Portfolio
-            </p>
-          </motion.div>
-
-          <h2 className="text-4xl md:text-5xl font-black font-serif text-text-primary mb-4 tracking-tight">
-            My Work{" "}
-            <motion.span
-              animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-              className="inline-block"
-            >
-              💼
-            </motion.span>
-          </h2>
-
-          <p className="text-text-muted text-base max-w-2xl mx-auto mb-8">
-            Real projects, shipped and running. {MY_PROJECTS.length} projects total, {featuredCount} featured.
-          </p>
-
-          {/* Quick Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap items-center justify-center gap-3 mb-8"
-          >
-            <div className="flex items-center gap-1.5 bg-bg-surface px-4 py-2 rounded-full border border-border-subtle shadow-sm">
-              <Star size={14} className="text-accent fill-accent" />
-              <span className="text-xs font-bold text-text-primary">{featuredCount} Featured</span>
-            </div>
-            <div className="flex items-center gap-1.5 bg-bg-surface px-4 py-2 rounded-full border border-border-subtle shadow-sm">
-              <TrendingUp size={14} className="text-accent" />
-              <span className="text-xs font-bold text-text-primary">
-                {MY_PROJECTS.filter(p => p.status === "live").length} Live
-              </span>
-            </div>
-            <div className="flex items-center gap-1.5 bg-bg-surface px-4 py-2 rounded-full border border-border-subtle shadow-sm">
-              <span className="text-xs font-bold text-text-primary">
-                Latest: {MY_PROJECTS[0]?.year}
-              </span>
-            </div>
-          </motion.div>
-        </motion.div>
 
         {/* Controls */}
         <motion.div
@@ -179,8 +116,8 @@ export default function ProjectsSection() {
             transition={{ duration: 0.3 }}
             className={
               viewMode === "grid"
-                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                : "flex flex-col gap-4"
+                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+                : "flex flex-col gap-6"
             }
           >
             {sortedProjects.map((project, index) => {

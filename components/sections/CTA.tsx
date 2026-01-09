@@ -71,7 +71,7 @@ export default function CTASection() {
       {/* Content Container */}
       <motion.div
         style={{ y }}
-        className="relative z-10 py-16 px-6 md:px-12 lg:px-20 text-center"
+        className="relative z-10 py-20 px-6 md:px-12 text-center"
       >
         {/* Availability Badge */}
         <motion.div
@@ -89,27 +89,8 @@ export default function CTASection() {
           </span>
         </motion.div>
 
-        {/* Headline */}
-        <motion.h2
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-black font-serif text-text-primary mb-6 leading-tight max-w-4xl mx-auto"
-        >
-          Ready to turn your idea into a <span className="text-accent underline decoration-4 underline-offset-4 decoration-accent/30">reality</span>?
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-text-muted text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
-        >
-          I'm currently building my portfolio and offering <span className="font-bold text-text-primary">free development services</span> for select projects. Let's create something amazing together.
-        </motion.p>
-
         {/* Contact Cards */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
           {contactData.map((item, index) => (
             <motion.div
               key={item.label}

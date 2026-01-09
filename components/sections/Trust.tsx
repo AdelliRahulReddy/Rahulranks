@@ -71,59 +71,9 @@ export default function TrustSection() {
         className="w-full relative z-10"
       >
         <div className="relative z-10">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <motion.div
-                animate={{ rotate: [0, 360] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              >
-                <Sparkles size={16} className="text-accent" />
-              </motion.div>
-              <p className="text-accent font-mono text-xs uppercase tracking-[0.2em] font-bold">
-                Trust & Recognition
-              </p>
-            </div>
-
-            <h2 className="text-4xl md:text-5xl font-black font-serif text-text-primary mb-4">
-              Building Credibility{" "}
-              <motion.span
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="inline-block"
-              >
-                🏆
-              </motion.span>
-            </h2>
-
-            <p className="text-text-muted text-base max-w-xl mx-auto mb-6">
-              Click any card to view details. Real credentials and testimonials as I grow.
-            </p>
-
-            {/* Progress Banner */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="inline-flex items-center gap-2 bg-bg-surface border border-border-subtle rounded-full px-4 py-2 shadow-sm"
-            >
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              >
-                <Loader2 size={14} className="text-accent" />
-              </motion.div>
-              <span className="text-xs font-bold text-text-primary">2025 Journey Started</span>
-            </motion.div>
-          </motion.div>
 
           {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {placeholders.map((item, index) => {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               const hasActiveData = item.data && (item.data as any[]).some((d: any) => d.status === "active");

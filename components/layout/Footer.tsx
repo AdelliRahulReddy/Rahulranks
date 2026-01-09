@@ -114,8 +114,8 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer ref={footerRef} className="bg-bg-surface-alt border-t border-border-subtle mt-16 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-12 relative z-10">
+    <footer ref={footerRef} className="section-box w-[95%] max-w-[1540px] mt-12 mb-12 relative overflow-hidden mx-auto">
+      <div className="w-full px-4 md:px-8 lg:px-12 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div className="footer-logo opacity-0">
             <h3 className="text-2xl font-black mb-2 group cursor-default text-text-primary">

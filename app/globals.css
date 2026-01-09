@@ -47,8 +47,8 @@
   :root {
     /* === LOCKED 7-COLOR PALETTE === */
     --bg-main: #F9D9AC;
-    --bg-surface: #FFF9F0;
-    --bg-surface-alt: #F3E6D4;
+    --bg-surface: #FFFFFF;
+    --bg-surface-alt: #FAFAFA;
     --text-primary: #1C1A17;
     --text-muted: #6F6252;
     --accent: #2563EB;
@@ -58,8 +58,8 @@
   /* Dark mode uses same palette for consistency */
   .dark {
     --bg-main: #F9D9AC;
-    --bg-surface: #FFF9F0;
-    --bg-surface-alt: #F3E6D4;
+    --bg-surface: #FFFFFF;
+    --bg-surface-alt: #FAFAFA;
     --text-primary: #1C1A17;
     --text-muted: #6F6252;
     --accent: #2563EB;
@@ -107,6 +107,19 @@
     transform: translateY(-2px);
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.08);
   }
+}
+
+/* Section Container Box */
+@utility section-box {
+  width: 95%;
+  max-width: 1540px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 2.5rem;
+  box-shadow: 0 4px 20px -5px rgba(28, 26, 23, 0.05);
+  overflow: hidden;
 }
 
 /* Animation Keyframes */

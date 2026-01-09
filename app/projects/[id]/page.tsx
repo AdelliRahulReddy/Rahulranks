@@ -11,16 +11,19 @@ export async function generateStaticParams() {
   }));
 }
 
+import { generatePageMetadata } from "@/seo/metadata";
+
 // 2. SEO: Dynamic Title & Description
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
   const project = MY_PROJECTS.find((p) => p.id === id);
   if (!project) return { title: "Project Not Found" };
 
-  return {
-    title: `${project.name} | Rahulranks`,
-    description: project.description,
-  };
+  return generatePageMetadata(
+    `${project.name} | Portfolio Case Study`,
+    project.description,
+    `/projects/${id}`
+  );
 }
 
 // 3. The Page Layout

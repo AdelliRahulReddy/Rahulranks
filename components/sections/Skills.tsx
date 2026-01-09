@@ -7,8 +7,8 @@ import { User, Sparkles, ArrowRight, Code2, Zap } from "lucide-react";
 
 export default function SkillsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { amount: 0.3, once: true });
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const isInView = useInView(containerRef, { amount: 0.1, once: true });
+  const [activeCategory, setActiveCategory] = useState<string | null>("web");
 
   // Calculate circular positions
   const getCircularPosition = (index: number, total: number, radius: number) => {
@@ -22,37 +22,37 @@ export default function SkillsSection() {
 
   const radius = 140;
 
-  // Enhanced details
+  // Enhanced details aligned with Master Data
   const categoryDetails = {
-    strategy: {
-      description: "Strategy is the blueprint. I map user flows, define MVP scope, and select the tech stack that scales.",
-      tools: ["Miro", "Notion", "Figma"],
-      focus: "Product-Market Fit",
-      level: "Expert"
+    web: {
+      description: "Building the foundation. Focusing on Semantic HTML, CSS layouts, and modern React patterns to create clean, responsive interfaces.",
+      tools: ["React", "JavaScript", "Tailwind"],
+      focus: "Front-end Basics",
+      level: "Learning"
     },
-    marketing: {
-      description: "SEO isn't just keywords; it's intent. I build structures that search engines love and users trust.",
-      tools: ["Google Analytics", "Ahrefs", "Search Console"],
-      focus: "Organic Growth",
-      level: "Advanced"
+    tools: {
+      description: "The developer workflow. Mastering Git, GitHub, and Figma to collaborate on projects and turn designs into code.",
+      tools: ["Git", "GitHub", "Figma", "VS Code"],
+      focus: "Workflow",
+      level: "Learning"
+    },
+    learning: {
+      description: "Expanding the arsenal. Daily practice with Next.js, TypeScript, and Full-stack concepts to build production-ready apps.",
+      tools: ["Next.js", "TypeScript", "Node.js"],
+      focus: "Future Stack",
+      level: "Learning"
+    },
+    soft: {
+      description: "The core personality. Quick thinking, dedication to problem solving, and clear communication with collaborators.",
+      tools: ["Problem Solving", "Quick Learner", "Dedicated"],
+      focus: "Identity",
+      level: "Core"
     },
     ai: {
-      description: "AI accelerates execution. I use LLMs to scaffold code, generate content, and debug complex logic.",
-      tools: ["ChatGPT-4o", "Cursor", "Claude 3.5"],
-      focus: "Workflow Velocity",
-      level: "Specialist"
-    },
-    platforms: {
-      description: "Choosing the right vehicle. Next.js for power, WordPress for content, Flutter for mobile dominance.",
-      tools: ["WordPress", "Webflow", "Framer"],
-      focus: "Scalability",
-      level: "Expert"
-    },
-    automation: {
-      description: "If I do it twice, I automate it. Connecting APIs to remove manual friction from operations.",
-      tools: ["Zapier", "Make.com", "n8n"],
-      focus: "Efficiency",
-      level: "Advanced"
+      description: "AI-assisted engineering. Leveraging ChatGPT and Copilot to accelerate coding, debugging, and learning efficiency.",
+      tools: ["ChatGPT", "Copilot", "Claude"],
+      focus: "Leverage",
+      level: "Learning"
     }
   };
 
@@ -65,44 +65,9 @@ export default function SkillsSection() {
       className="w-full relative z-10"
     >
       <div className="relative z-10">
-        {/* Compact Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          {/* Tag */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="inline-flex items-center gap-2 bg-bg-surface border border-border-subtle rounded-full px-4 py-2 mb-6"
-          >
-            <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-            >
-              <Sparkles size={14} className="text-accent" />
-            </motion.div>
-            <p className="text-accent font-mono text-xs uppercase tracking-[0.2em] font-bold">
-              My Arsenal
-            </p>
-          </motion.div>
-          {/* Title */}
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-black font-serif text-text-primary mb-6 tracking-tight leading-none">
-            How I Build{" "}
-            <span className="text-accent">Fast</span> 🛠️
-          </h2>
-
-          {/* Description */}
-          <p className="text-text-muted text-lg font-medium max-w-2xl mx-auto">
-            Curated tools and strategies for <span className="text-accent font-bold">speed</span> and <span className="text-accent font-bold">scalability</span>.
-          </p>
-        </motion.div>
 
         {/* Side-by-Side Layout */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
 
           {/* LEFT: Circular Orbit */}
           <div className="relative h-[400px] flex items-center justify-center">
@@ -176,9 +141,9 @@ export default function SkillsSection() {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="h-[400px]"
+            className="min-h-[400px]"
           >
-            <div className="h-full bg-bg-surface border border-border-subtle rounded-3xl shadow-lg overflow-hidden flex flex-col relative">
+            <div className="h-auto bg-bg-surface border border-border-subtle rounded-3xl shadow-lg overflow-hidden flex flex-col relative">
               {/* Top Bar */}
               <div className="h-1.5 w-full bg-accent" />
 
@@ -219,7 +184,7 @@ export default function SkillsSection() {
                       </p>
                     </div>
 
-                    <div className="flex-1 overflow-y-auto pr-2 space-y-6 custom-scrollbar">
+                    <div className="flex-1 space-y-6">
                       {/* Skills Section */}
                       <div>
                         <div className="flex items-center gap-2 mb-3">
